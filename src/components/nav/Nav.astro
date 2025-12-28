@@ -1,8 +1,8 @@
 ---
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 h-[57px] bg-black/10 backdrop-blur-md">
-    <div class="mx-auto flex h-full max-w-6xl items-center justify-between px-10">
+<header class="site-nav fixed inset-x-0 top-0 z-50 backdrop-blur-[8px]">
+    <div class="site-nav__bar mx-auto flex max-w-6xl items-center justify-between px-6 md:px-10">
         <a href="/" class="flex items-center gap-2">
             <img
                 src="/favicon.svg"
@@ -31,13 +31,140 @@
             <a class="nav-link" href="/#faq">FAQ</a>
         </nav>
 
-        <a class="nav-cta" href="https://app.duetmail.com/">Get started</a>
-    </div>
+        <div class="flex items-center gap-3">
+            <a class="nav-cta" href="https://app.duetmail.com/">Get started</a>
 
-    <div class="h-px w-full bg-white/10"></div>
+            <details class="mobile-menu md:hidden" data-mobile-menu>
+                <summary
+                    class="mobile-menu-trigger"
+                    aria-label="Open navigation menu"
+                >
+                    <svg
+                        class="mobile-menu-icon mobile-menu-icon--open"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M3 5H17M3 10H17M3 15H17"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+
+                    <svg
+                        class="mobile-menu-icon mobile-menu-icon--close"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M5 5L15 15M15 5L5 15"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                        />
+                    </svg>
+                </summary>
+
+                <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+                    <a class="mobile-menu-link" href="/#features">Features</a>
+                    <a class="mobile-menu-link" href="/#copilot">Copilot</a>
+                    <a class="mobile-menu-link" href="/#assistant">Assistant</a>
+                    <a class="mobile-menu-link" href="/#testimonials"
+                        >Testimonials</a
+                    >
+                    <a class="mobile-menu-link" href="/#pricing">Pricing</a>
+                    <a class="mobile-menu-link" href="/#faq">FAQ</a>
+                </nav>
+            </details>
+        </div>
+    </div>
 </header>
 
+<script is:inline>
+    ;(() => {
+        const menu = document.querySelector("details[data-mobile-menu]")
+        if (!menu) return
+
+        const summary = menu.querySelector("summary")
+        const updateAriaLabel = () => {
+            if (!summary) return
+            summary.setAttribute(
+                "aria-label",
+                menu.hasAttribute("open")
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+            )
+        }
+
+        const close = () => menu.removeAttribute("open")
+
+        menu.addEventListener("toggle", updateAriaLabel)
+        updateAriaLabel()
+
+        document.addEventListener("click", (event) => {
+            if (!menu.hasAttribute("open")) return
+            const target = event.target
+            if (!(target instanceof Node)) return
+
+            if (menu.contains(target)) {
+                if (target instanceof Element && target.closest("a")) close()
+                return
+            }
+
+            close()
+        })
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") close()
+        })
+    })()
+</script>
+
 <style>
+    .site-nav {
+        height: 72px;
+        background: rgba(0, 0, 0, 0.1);
+        transition: height 180ms ease, background-color 180ms ease;
+    }
+
+    .site-nav::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .site-nav__bar {
+        height: 72px;
+    }
+
+    @media (min-width: 768px) {
+        .site-nav {
+            height: 57px;
+        }
+
+        .site-nav__bar {
+            height: 57px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .site-nav:has(details[data-mobile-menu][open]) {
+            height: 426px;
+            background: rgba(0, 0, 0, 0.863);
+        }
+    }
+
     .nav-link {
         font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
             BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
@@ -80,5 +207,88 @@
 
     .nav-cta:active {
         transform: translateY(0);
+    }
+
+    .mobile-menu > summary {
+        list-style: none;
+    }
+
+    .mobile-menu > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-menu-trigger {
+        display: inline-flex;
+        height: 40px;
+        width: 40px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        color: rgba(173, 173, 173, 1);
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .mobile-menu-trigger:hover {
+        color: rgba(255, 255, 255, 0.85);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .mobile-menu-trigger:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+    }
+
+    .mobile-menu-panel {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 82px;
+        padding: 8px;
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    .mobile-menu[open] .mobile-menu-panel {
+        display: flex;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .mobile-menu-icon--close {
+        display: none;
+    }
+
+    .mobile-menu[open] .mobile-menu-icon--open {
+        display: none;
+    }
+
+    .mobile-menu[open] .mobile-menu-icon--close {
+        display: block;
+    }
+
+    .mobile-menu-link {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        padding: 0 16px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        color: rgba(173, 173, 173, 1);
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .mobile-menu-link:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.92);
     }
 </style>
