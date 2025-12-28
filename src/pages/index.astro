@@ -5,6 +5,7 @@ import Hero from "../components/sections/Hero.astro"
 import HeroBackground from "../components/sections/HeroBackground.astro"
 import InboxHeroMockup from "../components/sections/InboxHeroMockup.astro"
 import Logos from "../components/sections/Logos.astro"
+import Features from "../components/sections/Features.astro"
 
 const title = "Duet Mail | Gmail AI Assistant | Save 4+ Hours Every Week"
 const description =
@@ -18,7 +19,7 @@ const description =
     ogImagePath="/og.jpg"
 >
     <Nav />
-    <main class="relative">
+    <main class="relative isolate">
         <HeroBackground />
         <Hero>
             <div class="mt-10 w-full">
@@ -26,5 +27,6 @@ const description =
             </div>
         </Hero>
         <Logos />
+        <Features />
     </main>
 </BaseLayout>
