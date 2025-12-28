@@ -1,14 +1,10 @@
 ---
-import HeroBackground from "./HeroBackground.astro"
-
 const features = ["sorting email", "drafting replies", "scheduling", "finding answers"]
 const featureIntervalSeconds = 2
 const featureCycleSeconds = features.length * featureIntervalSeconds
 ---
 
 <section class="relative w-full">
-    <HeroBackground />
-
     <div class="relative mx-auto flex min-h-[92svh] max-w-6xl flex-col px-6 pt-28 pb-14">
         <div class="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
             <div class="badge mb-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-[18px] py-[10px] text-sm text-white/80 backdrop-blur">
