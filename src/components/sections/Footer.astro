@@ -1,0 +1,184 @@
+---
+type FooterLink = {
+    label: string
+    href: string
+    external?: boolean
+}
+
+type FooterGroup = {
+    title: string
+    links: FooterLink[]
+}
+
+const year = new Date().getFullYear()
+
+const groups: FooterGroup[] = [
+    {
+        title: "Explore",
+        links: [
+            { label: "Features", href: "/#features" },
+            { label: "Copilot", href: "/#copilot" },
+            { label: "Assistant", href: "/#assistant" },
+            {
+                label: "Chrome Extension",
+                href: "https://chromewebstore.google.com/detail/duet-mail-gmail-ai-assist/aiigdjghdodkbipkkcjacnhednmlhemo?utm_source=duet-landing",
+                external: true,
+            },
+        ],
+    },
+    {
+        title: "Customers",
+        links: [
+            { label: "Pricing", href: "/#pricing" },
+            { label: "Testimonials", href: "/#testimonials" },
+            { label: "FAQ", href: "/#faq" },
+        ],
+    },
+    {
+        title: "Legal",
+        links: [
+            { label: "Privacy", href: "/privacy" },
+            { label: "Terms", href: "/terms" },
+            { label: "Cookies", href: "/cookies" },
+            { label: "Disclaimer", href: "/disclaimer" },
+        ],
+    },
+    {
+        title: "Connect",
+        links: [
+            { label: "Blog", href: "/blog" },
+            {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/duetmail",
+                external: true,
+            },
+            { label: "X", href: "https://x.com/DuetMailApp", external: true },
+            {
+                label: "Instagram",
+                href: "https://www.instagram.com/duetmail/",
+                external: true,
+            },
+            {
+                label: "Startup Fame",
+                href: "https://startupfa.me/s/duet-mail?utm_source=duetmail.com",
+                external: true,
+            },
+        ],
+    },
+]
+---
+
+<footer class="border-t border-white/10" aria-label="Site footer">
+    <div class="mx-auto max-w-6xl px-6 py-20 md:px-10">
+        <div class="flex flex-col gap-14 lg:flex-row lg:gap-10">
+            <div class="footer-brand">
+                <a href="/" class="flex items-center gap-2">
+                    <img
+                        src="/favicon.svg"
+                        width="27"
+                        height="27"
+                        class="h-[27px] w-[27px]"
+                        alt=""
+                        decoding="async"
+                    />
+                    <img
+                        src="/logo.svg"
+                        width="100"
+                        height="17"
+                        class="h-[17px] w-auto"
+                        alt="Duet Mail"
+                        decoding="async"
+                    />
+                </a>
+
+                <p class="footer-tagline mt-5 mb-0 max-w-sm text-pretty">
+                    Duet Mail — The AI Email Assistant that saves you hours every
+                    week
+                </p>
+
+                <p class="footer-copyright mt-10 mb-0">Duet Mail © {year}</p>
+            </div>
+
+            <div class="grid flex-1 grid-cols-2 gap-x-10 gap-y-12 sm:grid-cols-4">
+                {groups.map((group) => (
+                    <nav aria-labelledby={`footer-${group.title.toLowerCase()}`}>
+                        <h2
+                            id={`footer-${group.title.toLowerCase()}`}
+                            class="footer-heading m-0"
+                        >
+                            {group.title}
+                        </h2>
+
+                        <ul class="mt-5 flex flex-col gap-3" role="list">
+                            {group.links.map((link) => (
+                                <li>
+                                    <a
+                                        class="footer-link"
+                                        href={link.href}
+                                        target={link.external ? "_blank" : undefined}
+                                        rel={link.external ? "noopener noreferrer" : undefined}
+                                    >
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                ))}
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-brand {
+        flex: none;
+    }
+
+    @media (min-width: 1024px) {
+        .footer-brand {
+            width: 354px;
+        }
+    }
+
+    .footer-tagline {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.82);
+    }
+
+    .footer-copyright {
+        font-size: 14px;
+        line-height: 1.4;
+        color: rgba(173, 173, 173, 1);
+    }
+
+    .footer-heading {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    .footer-link {
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.62);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-link:focus-visible {
+        outline: none;
+        border-radius: 8px;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+    }
+</style>
