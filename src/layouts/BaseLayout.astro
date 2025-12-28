@@ -1,0 +1,53 @@
+---
+import "../styles/global.css"
+import gtmHeadHtml from "../snippets/gtm-head.html?raw"
+import gtmNoscriptHtml from "../snippets/gtm-noscript.html?raw"
+import homeJsonLdHtml from "../snippets/home-jsonld.html?raw"
+
+type Props = {
+    title: string
+    description: string
+    canonicalPath: string
+    ogImagePath: string
+}
+
+const { title, description, canonicalPath, ogImagePath } = Astro.props
+
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString()
+const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
+---
+
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+
+        <Fragment set:html={gtmHeadHtml} />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+
+        <link rel="canonical" href={canonicalUrl} />
+
+        <link rel="icon" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+
+        <Fragment set:html={homeJsonLdHtml} />
+    </head>
+    <body>
+        <Fragment set:html={gtmNoscriptHtml} />
+        <slot />
+    </body>
+</html>

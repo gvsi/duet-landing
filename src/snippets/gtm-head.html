@@ -1,0 +1,144 @@
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MHRH38HP');</script>
+<!-- End Google Tag Manager -->
+
+<script>
+    (function () {
+        if (typeof window === 'undefined' || typeof document === 'undefined') {
+            return;
+        }
+
+        var UTM_KEYS = [
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_term',
+            'utm_content',
+            'utm_id',
+            'utm_source_platform',
+            'utm_creative_format',
+            'utm_marketing_tactic',
+        ];
+        var STORAGE_KEY = 'duet__utm_params';
+        var COOKIE_NAME = 'duet_utms';
+        var COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+
+        function sanitizeParams(raw) {
+            var result = {};
+            if (!raw) {
+                return result;
+            }
+            for (var i = 0; i < UTM_KEYS.length; i++) {
+                var key = UTM_KEYS[i];
+                var value = raw[key];
+                if (typeof value === 'string') {
+                    var trimmed = value.trim();
+                    if (trimmed) {
+                        result[key] = trimmed.slice(0, 200);
+                    }
+                }
+            }
+            return result;
+        }
+
+        function readCookie() {
+            var cookies = document.cookie ? document.cookie.split(';') : [];
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.indexOf(COOKIE_NAME + '=') === 0) {
+                    var value = cookie.substring(COOKIE_NAME.length + 1);
+                    try {
+                        var decoded = decodeURIComponent(value);
+                        var parsed = JSON.parse(decoded);
+                        if (parsed && typeof parsed === 'object') {
+                            return sanitizeParams(parsed);
+                        }
+                    } catch (error) {
+                        console.warn('[duet-utms] Failed to parse cookie', error);
+                    }
+                }
+            }
+            return {};
+        }
+
+        function writeCookie(params) {
+            try {
+                var encoded = encodeURIComponent(JSON.stringify(params));
+                var host = window.location.hostname || '';
+                var parts = host.split('.');
+                var domain = '';
+                if (parts.length >= 2) {
+                    domain = parts.slice(-2).join('.');
+                } else {
+                    domain = host;
+                }
+                var directives = [
+                    COOKIE_NAME + '=' + encoded,
+                    'Max-Age=' + COOKIE_MAX_AGE,
+                    'Path=/',
+                    'SameSite=Lax',
+                    'Secure',
+                ];
+                if (domain && domain !== 'localhost') {
+                    directives.push('Domain=' + '.' + domain);
+                }
+                document.cookie = directives.join('; ');
+            } catch (error) {
+                console.warn('[duet-utms] Failed to set cookie', error);
+            }
+        }
+
+        function writeLocalStorage(params) {
+            try {
+                window.localStorage.setItem(STORAGE_KEY, JSON.stringify(params));
+            } catch (error) {
+                console.warn('[duet-utms] Failed to persist localStorage', error);
+            }
+        }
+
+        function captureUtmsFromUrl() {
+            var params = new URLSearchParams(window.location.search || '');
+            var collected = {};
+            var hasValue = false;
+            for (var i = 0; i < UTM_KEYS.length; i++) {
+                var key = UTM_KEYS[i];
+                var value = params.get(key);
+                if (value) {
+                    collected[key] = value;
+                    hasValue = true;
+                }
+            }
+            if (!hasValue) {
+                var ref = params.get('ref');
+                if (ref) {
+                    collected.utm_source = ref;
+                    hasValue = true;
+                }
+            }
+            if (!hasValue) {
+                return {};
+            }
+            return sanitizeParams(collected);
+        }
+
+        var existingCookie = readCookie();
+        if (Object.keys(existingCookie).length > 0) {
+            writeLocalStorage(existingCookie);
+            return;
+        }
+
+        var urlParams = captureUtmsFromUrl();
+        if (Object.keys(urlParams).length > 0) {
+            writeCookie(urlParams);
+            writeLocalStorage(urlParams);
+        }
+    })();
+</script>
+

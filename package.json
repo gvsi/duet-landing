@@ -1,0 +1,26 @@
+{
+  "name": "duet-landing",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=20.3.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "5.16.6"
+  },
+  "devDependencies": {
+    "@fontsource-variable/domine": "5.2.8",
+    "@fontsource-variable/manrope": "5.2.8",
+    "@tailwindcss/vite": "4.1.18",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.2"
+  }
+}
+

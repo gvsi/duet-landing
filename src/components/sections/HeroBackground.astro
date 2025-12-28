@@ -1,0 +1,148 @@
+<div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 bg-[#08081a]"></div>
+
+    <div
+        class="glow glow-1 absolute left-1/2 top-[40px] h-[700px] w-[900px] -translate-x-1/2"
+    ></div>
+    <div
+        class="glow glow-2 absolute left-1/2 top-[140px] h-[500px] w-[700px] -translate-x-1/2"
+    ></div>
+    <div
+        class="glow glow-3 absolute left-[6%] top-[320px] h-[350px] w-[350px]"
+    ></div>
+    <div
+        class="glow glow-4 absolute right-[8%] top-[370px] h-[300px] w-[300px]"
+    ></div>
+
+    <div class="grid-overlay absolute inset-0"></div>
+</div>
+
+<style>
+    @media (prefers-reduced-motion: reduce) {
+        .glow {
+            animation: none !important;
+        }
+    }
+
+    .glow {
+        filter: blur(40px);
+        will-change: transform, opacity;
+    }
+
+    .glow-1 {
+        background: radial-gradient(
+            ellipse 100% 80% at 50% 55%,
+            rgba(69, 48, 234, 0.3) 0%,
+            rgba(69, 48, 234, 0.15) 35%,
+            rgba(52, 39, 234, 0.05) 60%,
+            transparent 80%
+        );
+        animation: glowPulse1 12s ease-in-out infinite;
+    }
+
+    .glow-2 {
+        background: radial-gradient(
+            ellipse 90% 70% at 50% 50%,
+            rgba(116, 194, 255, 0.2) 0%,
+            rgba(116, 194, 255, 0.08) 45%,
+            transparent 70%
+        );
+        animation: glowPulse2 12s ease-in-out infinite;
+    }
+
+    .glow-3 {
+        background: radial-gradient(
+            circle at center,
+            rgba(69, 48, 234, 0.22) 0%,
+            rgba(69, 48, 234, 0.08) 45%,
+            transparent 70%
+        );
+        filter: blur(25px);
+        animation: glowPulse3 14s ease-in-out infinite;
+    }
+
+    .glow-4 {
+        background: radial-gradient(
+            circle at center,
+            rgba(116, 194, 255, 0.18) 0%,
+            rgba(116, 194, 255, 0.06) 50%,
+            transparent 70%
+        );
+        filter: blur(22px);
+        animation: glowPulse4 16s ease-in-out infinite;
+    }
+
+    .grid-overlay {
+        background-image: linear-gradient(
+                rgba(116, 194, 255, 0.012) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(116, 194, 255, 0.012) 1px,
+                transparent 1px
+            );
+        background-size: 80px 80px;
+        mask-image: radial-gradient(
+            ellipse 55% 45% at 50% 420px,
+            rgba(0, 0, 0, 0.5) 0%,
+            transparent 70%
+        );
+        -webkit-mask-image: radial-gradient(
+            ellipse 55% 45% at 50% 420px,
+            rgba(0, 0, 0, 0.5) 0%,
+            transparent 70%
+        );
+        pointer-events: none;
+        opacity: 0.9;
+    }
+
+    @keyframes glowPulse1 {
+        0%,
+        100% {
+            opacity: 0.6;
+            transform: translateX(-50%) scale(1);
+        }
+        50% {
+            opacity: 0.75;
+            transform: translateX(-50%) scale(1.02);
+        }
+    }
+
+    @keyframes glowPulse2 {
+        0%,
+        100% {
+            opacity: 0.4;
+            transform: translateX(-50%) translateY(-5px);
+        }
+        50% {
+            opacity: 0.55;
+            transform: translateX(-50%) translateY(5px);
+        }
+    }
+
+    @keyframes glowPulse3 {
+        0%,
+        100% {
+            opacity: 0.35;
+            transform: translateY(0);
+        }
+        50% {
+            opacity: 0.5;
+            transform: translateY(-12px);
+        }
+    }
+
+    @keyframes glowPulse4 {
+        0%,
+        100% {
+            opacity: 0.3;
+            transform: translateY(0);
+        }
+        50% {
+            opacity: 0.45;
+            transform: translateY(10px);
+        }
+    }
+</style>
+

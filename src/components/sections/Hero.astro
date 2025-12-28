@@ -1,0 +1,115 @@
+---
+import Button from "../ui/Button.astro"
+import HeroBackground from "./HeroBackground.astro"
+
+const features = ["sorting email", "drafting replies", "scheduling", "finding answers"]
+---
+
+<section class="relative w-full">
+    <HeroBackground />
+
+    <div class="relative mx-auto flex min-h-[92svh] max-w-6xl flex-col px-6 pt-28">
+        <div class="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
+            <div
+                class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur"
+            >
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span>Join 20,000+ professionals</span>
+            </div>
+
+            <h1
+                class="text-balance font-serif font-[650] tracking-tight text-white text-4xl leading-[1.05] sm:text-5xl md:text-6xl"
+            >
+                Your <span class="text-white/90">chief of staff</span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-pretty text-base text-white/70 sm:text-lg">
+                Save 4+ hours every week on email
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Button href="https://app.duetmail.com" variant="primary">
+                    Start with Gmail
+                </Button>
+                <Button
+                    href="https://app.duetmail.com/outlook-waitlist"
+                    variant="secondary"
+                >
+                    Join Outlook waitlist
+                </Button>
+            </div>
+
+            <div class="mt-4 text-sm text-white/55">
+                Free 14-day trial <span class="px-2 text-white/25">•</span> Cancel anytime
+            </div>
+
+            <div class="mt-12">
+                <div class="sr-only">Duet Mail helps with:</div>
+                <div class="cycler inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-white/80">
+                    <span class="text-white/55">AI for</span>
+                    <span class="cycler-viewport">
+                        {features.map((feature) => (
+                            <span class="cycler-item">{feature}</span>
+                        ))}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @media (prefers-reduced-motion: reduce) {
+        .cycler-item {
+            animation: none !important;
+        }
+    }
+
+    .cycler-viewport {
+        position: relative;
+        display: inline-grid;
+        height: 1.25rem;
+        overflow: hidden;
+        vertical-align: bottom;
+    }
+
+    .cycler-item {
+        grid-area: 1 / 1;
+        opacity: 0;
+        transform: translateY(6px);
+        animation: cycler 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+        will-change: transform, opacity;
+    }
+
+    .cycler-item:nth-child(1) {
+        animation-delay: 0s;
+    }
+    .cycler-item:nth-child(2) {
+        animation-delay: 2s;
+    }
+    .cycler-item:nth-child(3) {
+        animation-delay: 4s;
+    }
+    .cycler-item:nth-child(4) {
+        animation-delay: 6s;
+    }
+
+    @keyframes cycler {
+        0% {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        8%,
+        24% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        32% {
+            opacity: 0;
+            transform: translateY(-6px);
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>

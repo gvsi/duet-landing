@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Nav from "../components/nav/Nav.astro"
+import Hero from "../components/sections/Hero.astro"
+
+const title = "Duet Mail | Gmail AI Assistant | Save 4+ Hours Every Week"
+const description =
+    "Transform your email workflow with Duet Mail's AI Gmail assistant. Automatically summarize emails, draft emails and replies, and organize your inbox to save hours every week."
+---
+
+<BaseLayout
+    title={title}
+    description={description}
+    canonicalPath="/"
+    ogImagePath="/og.jpg"
+>
+    <Nav />
+    <main>
+        <Hero />
+    </main>
+</BaseLayout>
+

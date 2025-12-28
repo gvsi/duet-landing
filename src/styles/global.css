@@ -1,0 +1,31 @@
+@import "@fontsource-variable/domine";
+@import "@fontsource-variable/manrope";
+
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --duet-bg: #08081a;
+    --duet-fg: #ffffff;
+    --duet-muted: #a1a1aa;
+    --duet-border: rgba(255, 255, 255, 0.08);
+    --duet-accent: #4530ea;
+    --duet-accent-2: #74c2ff;
+  }
+
+  html {
+    color-scheme: dark;
+    background: var(--duet-bg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--duet-bg);
+    color: var(--duet-fg);
+    font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+    text-rendering: optimizeLegibility;
+  }
+}
