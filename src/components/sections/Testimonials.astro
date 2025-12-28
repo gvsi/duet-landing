@@ -6,7 +6,17 @@ type Testimonial = {
     title: string
     quote: string
     logoName: HomeLogo["name"]
+    avatarKey?: string
 }
+
+const avatarPath = (key: string, size: 64 | 96 | 128) =>
+    `/avatars/testimonials/${key}-${size}.jpg`
+
+const avatarSrcSet = (key: string) =>
+    `${avatarPath(key, 64)} 64w, ${avatarPath(key, 96)} 96w, ${avatarPath(
+        key,
+        128
+    )} 128w`
 
 const TESTIMONIALS: Testimonial[] = [
     {
@@ -14,30 +24,35 @@ const TESTIMONIALS: Testimonial[] = [
         title: "Freelancer",
         quote: "Worth every penny. The time I save on email pays for Duet Mail 10x over. Can't imagine working without it now.",
         logoName: "Airtable",
+        avatarKey: "francesca",
     },
     {
         name: "Michael R.",
         title: "Sales Executive",
         quote: "The instant summaries of long email threads are pure magic, and so user-friendly. My clients think I'm superhuman.",
         logoName: "Upwork",
+        avatarKey: "michael",
     },
     {
         name: "Johnny S.",
         title: "Entrepreneur",
         quote: "Was skeptical of artificial intelligence use for my emails. Now, it's like having a brilliant executive assistant. Can't imagine going back.",
         logoName: "Fiverr",
+        avatarKey: "johnny",
     },
     {
         name: "Jennifer L.",
         title: "Consultant",
         quote: "As a consultant, every minute counts. Duet Mail doesn't just save me time—it makes my email communication sharper.",
         logoName: "Ahrefs",
+        avatarKey: "jennifer",
     },
     {
         name: "Sarah T.",
         title: "Marketing Director",
         quote: "Finally, an AI mail assistant that actually learns how I write. The instant replies are so spot-on, my team thought I was working at midnight.",
         logoName: "Wise",
+        avatarKey: "sarah",
     },
 ]
 
@@ -78,7 +93,20 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
                                             class="testimonial-card__avatar"
                                             aria-hidden="true"
                                         >
-                                            {initial}
+                                            {testimonial.avatarKey ? (
+                                                <img
+                                                    src={avatarPath(testimonial.avatarKey, 96)}
+                                                    srcset={avatarSrcSet(testimonial.avatarKey)}
+                                                    sizes="36px"
+                                                    width="36"
+                                                    height="36"
+                                                    alt=""
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                />
+                                            ) : (
+                                                initial
+                                            )}
                                         </div>
 
                                         <div class="min-w-0">
@@ -140,7 +168,20 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
                             <footer class="testimonial-card__footer">
                                 <div class="testimonial-card__author">
                                     <div class="testimonial-card__avatar" aria-hidden="true">
-                                        {initial}
+                                        {testimonial.avatarKey ? (
+                                            <img
+                                                src={avatarPath(testimonial.avatarKey, 96)}
+                                                srcset={avatarSrcSet(testimonial.avatarKey)}
+                                                sizes="36px"
+                                                width="36"
+                                                height="36"
+                                                alt=""
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        ) : (
+                                            initial
+                                        )}
                                     </div>
 
                                     <div class="min-w-0">
@@ -287,6 +328,12 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
         animation: testimonialsMarquee 55s linear infinite;
     }
 
+    @media (hover: hover) {
+        .home-testimonials__ticker:hover .home-testimonials__track {
+            animation-play-state: paused;
+        }
+    }
+
     @keyframes testimonialsMarquee {
         0% {
             transform: translateX(0);
@@ -421,6 +468,15 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
         font-weight: 600;
         letter-spacing: -0.01em;
         flex: none;
+        overflow: hidden;
+    }
+
+    .testimonial-card__avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
     }
 
     .testimonial-card__name {
