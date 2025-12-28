@@ -1,0 +1,202 @@
+---
+const faqs = [
+    {
+        question: "How does Duet Mail protect my email data?",
+        answer: "Your security is our top priority. We use OAuth 2.0 for secure authentication, process emails in Gmail's secure environment, and never store your email content. All processing happens in real-time through Gmail's API, and we undergo Google's annual CASA security assessment to maintain the highest security standards.",
+    },
+    {
+        question: "How does the email summary feature work?",
+        answer: "Duet Mail uses advanced AI to analyze your email threads and generate a concise overview highlighting the key points, decisions, and action items. This helps you quickly understand the context without reading the entire thread.",
+    },
+    {
+        question: "What permissions does Duet Mail need?",
+        answer: "Duet Mail requires access to your emails to provide summaries, extract action items, generate content, and send your emails. We only request permissions we absolutely need. You can review and revoke these permissions at any time in your Google Account settings.",
+    },
+    {
+        question: "What's included in the free trial?",
+        answer: "The 14-day free trial includes full free tool access to all Pro features: unlimited email summaries, action item extraction, AI email writer (generating emails and drafts without any limits), and custom email templates. Just sign in with Google to start saving time on email management.",
+    },
+    {
+        question: "Can I use Duet Mail with other email providers?",
+        answer: "Currently, Duet Mail works exclusively with Gmail and Google Workspace accounts. We will be adding support for other email providers, including Outlook and Apple Mail in the future.",
+    },
+]
+---
+
+<section id="faq" class="home-faq" aria-label="Frequently asked questions">
+    <div class="mx-auto max-w-6xl px-6 md:px-10">
+        <header class="home-faq__header">
+            <p class="home-faq__pill">FAQ</p>
+            <h2 class="home-faq__title">Common questions — answered</h2>
+        </header>
+
+        <div class="home-faq__list">
+            {faqs.map((item) => (
+                <details class="home-faq__item">
+                    <summary class="home-faq__summary">
+                        <span class="home-faq__question">{item.question}</span>
+                        <span class="home-faq__icon" aria-hidden="true"></span>
+                    </summary>
+
+                    <div class="home-faq__answer">
+                        <p class="home-faq__answer-text">{item.answer}</p>
+                    </div>
+                </details>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .home-faq {
+        padding: 80px 0 96px;
+        scroll-margin-top: 96px;
+    }
+
+    .home-faq__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        margin-bottom: 48px;
+    }
+
+    .home-faq__pill {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.22);
+        color: rgb(173, 173, 173);
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.01em;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .home-faq__title {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 48px;
+        letter-spacing: -0.8px;
+        color: #ffffff;
+        text-wrap: balance;
+        max-width: 720px;
+    }
+
+    @media (max-width: 767px) {
+        .home-faq__title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+    }
+
+    .home-faq__list {
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .home-faq__item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 24px 0;
+    }
+
+    .home-faq__summary {
+        cursor: pointer;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        list-style: none;
+    }
+
+    .home-faq__summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .home-faq__summary:focus-visible {
+        outline: none;
+        border-radius: 10px;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .home-faq__question {
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.92);
+        margin-top: 4px;
+    }
+
+    .home-faq__icon {
+        position: relative;
+        flex: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        transition: background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .home-faq__icon::before,
+    .home-faq__icon::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 14px;
+        height: 2px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.72);
+        transform: translate(-50%, -50%);
+        transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .home-faq__icon::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .home-faq__item[open] .home-faq__icon {
+        border-color: rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .home-faq__item[open] .home-faq__icon::after {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    .home-faq__answer {
+        padding: 12px 0 0;
+    }
+
+    .home-faq__answer-text {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px;
+        color: rgb(173, 173, 173);
+        text-wrap: pretty;
+    }
+</style>

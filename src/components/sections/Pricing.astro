@@ -1,0 +1,676 @@
+---
+type Billing = "annual" | "monthly"
+
+type Plan = {
+    name: string
+    badge?: string
+    description: string
+    priceLabel?: string
+    priceByBilling?: Partial<Record<Billing, string>>
+    featuresTitle: string
+    features: string[]
+    ctaLabel: string
+    ctaHref: string
+    ctaNote?: string
+    featured?: boolean
+}
+
+const plans: Plan[] = [
+    {
+        name: "Basic",
+        description: "No cost plan. Free, forever.",
+        priceLabel: "Free",
+        featuresTitle: "Core features with daily limits",
+        features: [
+            "Smart Summaries (5/day)",
+            "Smart Drafts (2/day)",
+            "Auto Labels (1 max)",
+            "AI Assistant (5 chats/day)",
+        ],
+        ctaLabel: "Get started",
+        ctaHref: "https://app.duetmail.com/",
+        ctaNote: "Free, forever",
+    },
+    {
+        name: "Pro",
+        badge: "Most popular",
+        description: "Perfect for busy professionals",
+        priceByBilling: {
+            annual: "19.99",
+            monthly: "29.99",
+        },
+        featuresTitle: "Everything you need, unlimited",
+        features: [
+            "Smart Summaries (unlimited)",
+            "Smart Drafts (unlimited)",
+            "Smart Reminders",
+            "AI Assistant (unlimited)",
+        ],
+        ctaLabel: "Get started",
+        ctaHref: "https://app.duetmail.com/",
+        ctaNote: "14-day free trial. Cancel anytime.",
+        featured: true,
+    },
+    {
+        name: "Enterprise",
+        description: "For teams and organizations",
+        priceByBilling: {
+            annual: "49.99",
+            monthly: "69.99",
+        },
+        featuresTitle: "Built for teams",
+        features: [
+            "All Pro Plan features",
+            "Priority Support",
+            "Advanced Analytics",
+            "Team Collaboration",
+        ],
+        ctaLabel: "Contact sales",
+        ctaHref: "mailto:hello@duetmail.com?subject=Duet%20Mail%20Enterprise",
+        ctaNote: "Prices are per month/user",
+    },
+]
+---
+
+<section id="pricing" class="home-pricing" aria-label="Pricing">
+    <div class="mx-auto max-w-6xl px-6 md:px-10">
+        <header class="home-pricing__header">
+            <p class="home-pricing__pill">Pricing</p>
+
+            <h2 class="home-pricing__title">Simple plans for every inbox</h2>
+
+            <p class="home-pricing__subtitle">
+                Start free, then upgrade when you're ready. Cancel anytime.
+            </p>
+        </header>
+
+        <fieldset class="home-pricing__fieldset">
+            <legend class="sr-only">Billing cadence</legend>
+
+            <input
+                id="billing-annual"
+                class="home-pricing__radio"
+                type="radio"
+                name="billing"
+                value="annual"
+                checked
+            />
+            <input
+                id="billing-monthly"
+                class="home-pricing__radio"
+                type="radio"
+                name="billing"
+                value="monthly"
+            />
+
+            <div class="pricing-toggle" role="radiogroup" aria-label="Billing cadence">
+                <label class="pricing-toggle__label" for="billing-annual">
+                    Annual
+                    <span class="pricing-toggle__badge" aria-hidden="true"
+                        >Save</span
+                    >
+                </label>
+                <label class="pricing-toggle__label" for="billing-monthly">
+                    Monthly
+                </label>
+                <span class="pricing-toggle__indicator" aria-hidden="true"></span>
+            </div>
+
+            <div class="pricing-grid" role="list">
+                {plans.map((plan) => (
+                    <article
+                        class:list={[
+                            "pricing-card",
+                            plan.featured && "pricing-card--featured",
+                        ]}
+                        role="listitem"
+                        aria-label={`${plan.name} plan`}
+                    >
+                        <header class="pricing-card__header">
+                            <div class="pricing-card__top">
+                                <p class="pricing-card__name">{plan.name}</p>
+                                {plan.badge && (
+                                    <span class="pricing-card__badge">{plan.badge}</span>
+                                )}
+                            </div>
+
+                            <p class="pricing-card__desc">{plan.description}</p>
+
+                            {plan.priceLabel ? (
+                                <div class="pricing-card__price">
+                                    <span class="pricing-card__price-label">
+                                        {plan.priceLabel}
+                                    </span>
+                                </div>
+                            ) : (
+                                <div class="pricing-card__price">
+                                    <span class="pricing-card__currency">$</span>
+                                    <span class="pricing-card__amount">
+                                        <span class="price" data-billing="annual">
+                                            {plan.priceByBilling?.annual}
+                                        </span>
+                                        <span class="price" data-billing="monthly">
+                                            {plan.priceByBilling?.monthly}
+                                        </span>
+                                    </span>
+                                    <span class="pricing-card__unit">/mo</span>
+                                </div>
+                            )}
+                        </header>
+
+                        <div class="pricing-card__body">
+                            <p class="pricing-card__features-title">
+                                {plan.featuresTitle}
+                            </p>
+
+                            <ul class="pricing-card__features" role="list">
+                                {plan.features.map((feature) => (
+                                    <li class="pricing-card__feature">
+                                        <span class="pricing-card__check" aria-hidden="true">
+                                            <svg
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 20 20"
+                                                fill="none"
+                                            >
+                                                <path
+                                                    d="M4.2 10.6 8.2 14.6 16.2 6.6"
+                                                    stroke="currentColor"
+                                                    stroke-width="1.6"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <span>{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <footer class="pricing-card__footer">
+                            <a class="pricing-card__cta" href={plan.ctaHref}>
+                                {plan.ctaLabel}
+                            </a>
+                            {plan.ctaNote && (
+                                <p class="pricing-card__cta-note">{plan.ctaNote}</p>
+                            )}
+                        </footer>
+                    </article>
+                ))}
+            </div>
+        </fieldset>
+    </div>
+</section>
+
+<style>
+    .home-pricing {
+        padding: 64px 0 120px;
+        scroll-margin-top: 80px;
+    }
+
+    .home-pricing__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+
+    .home-pricing__pill {
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 18px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(0, 0, 0, 0.22);
+        color: rgb(173, 173, 173);
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.01em;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .home-pricing__title {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 48px;
+        letter-spacing: -0.8px;
+        color: #ffffff;
+        text-wrap: balance;
+        max-width: 720px;
+    }
+
+    @media (max-width: 767px) {
+        .home-pricing__title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+    }
+
+    .home-pricing__subtitle {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: rgb(173, 173, 173);
+        max-width: 520px;
+        text-wrap: pretty;
+    }
+
+    .home-pricing__fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .home-pricing__radio {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .pricing-toggle {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 4px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .pricing-toggle__label {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 9999px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.72);
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.2s ease;
+    }
+
+    .pricing-toggle__label:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+    }
+
+    .pricing-toggle__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 8px;
+        border-radius: 9999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.92);
+        background: rgba(69, 48, 234, 0.35);
+        border: 1px solid rgba(116, 194, 255, 0.25);
+    }
+
+    .pricing-toggle__indicator {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 4px;
+        width: calc(50% - 4px);
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        transition: transform 220ms ease;
+    }
+
+    #billing-annual:checked
+        ~ .pricing-toggle
+        label[for="billing-annual"] {
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    #billing-monthly:checked
+        ~ .pricing-toggle
+        label[for="billing-monthly"] {
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    #billing-monthly:checked ~ .pricing-toggle .pricing-toggle__indicator {
+        transform: translateX(100%);
+    }
+
+    .pricing-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: stretch;
+    }
+
+    @media (min-width: 1024px) {
+        .pricing-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+    }
+
+    .pricing-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: radial-gradient(
+                55% 45% at 50% 0%,
+                rgba(255, 255, 255, 0.16) 0%,
+                rgba(0, 0, 0, 0.1) 35%,
+                rgba(0, 0, 0, 0.55) 100%
+            ),
+            rgba(0, 0, 0, 0.25);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .pricing-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 16px;
+        padding: 1px;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.22),
+            rgba(255, 255, 255, 0.03)
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 0.65;
+    }
+
+    .pricing-card--featured {
+        border-color: rgba(116, 194, 255, 0.26);
+        box-shadow: 0 30px 80px rgba(69, 48, 234, 0.22),
+            0 20px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    .pricing-card--featured::after {
+        content: "";
+        position: absolute;
+        inset: -120px;
+        background: radial-gradient(
+            circle at 50% 0%,
+            rgba(69, 48, 234, 0.35),
+            transparent 55%
+        );
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    .pricing-card__header {
+        position: relative;
+        z-index: 1;
+    }
+
+    .pricing-card__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .pricing-card__name {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    .pricing-card__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 28px;
+        padding: 0 12px;
+        border-radius: 9999px;
+        background: rgba(116, 194, 255, 0.14);
+        border: 1px solid rgba(116, 194, 255, 0.22);
+        color: rgba(255, 255, 255, 0.9);
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+    }
+
+    .pricing-card__desc {
+        margin: 12px 0 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(173, 173, 173, 1);
+        text-wrap: pretty;
+    }
+
+    .pricing-card__price {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-top: 16px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .pricing-card__currency {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        transform: translateY(-2px);
+    }
+
+    .pricing-card__amount {
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: rgba(255, 255, 255, 0.96);
+        line-height: 1;
+    }
+
+    .pricing-card__unit {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .pricing-card__price-label {
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: rgba(255, 255, 255, 0.96);
+        line-height: 1;
+    }
+
+    .pricing-card__note {
+        margin: 10px 0 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: rgba(144, 142, 142, 1);
+    }
+
+    .pricing-card__body {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 1 1 auto;
+    }
+
+    .pricing-card__features-title {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: rgba(214, 215, 214, 1);
+    }
+
+    .pricing-card__features {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pricing-card__feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(255, 255, 255, 0.82);
+    }
+
+    .pricing-card__check {
+        flex: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+        display: grid;
+        place-items: center;
+        color: rgba(116, 194, 255, 0.95);
+        background: rgba(116, 194, 255, 0.08);
+        border: 1px solid rgba(116, 194, 255, 0.18);
+        margin-top: 1px;
+    }
+
+    .pricing-card__footer {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pricing-card__cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 46px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: rgba(255, 255, 255, 0.92);
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        text-decoration: none;
+        transition: transform 0.2s ease, background 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .pricing-card__cta:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-1px);
+    }
+
+    .pricing-card__cta:active {
+        transform: translateY(0px);
+    }
+
+    .pricing-card--featured .pricing-card__cta {
+        background: linear-gradient(135deg, #74c2ff 0%, #4530ea 100%);
+        border-color: rgba(255, 255, 255, 0.14);
+        color: #07071a;
+        box-shadow: 0 18px 40px rgba(69, 48, 234, 0.28);
+    }
+
+    .pricing-card--featured .pricing-card__cta:hover {
+        background: linear-gradient(135deg, #86ccff 0%, #5640f0 100%);
+        transform: translateY(-2px);
+    }
+
+    .pricing-card__cta-note {
+        margin: 0;
+        text-align: center;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        color: rgba(144, 142, 142, 1);
+    }
+
+    .price[data-billing="annual"] {
+        display: inline;
+    }
+
+    .price[data-billing="monthly"] {
+        display: none;
+    }
+
+    #billing-monthly:checked ~ .pricing-grid .price[data-billing="monthly"] {
+        display: inline;
+    }
+
+    #billing-monthly:checked ~ .pricing-grid .price[data-billing="annual"] {
+        display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .pricing-toggle__indicator {
+            transition: none;
+        }
+
+        .pricing-card__cta {
+            transition: none;
+        }
+    }
+</style>
