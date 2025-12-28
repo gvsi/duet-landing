@@ -1,0 +1,1001 @@
+---
+---
+
+<section
+    class="draft-showcase"
+    aria-label="AI draft replies"
+    data-draft-section
+>
+    <div class="draft-container">
+        <header class="draft-header">
+            <h2 class="draft-title">We draft your responses</h2>
+            <p class="draft-subtitle">
+                Pre-written replies in your voice, ready to send. Just review,
+                edit if needed, and hit send.
+            </p>
+        </header>
+
+        <div class="compose-mockup" aria-hidden="true">
+            <div class="ambient-glow"></div>
+            <div class="magic-particles">
+                <span class="particle particle-1"></span>
+                <span class="particle particle-2"></span>
+                <span class="particle particle-3"></span>
+                <span class="particle particle-4"></span>
+            </div>
+
+            <div class="mockup-layout">
+                <div class="window-wrapper">
+                    <div class="window-frame">
+                        <div class="luminous-frame">
+                            <div class="luminous-border"></div>
+                            <div class="luminous-glow"></div>
+                            <div class="luminous-corner luminous-corner-tl"></div>
+                            <div class="luminous-corner luminous-corner-br"></div>
+                        </div>
+
+                        <div class="window">
+                            <div class="window-header">
+                                <div class="traffic-lights">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <span class="window-title">New Message</span>
+                                <div class="header-spacer"></div>
+                            </div>
+
+                            <div class="compose-body">
+                                <!-- Compose fields -->
+                                <div class="compose-field">
+                                    <span class="field-label">To:</span>
+                                    <span class="field-value">alex.rivera@techcorp.io</span>
+                                </div>
+                                <div class="compose-field">
+                                    <span class="field-label">Subject:</span>
+                                    <span class="field-value">Re: Quick sync this week?</span>
+                                </div>
+
+                                <!-- Original email preview -->
+                                <div class="original-preview">
+                                    <div class="preview-header">
+                                        <span class="preview-label">Alex Rivera wrote:</span>
+                                    </div>
+                                    <p class="preview-text">
+                                        Hey! Would love to catch up on the roadmap changes.
+                                        Are you free for a 30-min call this week? Let me know
+                                        what works for you.
+                                    </p>
+                                </div>
+
+                                <!-- AI Draft - hoverable area -->
+                                <div class="draft-content">
+                                    <div class="duet-badge">
+                                        <div class="badge-shimmer"></div>
+                                        <svg
+                                            width="12"
+                                            height="12"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                            ></path>
+                                        </svg>
+                                        <span>Drafted by Duet</span>
+                                    </div>
+
+                                    <div class="draft-text-container">
+                                        <p class="draft-line line-1">Hey Alex!</p>
+                                        <p class="draft-line line-2">
+                                            Would love to sync on the roadmap.
+                                            <span class="highlight-text">I'm free Thursday 2-4pm or Friday morning</span>
+                                            — either works great for me.
+                                        </p>
+                                        <p class="draft-line line-3">
+                                            Let me know what suits you best and I'll send over an invite.
+                                        </p>
+                                        <p class="draft-line line-4 draft-signature">Cheers!</p>
+                                    </div>
+                                </div>
+
+                                <!-- Action buttons -->
+                                <div class="compose-actions">
+                                    <button class="btn-send">
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z"></path>
+                                        </svg>
+                                        Send
+                                    </button>
+                                    <button class="btn-edit">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Context tooltip - positioned to the right -->
+                <div class="context-tooltip">
+                    <div class="tooltip-arrow"></div>
+                    <div class="tooltip-content">
+                        <div class="tooltip-header">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path>
+                            </svg>
+                            <span>Personalized Draft</span>
+                        </div>
+                        <ul class="tooltip-features">
+                            <li class="feature-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"></path>
+                                </svg>
+                                <span>Knows your calendar</span>
+                            </li>
+                            <li class="feature-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"></path>
+                                </svg>
+                                <span>Drafts in your voice</span>
+                            </li>
+                            <li class="feature-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"></path>
+                                </svg>
+                                <span>Knows context through memory</span>
+                            </li>
+                            <li class="feature-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"></path>
+                                </svg>
+                                <span>Learns over time</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .draft-showcase {
+        --duet-accent: #4530ea;
+        --duet-accent-2: #74c2ff;
+
+        position: relative;
+        padding: 120px 24px;
+        overflow: hidden;
+    }
+
+    .draft-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .draft-header {
+        text-align: center;
+        margin-bottom: 64px;
+    }
+
+    .draft-title {
+        margin: 0;
+        font-family:
+            "Domine Variable", ui-serif, Georgia, Cambria, "Times New Roman",
+            Times, serif;
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+        text-wrap: balance;
+    }
+
+    .draft-subtitle {
+        margin: 20px auto 0;
+        max-width: 540px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #a1a1aa;
+    }
+
+    /* Mockup container */
+    .compose-mockup {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        /* Offset for tooltip on right: 260px width - 30px overlap = 230px */
+        padding-left: 230px;
+    }
+
+    @media (max-width: 960px) {
+        .compose-mockup {
+            padding-left: 0;
+        }
+    }
+
+    .ambient-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 500px;
+        background: radial-gradient(
+            ellipse at center,
+            rgba(69, 48, 234, 0.18) 0%,
+            rgba(116, 194, 255, 0.08) 40%,
+            transparent 70%
+        );
+        pointer-events: none;
+        filter: blur(80px);
+        opacity: 0;
+        transition: opacity 1.2s ease-out 0.5s;
+    }
+
+    .in-view .ambient-glow {
+        opacity: 1;
+    }
+
+    /* Magic particles */
+    .magic-particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--duet-accent-2);
+        opacity: 0;
+        filter: blur(1px);
+    }
+
+    .in-view .particle {
+        animation: particleFloat 3s ease-in-out infinite;
+    }
+
+    .particle-1 {
+        top: 30%;
+        left: 15%;
+        animation-delay: 0s;
+    }
+    .particle-2 {
+        top: 60%;
+        right: 20%;
+        animation-delay: 0.8s;
+    }
+    .particle-3 {
+        top: 20%;
+        right: 25%;
+        animation-delay: 1.5s;
+    }
+    .particle-4 {
+        bottom: 25%;
+        left: 20%;
+        animation-delay: 2.2s;
+    }
+
+    @keyframes particleFloat {
+        0%, 100% {
+            opacity: 0;
+            transform: translateY(20px) scale(0.5);
+        }
+        20% {
+            opacity: 0.6;
+            transform: translateY(0) scale(1);
+        }
+        80% {
+            opacity: 0.4;
+            transform: translateY(-30px) scale(0.8);
+        }
+    }
+
+    .window-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    .window-frame {
+        position: relative;
+    }
+
+    /* Luminous Frame Effect - matches categorization */
+    .luminous-frame {
+        position: absolute;
+        inset: -12px;
+        border-radius: 28px;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 1s ease-out 0.3s;
+    }
+
+    .in-view .luminous-frame {
+        opacity: 1;
+    }
+
+    .luminous-border {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1.5px;
+        background: linear-gradient(
+            135deg,
+            rgba(116, 194, 255, 0.6) 0%,
+            rgba(69, 48, 234, 0.7) 25%,
+            rgba(116, 194, 255, 0.5) 50%,
+            rgba(69, 48, 234, 0.7) 75%,
+            rgba(116, 194, 255, 0.6) 100%
+        );
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0.5;
+        will-change: opacity;
+        animation: frameBorderPulse 6s ease-in-out infinite;
+    }
+
+    .luminous-glow {
+        position: absolute;
+        inset: -6px;
+        border-radius: 34px;
+        background: transparent;
+        box-shadow:
+            0 0 30px 6px rgba(69, 48, 234, 0.2),
+            0 0 60px 12px rgba(116, 194, 255, 0.1),
+            inset 0 0 30px 6px rgba(69, 48, 234, 0.08);
+        opacity: 0.4;
+        will-change: opacity;
+        animation: frameGlowPulse 6s ease-in-out 0.5s infinite;
+    }
+
+    .luminous-corner {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: inherit;
+        opacity: 0.5;
+        will-change: opacity;
+        animation: cornerPulse 5s ease-in-out infinite;
+    }
+
+    .luminous-corner-tl {
+        top: -4px;
+        left: -4px;
+        background: radial-gradient(
+            ellipse at 0% 0%,
+            rgba(116, 194, 255, 0.5) 0%,
+            transparent 70%
+        );
+        animation-delay: 0s;
+    }
+
+    .luminous-corner-br {
+        bottom: -4px;
+        right: -4px;
+        background: radial-gradient(
+            ellipse at 100% 100%,
+            rgba(69, 48, 234, 0.6) 0%,
+            transparent 70%
+        );
+        animation-delay: 2.5s;
+    }
+
+    @keyframes frameBorderPulse {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 0.75;
+        }
+    }
+
+    @keyframes frameGlowPulse {
+        0%,
+        100% {
+            opacity: 0.4;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes cornerPulse {
+        0%,
+        100% {
+            opacity: 0.5;
+        }
+        50% {
+            opacity: 0.8;
+        }
+    }
+
+    /* Window */
+    .window {
+        position: relative;
+        z-index: 1;
+        width: 600px;
+        background: linear-gradient(
+            180deg,
+            rgba(24, 24, 32, 0.98) 0%,
+            rgba(16, 16, 24, 0.99) 100%
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow:
+            0 30px 60px -15px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+        transition:
+            opacity 1s cubic-bezier(0.23, 1, 0.32, 1),
+            transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .in-view .window {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    .window-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .traffic-lights {
+        display: flex;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+
+    .dot-red {
+        background: #ff5f57;
+    }
+    .dot-yellow {
+        background: #ffbd2e;
+    }
+    .dot-green {
+        background: #28c840;
+    }
+
+    .window-title {
+        flex: 1;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        color: #71717a;
+    }
+
+    .header-spacer {
+        width: 52px;
+    }
+
+    /* Compose body */
+    .compose-body {
+        padding: 0;
+    }
+
+    .compose-field {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity 0.6s ease-out var(--field-delay, 0.3s),
+            transform 0.6s ease-out var(--field-delay, 0.3s);
+    }
+
+    .compose-field:nth-child(1) {
+        --field-delay: 0.5s;
+    }
+    .compose-field:nth-child(2) {
+        --field-delay: 0.65s;
+    }
+
+    .in-view .compose-field {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .field-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #71717a;
+        min-width: 60px;
+    }
+
+    .field-value {
+        font-size: 14px;
+        color: #e4e4e7;
+    }
+
+    /* Original email preview */
+    .original-preview {
+        margin: 18px 22px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        border-left: 3px solid rgba(113, 113, 122, 0.3);
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity 0.6s ease-out 0.8s,
+            transform 0.6s ease-out 0.8s;
+    }
+
+    .in-view .original-preview {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .preview-header {
+        margin-bottom: 8px;
+    }
+
+    .preview-label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #71717a;
+    }
+
+    .preview-text {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #a1a1aa;
+    }
+
+    /* Mockup layout - flex container for window + tooltip */
+    .mockup-layout {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+    }
+
+    /* Draft content - hoverable area */
+    .draft-content {
+        padding: 22px;
+        position: relative;
+        border-radius: 0 0 15px 15px;
+        transition: background 0.3s ease;
+    }
+
+    .draft-content:hover {
+        background: rgba(69, 48, 234, 0.03);
+    }
+
+    .duet-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--duet-accent-2);
+        background: rgba(116, 194, 255, 0.08);
+        padding: 6px 12px;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+        transition:
+            opacity 0.5s ease-out 1.4s,
+            transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s;
+    }
+
+    .in-view .duet-badge {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    .badge-shimmer {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(116, 194, 255, 0.3),
+            transparent
+        );
+        animation: shimmer 2.5s ease-in-out infinite;
+        animation-delay: 2s;
+    }
+
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+        50%, 100% {
+            left: 100%;
+        }
+    }
+
+    /* Context tooltip - positioned to the right of mockup */
+    .context-tooltip {
+        position: relative;
+        width: 260px;
+        margin-left: -30px;
+        margin-top: 280px;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateX(-20px) scale(0.96);
+        transition:
+            opacity 0.35s ease-out,
+            transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Show tooltip when hovering anywhere on the mockup layout */
+    .mockup-layout:hover .context-tooltip {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        pointer-events: auto;
+    }
+
+    .tooltip-arrow {
+        position: absolute;
+        top: 30px;
+        left: -6px;
+        width: 12px;
+        height: 12px;
+        background: rgba(30, 30, 45, 0.98);
+        border-left: 1px solid rgba(116, 194, 255, 0.2);
+        border-bottom: 1px solid rgba(116, 194, 255, 0.2);
+        transform: rotate(45deg);
+        z-index: 1;
+    }
+
+    .tooltip-content {
+        position: relative;
+        background: linear-gradient(
+            180deg,
+            rgba(30, 30, 45, 0.98) 0%,
+            rgba(20, 20, 32, 0.99) 100%
+        );
+        border-radius: 12px;
+        border: 1px solid rgba(116, 194, 255, 0.2);
+        box-shadow:
+            0 20px 40px -10px rgba(0, 0, 0, 0.5),
+            0 0 40px -10px rgba(69, 48, 234, 0.25);
+        overflow: hidden;
+    }
+
+    .tooltip-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 14px;
+        background: rgba(69, 48, 234, 0.1);
+        border-bottom: 1px solid rgba(116, 194, 255, 0.1);
+        color: var(--duet-accent-2);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .tooltip-header svg {
+        color: var(--duet-accent);
+    }
+
+    .tooltip-features {
+        list-style: none;
+        margin: 0;
+        padding: 8px 0;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #d4d4d8;
+        transition: background 0.15s ease;
+    }
+
+    .feature-item:hover {
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .feature-item svg {
+        flex-shrink: 0;
+        color: var(--duet-accent-2);
+        opacity: 0.8;
+    }
+
+    .draft-text-container {
+        opacity: 0;
+        transform: translateY(15px);
+        transition:
+            opacity 0.8s ease-out 1.6s,
+            transform 0.8s ease-out 1.6s;
+    }
+
+    .in-view .draft-text-container {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .draft-line {
+        margin: 0 0 14px;
+        font-size: 14px;
+        line-height: 1.65;
+        color: #e4e4e7;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+            opacity 0.5s ease-out var(--line-delay),
+            transform 0.5s ease-out var(--line-delay);
+    }
+
+    .line-1 { --line-delay: 1.8s; }
+    .line-2 { --line-delay: 2.1s; }
+    .line-3 { --line-delay: 2.4s; }
+    .line-4 { --line-delay: 2.7s; }
+
+    .in-view .draft-line {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .draft-line:last-child {
+        margin-bottom: 0;
+    }
+
+    .highlight-text {
+        color: var(--duet-accent-2);
+        background: rgba(116, 194, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+
+    .draft-signature {
+        margin-top: 16px;
+        color: #a1a1aa;
+    }
+
+    /* Actions */
+    .compose-actions {
+        display: flex;
+        gap: 12px;
+        padding: 18px 22px;
+        background: rgba(255, 255, 255, 0.02);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+            opacity 0.5s ease-out 3s,
+            transform 0.5s ease-out 3s;
+    }
+
+    .in-view .compose-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .btn-send {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 22px;
+        font-size: 14px;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(
+            135deg,
+            var(--duet-accent) 0%,
+            #5a42f0 100%
+        );
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow:
+            0 4px 15px rgba(69, 48, 234, 0.35),
+            0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-send::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: left 0.5s ease;
+    }
+
+    .btn-send:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 8px 25px rgba(69, 48, 234, 0.45),
+            0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+    }
+
+    .btn-send:hover::after {
+        left: 100%;
+    }
+
+    .btn-edit {
+        padding: 11px 18px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #a1a1aa;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-edit:hover {
+        color: #e4e4e7;
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+        .context-tooltip {
+            display: none;
+        }
+    }
+
+    @media (max-width: 660px) {
+        .draft-showcase {
+            padding: 80px 16px;
+        }
+
+        .draft-title {
+            font-size: 32px;
+        }
+
+        .draft-subtitle {
+            font-size: 16px;
+        }
+
+        .window {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .compose-field {
+            padding: 10px 16px;
+        }
+
+        .field-label {
+            min-width: 50px;
+            font-size: 12px;
+        }
+
+        .field-value {
+            font-size: 13px;
+        }
+
+        .original-preview {
+            margin: 14px 16px;
+            padding: 12px 14px;
+        }
+
+        .draft-content {
+            padding: 18px 16px;
+        }
+
+        .draft-line {
+            font-size: 13px;
+        }
+
+        .compose-actions {
+            padding: 14px 16px;
+        }
+
+        .luminous-corner {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .window,
+        .compose-field,
+        .original-preview,
+        .draft-content,
+        .duet-badge,
+        .draft-text-container,
+        .draft-line,
+        .compose-actions,
+        .luminous-frame,
+        .ambient-glow {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+
+        .context-tooltip {
+            transition: none;
+        }
+
+        .luminous-border,
+        .luminous-glow,
+        .luminous-corner,
+        .particle,
+        .badge-shimmer {
+            animation: none;
+        }
+
+        .btn-send::after {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const section = document.querySelector("[data-draft-section]");
+        if (!section) return;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            section.classList.add("in-view");
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.35 },
+        );
+        observer.observe(section);
+    });
+</script>
