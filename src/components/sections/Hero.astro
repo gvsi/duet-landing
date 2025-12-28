@@ -1,115 +1,374 @@
 ---
-import Button from "../ui/Button.astro"
 import HeroBackground from "./HeroBackground.astro"
 
 const features = ["sorting email", "drafting replies", "scheduling", "finding answers"]
+const featureIntervalSeconds = 2
+const featureCycleSeconds = features.length * featureIntervalSeconds
 ---
 
 <section class="relative w-full">
     <HeroBackground />
 
-    <div class="relative mx-auto flex min-h-[92svh] max-w-6xl flex-col px-6 pt-28">
+    <div class="relative mx-auto flex min-h-[92svh] max-w-6xl flex-col px-6 pt-28 pb-14">
         <div class="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
-            <div
-                class="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur"
-            >
-                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                <span>Join 20,000+ professionals</span>
+            <div class="badge mb-10 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-[18px] py-[10px] text-sm text-white/80 backdrop-blur">
+                <span class="online-dot h-2 w-2 rounded-full bg-emerald-500"></span>
+                <span class="font-medium text-white/90">Join 20,000+ professionals</span>
             </div>
 
-            <h1
-                class="text-balance font-serif font-[650] tracking-tight text-white text-4xl leading-[1.05] sm:text-5xl md:text-6xl"
-            >
-                Your <span class="text-white/90">chief of staff</span>
-            </h1>
+            <div class="mb-12">
+                <h1 class="headline text-white">
+                    <span>Your </span>
+                    <span class="headline-highlight">chief of staff</span>
+                    <span> for</span>
+                </h1>
 
-            <p class="mt-6 max-w-xl text-pretty text-base text-white/70 sm:text-lg">
-                Save 4+ hours every week on email
-            </p>
-
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <Button href="https://app.duetmail.com" variant="primary">
-                    Start with Gmail
-                </Button>
-                <Button
-                    href="https://app.duetmail.com/outlook-waitlist"
-                    variant="secondary"
-                >
-                    Join Outlook waitlist
-                </Button>
-            </div>
-
-            <div class="mt-4 text-sm text-white/55">
-                Free 14-day trial <span class="px-2 text-white/25">•</span> Cancel anytime
-            </div>
-
-            <div class="mt-12">
-                <div class="sr-only">Duet Mail helps with:</div>
-                <div class="cycler inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-white/80">
-                    <span class="text-white/55">AI for</span>
-                    <span class="cycler-viewport">
-                        {features.map((feature) => (
-                            <span class="cycler-item">{feature}</span>
+                <div class="feature-line" aria-live="polite">
+                    <span class="sr-only">{features[0]}</span>
+                    <span
+                        class="feature-viewport"
+                        aria-hidden="true"
+                        style={`--feature-cycle: ${featureCycleSeconds}s; --feature-interval: ${featureIntervalSeconds}s;`}
+                    >
+                        {features.map((feature, index) => (
+                            <span
+                                class="feature-item"
+                                style={`--feature-delay: ${index * featureIntervalSeconds}s;`}
+                            >
+                                {feature}
+                            </span>
                         ))}
                     </span>
                 </div>
             </div>
+
+            <p class="mb-5 max-w-xl font-sans text-pretty text-[17px] leading-[1.5] tracking-[0.01em] text-white">
+                Save 4+ hours every week on email
+            </p>
+
+            <div class="cta-row mt-0 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <a class="cta cta-primary" href="https://app.duetmail.com">
+                    <span class="cta-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M17.64 9.20456C17.64 8.56637 17.5827 7.95274 17.4764 7.36365H9V10.845H13.8436C13.635 11.97 13.0009 12.9232 12.0477 13.5614V15.8196H14.9564C16.6582 14.2527 17.64 11.9455 17.64 9.20456Z"
+                                fill="#4285F4"
+                            />
+                            <path
+                                d="M9 18C11.43 18 13.4673 17.1941 14.9564 15.8195L12.0477 13.5614C11.2418 14.1014 10.2109 14.4205 9 14.4205C6.65591 14.4205 4.67182 12.8373 3.96409 10.71H0.957275V13.0418C2.43818 15.9832 5.48182 18 9 18Z"
+                                fill="#34A853"
+                            />
+                            <path
+                                d="M3.96409 10.71C3.78409 10.17 3.68182 9.59318 3.68182 9C3.68182 8.40682 3.78409 7.83 3.96409 7.29V4.95818H0.957275C0.347727 6.17318 0 7.54773 0 9C0 10.4523 0.347727 11.8268 0.957275 13.0418L3.96409 10.71Z"
+                                fill="#FBBC05"
+                            />
+                            <path
+                                d="M9 3.57955C10.3214 3.57955 11.5077 4.03364 12.4405 4.92545L14.9891 2.37682C13.4632 0.953182 11.4259 0 9 0C5.48182 0 2.43818 2.01682 0.957275 4.95818L3.96409 7.29C4.67182 5.16273 6.65591 3.57955 9 3.57955Z"
+                                fill="#EA4335"
+                            />
+                        </svg>
+                    </span>
+                    <span class="relative z-10">Start with Gmail</span>
+                </a>
+
+                <a class="cta cta-secondary" href="https://app.duetmail.com/outlook-waitlist">
+                    <span class="cta-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path
+                                d="M10.5 8.4V16.2L18 14.7V3.3L10.5 1.8V8.4Z"
+                                fill="#0A78D6"
+                            />
+                            <path
+                                d="M10.5 8.4H18V3.3L10.5 1.8V8.4Z"
+                                fill="#28A8EA"
+                            />
+                            <path
+                                d="M0 3.6V14.4L10.5 16.8V1.2L0 3.6Z"
+                                fill="#0364B8"
+                            />
+                            <path
+                                d="M5.25 6.6C3.59 6.6 2.25 7.94 2.25 9.6C2.25 11.26 3.59 12.6 5.25 12.6C6.91 12.6 8.25 11.26 8.25 9.6C8.25 7.94 6.91 6.6 5.25 6.6ZM5.25 11.1C4.42 11.1 3.75 10.43 3.75 9.6C3.75 8.77 4.42 8.1 5.25 8.1C6.08 8.1 6.75 8.77 6.75 9.6C6.75 10.43 6.08 11.1 5.25 11.1Z"
+                                fill="white"
+                            />
+                        </svg>
+                    </span>
+                    <span>Join Outlook waitlist</span>
+                </a>
+            </div>
+
+            <div class="mt-4 flex items-center justify-center gap-3 text-sm tracking-[0.01em] text-white/55">
+                <span>Free 14-day trial</span>
+                <span class="h-1 w-1 rounded-full bg-white/35"></span>
+                <span>Cancel anytime</span>
+            </div>
         </div>
+
+        <slot />
     </div>
 </section>
 
 <style>
+    .headline {
+        font-family: "Domine Variable", ui-serif, Georgia, serif;
+        font-size: 54px;
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.05em;
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    @media (max-width: 1023px) {
+        .headline {
+            font-size: 40px;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .headline {
+            font-size: 32px;
+        }
+    }
+
+    .headline-highlight {
+        background: linear-gradient(135deg, #a78bfa 0%, #74c2ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding-right: 0.1em;
+    }
+
+    .feature-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 64px;
+    }
+
+    @media (max-width: 1023px) {
+        .feature-line {
+            min-height: 46px;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .feature-line {
+            min-height: 36px;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-        .cycler-item {
+        .feature-item {
+            animation: none !important;
+            transform: none !important;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+
+        .feature-item:not(:first-child) {
+            display: none !important;
+        }
+
+        .cta-primary::after {
+            animation: none !important;
+        }
+
+        .online-dot {
             animation: none !important;
         }
     }
 
-    .cycler-viewport {
+    .feature-viewport {
         position: relative;
         display: inline-grid;
-        height: 1.25rem;
+        place-items: center;
         overflow: hidden;
+        clip-path: inset(0);
+        contain: paint;
         vertical-align: bottom;
     }
 
-    .cycler-item {
+    .feature-item {
         grid-area: 1 / 1;
+        will-change: transform, opacity, filter;
+        font-family: "Domine Variable", ui-serif, Georgia, serif;
+        font-size: 54px;
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #ffffff;
         opacity: 0;
-        transform: translateY(6px);
-        animation: cycler 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-        will-change: transform, opacity;
+        transform: translateY(20px);
+        filter: blur(4px);
+        animation: featureSwap var(--feature-cycle, 8s) infinite;
+        animation-delay: var(--feature-delay, 0s);
     }
 
-    .cycler-item:nth-child(1) {
-        animation-delay: 0s;
-    }
-    .cycler-item:nth-child(2) {
-        animation-delay: 2s;
-    }
-    .cycler-item:nth-child(3) {
-        animation-delay: 4s;
-    }
-    .cycler-item:nth-child(4) {
-        animation-delay: 6s;
+    @media (max-width: 1023px) {
+        .feature-item {
+            font-size: 40px;
+        }
     }
 
-    @keyframes cycler {
+    @media (max-width: 639px) {
+        .feature-item {
+            font-size: 32px;
+        }
+    }
+
+    @keyframes featureSwap {
         0% {
             opacity: 0;
-            transform: translateY(6px);
+            transform: translateY(20px);
+            filter: blur(4px);
+            animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
         }
-        8%,
-        24% {
+        6.25% {
             opacity: 1;
             transform: translateY(0);
+            filter: none;
+            animation-timing-function: linear;
         }
-        32% {
+        20% {
+            opacity: 1;
+            transform: translateY(0);
+            filter: none;
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+        25% {
             opacity: 0;
-            transform: translateY(-6px);
+            transform: translateY(-20px);
+            filter: blur(4px);
+            animation-timing-function: linear;
         }
         100% {
             opacity: 0;
+            transform: translateY(-20px);
+            filter: blur(4px);
+        }
+    }
+
+    .cta {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        min-width: 250px;
+        padding: 16px 28px;
+        border-radius: 12px;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        overflow: hidden;
+        width: 100%;
+    }
+
+    @media (min-width: 640px) {
+        .cta {
+            width: auto;
+        }
+    }
+
+    .cta-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: iconFloat 3.5s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-2px);
+        }
+    }
+
+    .cta-primary {
+        background: linear-gradient(180deg, #252320 0%, #171615 100%);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .cta-primary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.06),
+            transparent
+        );
+        transform: translateX(-100%) skewX(-15deg);
+        pointer-events: none;
+    }
+
+    .cta-primary:hover {
+        transform: translateY(-2px);
+        background: linear-gradient(180deg, #2d2a27 0%, #1c1a18 100%);
+        border-color: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35),
+            0 8px 24px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .cta-primary:hover::after {
+        animation: shimmerSweep 0.7s ease-out;
+    }
+
+    .cta-primary:active {
+        transform: translateY(0);
+    }
+
+    @keyframes shimmerSweep {
+        0% {
+            transform: translateX(-100%) skewX(-15deg);
+        }
+        100% {
+            transform: translateX(200%) skewX(-15deg);
+        }
+    }
+
+    .cta-secondary {
+        background: #2a2951;
+        color: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        font-weight: 500;
+    }
+
+    .cta-secondary:hover {
+        transform: translateY(-1px);
+        background: #363360;
+        border-color: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .cta-secondary:active {
+        transform: translateY(0);
+    }
+
+    .online-dot {
+        animation: onlinePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes onlinePulse {
+        0%,
+        100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
         }
     }
 </style>
