@@ -74,7 +74,14 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
                         </div>
 
                         <div class="draft-bubble__footer">
-                            <span>Ready to send?</span>
+                            <span class="draft-bubble__prompt">
+                                <span class="draft-bubble__prompt-text draft-bubble__prompt-text--ready"
+                                    >Ready to send?</span
+                                >
+                                <span class="draft-bubble__prompt-text draft-bubble__prompt-text--follow"
+                                    >Remind me to follow up.</span
+                                >
+                            </span>
                             <svg
                                 width="18"
                                 height="18"
@@ -139,6 +146,26 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
                             <span>I propose we </span>
                             <span class="summary-pill__highlight">meet next week</span>
                             <span> ?</span>
+
+                            <span class="summary-pill__pointer" aria-hidden="true">
+                                <svg
+                                    width="32"
+                                    height="32"
+                                    viewBox="0 0 32 32"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M11.3 26.2V6.6l14.2 12.1h-8.2l-2.2 7.5-3.8-0.9Z"
+                                        fill="white"
+                                    />
+                                    <path
+                                        d="M11.3 26.2V6.6l14.2 12.1h-8.2l-2.2 7.5-3.8-0.9Z"
+                                        stroke="rgba(0,0,0,0.85)"
+                                        stroke-width="1.4"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                            </span>
                         </div>
 
                         <div class="action-card">
@@ -213,15 +240,33 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
                             <div class="reminder-stats">
                                 <div class="reminder-stat">
                                     <div class="reminder-stat__label">Follow-up</div>
-                                    <div class="reminder-stat__value">12 emails</div>
+                                    <div class="reminder-stat__value">
+                                        <span class="reminder-stat__count" aria-hidden="true">
+                                            <span class="reminder-stat__count-bullet">•</span>
+                                            <span class="reminder-stat__count-number">12</span>
+                                        </span>
+                                        <span class="reminder-stat__unit">emails</span>
+                                    </div>
                                 </div>
                                 <div class="reminder-stat">
                                     <div class="reminder-stat__label">To reply</div>
-                                    <div class="reminder-stat__value">2 emails</div>
+                                    <div class="reminder-stat__value">
+                                        <span class="reminder-stat__count" aria-hidden="true">
+                                            <span class="reminder-stat__count-bullet">•</span>
+                                            <span class="reminder-stat__count-number">2</span>
+                                        </span>
+                                        <span class="reminder-stat__unit">emails</span>
+                                    </div>
                                 </div>
                                 <div class="reminder-stat">
                                     <div class="reminder-stat__label">Completed</div>
-                                    <div class="reminder-stat__value">3 items</div>
+                                    <div class="reminder-stat__value">
+                                        <span class="reminder-stat__count" aria-hidden="true">
+                                            <span class="reminder-stat__count-bullet">•</span>
+                                            <span class="reminder-stat__count-number">3</span>
+                                        </span>
+                                        <span class="reminder-stat__unit">action items</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +287,15 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
 
                             <div class="reminder-reschedule">
                                 <span class="reminder-reschedule__sparkle">✦</span>
-                                <span>Reschedule?</span>
+                                <span class="reminder-reschedule__label">
+                                    <span class="reminder-reschedule__text reminder-reschedule__text--follow"
+                                        >Follow</span
+                                    >
+                                    <span
+                                        class="reminder-reschedule__text reminder-reschedule__text--reschedule"
+                                        >Reschedule?</span
+                                    >
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -485,6 +538,7 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         overflow: hidden;
         padding: 40px 24px 0;
         box-sizing: border-box;
+        isolation: isolate;
     }
 
     .home-feature-card::after {
@@ -494,6 +548,13 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         border-radius: inherit;
         border: 1px solid rgba(255, 255, 255, 0.06);
         pointer-events: none;
+        transition: border-color 300ms cubic-bezier(0, 0, 1, 1);
+    }
+
+    @media (hover: hover) {
+        .home-feature-card:hover::after {
+            border-color: rgba(255, 255, 255, 0.12);
+        }
     }
 
     .home-feature-card--drafts,
@@ -552,6 +613,13 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         pointer-events: none;
         opacity: 0.65;
         filter: blur(40px);
+        transition: opacity 300ms cubic-bezier(0, 0, 1, 1);
+    }
+
+    @media (hover: hover) {
+        .home-feature-card:hover .home-feature-card__glow {
+            opacity: 0.95;
+        }
     }
 
     .home-feature-card__glow--amber {
@@ -680,6 +748,13 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         opacity: 0.8;
         position: relative;
         z-index: 1;
+        transition: opacity 300ms cubic-bezier(0, 0, 1, 1);
+    }
+
+    @media (hover: hover) {
+        .home-feature-card:hover .home-feature-card__stem {
+            opacity: 1;
+        }
     }
 
     .home-feature-card__stem--amber {
@@ -788,6 +863,46 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         color: rgba(255, 255, 255, 0.7);
     }
 
+    .draft-bubble__prompt {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        min-height: 18px;
+    }
+
+    .draft-bubble__prompt-text {
+        transition: opacity 300ms cubic-bezier(0, 0, 1, 1),
+            transform 300ms cubic-bezier(0, 0, 1, 1);
+        will-change: opacity, transform;
+    }
+
+    .draft-bubble__prompt-text--ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .draft-bubble__prompt-text--follow {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(calc(-50% + 10px));
+        opacity: 0;
+        white-space: nowrap;
+        color: rgba(226, 226, 226, 0.92);
+    }
+
+    @media (hover: hover) {
+        .home-feature-card--drafts:hover .draft-bubble__prompt-text--ready {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .home-feature-card--drafts:hover .draft-bubble__prompt-text--follow {
+            opacity: 1;
+            transform: translateY(-50%);
+        }
+    }
+
     .home-feature-card__visual--split {
         padding-left: 12px;
         padding-right: 12px;
@@ -828,11 +943,60 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         white-space: nowrap;
+        position: relative;
     }
 
     .summary-pill__highlight {
         color: rgb(105, 240, 174);
         font-weight: 600;
+        position: relative;
+        z-index: 0;
+    }
+
+    .summary-pill__highlight::before {
+        content: "";
+        position: absolute;
+        inset: -3px -10px;
+        border-radius: 9999px;
+        background: rgb(19, 34, 32);
+        opacity: 0.85;
+        transform-origin: left center;
+        transform: scaleX(0.03);
+        transition: transform 300ms cubic-bezier(0, 0, 1, 1);
+        z-index: -1;
+    }
+
+    .summary-pill__pointer {
+        position: absolute;
+        left: 54%;
+        top: 100%;
+        width: 32px;
+        height: 32px;
+        pointer-events: none;
+        transform: translate(-112px, -8px);
+        transition: transform 300ms cubic-bezier(0, 0, 1, 1);
+        filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.65));
+        will-change: transform;
+    }
+
+    .summary-pill__pointer svg {
+        display: block;
+    }
+
+    @media (hover: hover) {
+        .home-feature-card--summaries:hover .summary-pill__highlight::before {
+            transform: scaleX(1);
+        }
+
+        .home-feature-card--summaries:hover .summary-pill__pointer {
+            transform: translate(-26px, -18px);
+        }
+    }
+
+    @media (max-width: 639px) {
+        .summary-pill__pointer {
+            display: none;
+        }
     }
 
     .action-card {
@@ -989,6 +1153,52 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         font-size: 16px;
         font-weight: 500;
         color: rgba(255, 255, 255, 0.86);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .reminder-stat__count {
+        position: relative;
+        width: 24px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex: none;
+    }
+
+    .reminder-stat__count-bullet,
+    .reminder-stat__count-number {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 300ms cubic-bezier(0, 0, 1, 1),
+            transform 300ms cubic-bezier(0, 0, 1, 1);
+        will-change: opacity, transform;
+    }
+
+    .reminder-stat__count-bullet {
+        opacity: 1;
+    }
+
+    .reminder-stat__count-number {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 16px));
+    }
+
+    @media (hover: hover) {
+        .home-feature-card--reminders:hover .reminder-stat__count-bullet {
+            opacity: 0;
+            transform: translate(-50%, calc(-50% - 16px));
+        }
+
+        .home-feature-card--reminders:hover .reminder-stat__count-number {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
     }
 
     .reminder-card--list {
@@ -1035,17 +1245,64 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         width: 100%;
         padding: 10px 14px;
         border-radius: 9999px;
-        background: rgba(139, 92, 246, 0.18);
-        color: rgba(216, 180, 254, 0.9);
+        background: rgba(23, 22, 21, 0.85);
+        color: rgba(214, 215, 214, 0.88);
         font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
             BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         font-size: 13px;
         font-weight: 500;
-        border: 1px solid rgba(168, 85, 247, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: background 300ms cubic-bezier(0, 0, 1, 1),
+            border-color 300ms cubic-bezier(0, 0, 1, 1),
+            color 300ms cubic-bezier(0, 0, 1, 1);
     }
 
     .reminder-reschedule__sparkle {
         opacity: 0.9;
+    }
+
+    .reminder-reschedule__label {
+        position: relative;
+        min-height: 16px;
+    }
+
+    .reminder-reschedule__text {
+        transition: opacity 300ms cubic-bezier(0, 0, 1, 1),
+            transform 300ms cubic-bezier(0, 0, 1, 1);
+        will-change: opacity, transform;
+    }
+
+    .reminder-reschedule__text--follow {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reminder-reschedule__text--reschedule {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        opacity: 0;
+        transform: translateY(calc(-50% + 10px));
+        white-space: nowrap;
+    }
+
+    @media (hover: hover) {
+        .home-feature-card--reminders:hover .reminder-reschedule {
+            background: rgba(139, 92, 246, 0.18);
+            border-color: rgba(168, 85, 247, 0.25);
+            color: rgba(192, 140, 255, 0.95);
+        }
+
+        .home-feature-card--reminders:hover .reminder-reschedule__text--follow {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .home-feature-card--reminders:hover
+            .reminder-reschedule__text--reschedule {
+            opacity: 1;
+            transform: translateY(-50%);
+        }
     }
 
     .analyzing-pill {
@@ -1081,6 +1338,7 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         justify-content: center;
         gap: 18px;
         flex-wrap: nowrap;
+        transition: transform 300ms cubic-bezier(0, 0, 1, 1);
     }
 
     .focus-icon {
@@ -1095,6 +1353,32 @@ const focusIcons = Array.from({ length: 22 }, (_, index) =>
         flex: none;
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    @media (hover: hover) {
+        .home-feature-card--focus:hover .focus-icons__row:first-child {
+            transform: translateX(-32px);
+        }
+
+        .home-feature-card--focus:hover .focus-icons__row:last-child {
+            transform: translateX(32px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .home-feature-card::after,
+        .home-feature-card__glow,
+        .home-feature-card__stem,
+        .draft-bubble__prompt-text,
+        .summary-pill__highlight::before,
+        .summary-pill__pointer,
+        .reminder-stat__count-bullet,
+        .reminder-stat__count-number,
+        .reminder-reschedule,
+        .reminder-reschedule__text,
+        .focus-icons__row {
+            transition-duration: 0ms !important;
+        }
     }
 
     @media (max-width: 639px) {
