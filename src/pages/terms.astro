@@ -1,0 +1,15 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro"
+import contentHtml from "../snippets/legal/terms.html?raw"
+
+const title = "Terms and Conditions - Duet Mail"
+const description = "Duet Mail's Terms and Conditions Legal Page"
+---
+
+<LegalLayout
+    title={title}
+    description={description}
+    canonicalPath="/terms"
+    activeNav="terms"
+    contentHtml={contentHtml}
+/>

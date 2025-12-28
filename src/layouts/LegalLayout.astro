@@ -1,0 +1,147 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+import LegalNav from "../components/nav/LegalNav.astro"
+import Footer from "../components/sections/Footer.astro"
+
+type ActivePage = "terms" | "privacy" | "cookies" | "disclaimer"
+
+type Props = {
+    title: string
+    description: string
+    canonicalPath: string
+    ogImagePath?: string
+    activeNav: ActivePage
+    contentHtml: string
+}
+
+const {
+    title,
+    description,
+    canonicalPath,
+    ogImagePath = "/og.jpg",
+    activeNav,
+    contentHtml,
+} = Astro.props
+
+const decodeHtmlEntities = (value: string) =>
+    value
+        .replaceAll("&amp;", "&")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&quot;", '"')
+        .replaceAll("&#39;", "'")
+        .replaceAll("&apos;", "'")
+
+const stripTags = (value: string) =>
+    decodeHtmlEntities(value.replace(/<[^>]*>/g, "")).trim()
+
+const withoutTitle = (() => {
+    const match = contentHtml.match(
+        new RegExp("<h1\\b[^>]*>[\\s\\S]*?</h1>", "i")
+    )
+    if (!match) return { titleText: undefined, html: contentHtml }
+    return {
+        titleText: stripTags(
+            match[0].replace(new RegExp("</?h1\\b[^>]*>", "gi"), "")
+        ),
+        html: contentHtml.replace(match[0], ""),
+    }
+})()
+
+const withoutUpdated = (() => {
+    const match = withoutTitle.html.match(
+        new RegExp("<p\\b[^>]*>[\\s\\S]*?Last updated:[\\s\\S]*?</p>", "i")
+    )
+    if (!match) return { updatedAtText: undefined, html: withoutTitle.html }
+
+    const updatedAtText = stripTags(match[0])
+
+    return {
+        updatedAtText,
+        html: withoutTitle.html.replace(match[0], ""),
+    }
+})()
+
+const pageTitle =
+    withoutTitle.titleText ??
+    title.replace(/\u00a0/g, " ").replace(/\\s*-\\s*Duet Mail\\s*$/i, "").trim()
+
+const updatedAt = withoutUpdated.updatedAtText
+const bodyHtml = withoutUpdated.html.trim()
+---
+
+<BaseLayout
+    title={title}
+    description={description}
+    canonicalPath={canonicalPath}
+    ogImagePath={ogImagePath}
+>
+    <LegalNav active={activeNav} />
+
+    <main class="relative isolate">
+        <div class="mx-auto max-w-4xl px-6 pt-28 pb-20 md:px-10">
+            <header class="legal-header">
+                <h1 class="legal-title">{pageTitle}</h1>
+                {updatedAt ? <p class="legal-updated">{updatedAt}</p> : null}
+            </header>
+
+            <div class="legal-surface">
+                <div class="duet-prose" set:html={bodyHtml} />
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
+
+<style>
+    .legal-header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 28px;
+    }
+
+    .legal-title {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        color: rgba(255, 255, 255, 0.98);
+        text-wrap: balance;
+    }
+
+    @media (max-width: 767px) {
+        .legal-title {
+            font-size: 32px;
+        }
+    }
+
+    .legal-updated {
+        margin: 0;
+        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: rgba(173, 173, 173, 1);
+    }
+
+    .legal-surface {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.22);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    @media (max-width: 767px) {
+        .legal-surface {
+            padding: 18px;
+        }
+    }
+</style>

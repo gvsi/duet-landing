@@ -1,0 +1,15 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro"
+import contentHtml from "../snippets/legal/cookies.html?raw"
+
+const title = "Cookies Policy - Duet Mail"
+const description = "Duet Mail's Cookies Policy Legal Page"
+---
+
+<LegalLayout
+    title={title}
+    description={description}
+    canonicalPath="/cookies"
+    activeNav="cookies"
+    contentHtml={contentHtml}
+/>

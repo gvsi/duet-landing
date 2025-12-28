@@ -1,0 +1,15 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro"
+import contentHtml from "../snippets/legal/privacy.html?raw"
+
+const title = "Privacy Policy - Duet Mail"
+const description = "Duet Mail's Privacy Policy Legal Page"
+---
+
+<LegalLayout
+    title={title}
+    description={description}
+    canonicalPath="/privacy"
+    activeNav="privacy"
+    contentHtml={contentHtml}
+/>

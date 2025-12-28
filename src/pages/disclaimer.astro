@@ -1,0 +1,15 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro"
+import contentHtml from "../snippets/legal/disclaimer.html?raw"
+
+const title = "Disclaimer - Duet Mail"
+const description = "Duet Mail's Disclaimer Legal Page"
+---
+
+<LegalLayout
+    title={title}
+    description={description}
+    canonicalPath="/disclaimer"
+    activeNav="disclaimer"
+    contentHtml={contentHtml}
+/>

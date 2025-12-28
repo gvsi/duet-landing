@@ -1,20 +1,22 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Nav from "../components/nav/Nav.astro"
-import Hero from "../components/sections/Hero.astro"
-import HeroBackground from "../components/sections/HeroBackground.astro"
-import InboxHeroMockup from "../components/sections/InboxHeroMockup.astro"
-import Logos from "../components/sections/Logos.astro"
-import Features from "../components/sections/Features.astro"
-import Testimonials from "../components/sections/Testimonials.astro"
-import Pricing from "../components/sections/Pricing.astro"
-import FAQ from "../components/sections/FAQ.astro"
-import FinalCTA from "../components/sections/FinalCTA.astro"
-import Footer from "../components/sections/Footer.astro"
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/nav/Nav.astro";
+import Hero from "../components/sections/Hero.astro";
+import HeroBackground from "../components/sections/HeroBackground.astro";
+import InboxHeroMockup from "../components/sections/InboxHeroMockup.astro";
+import Logos from "../components/sections/Logos.astro";
+import CategorizationShowcase from "../components/sections/CategorizationShowcase.astro";
+import Features from "../components/sections/Features.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Pricing from "../components/sections/Pricing.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import FinalCTA from "../components/sections/FinalCTA.astro";
+import Footer from "../components/sections/Footer.astro";
+import homeJsonLdHtml from "../snippets/home-jsonld.html?raw";
 
-const title = "Duet Mail | Gmail AI Assistant | Save 4+ Hours Every Week"
+const title = "Duet Mail | Gmail AI Assistant | Save 4+ Hours Every Week";
 const description =
-    "Transform your email workflow with Duet Mail's AI Gmail assistant. Automatically summarize emails, draft emails and replies, and organize your inbox to save hours every week."
+    "Transform your email workflow with Duet Mail's AI Gmail assistant. Automatically summarize emails, draft emails and replies, and organize your inbox to save hours every week.";
 ---
 
 <BaseLayout
@@ -22,6 +24,7 @@ const description =
     description={description}
     canonicalPath="/"
     ogImagePath="/og.jpg"
+    extraHeadHtml={homeJsonLdHtml}
 >
     <Nav />
     <main class="relative isolate">
@@ -32,6 +35,7 @@ const description =
             </div>
         </Hero>
         <Logos />
+        <CategorizationShowcase />
         <Features />
         <Testimonials />
         <Pricing />

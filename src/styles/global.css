@@ -29,3 +29,128 @@
     text-rendering: optimizeLegibility;
   }
 }
+
+@layer components {
+  .duet-prose {
+    font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+    font-size: 15px;
+    line-height: 1.75;
+    letter-spacing: -0.01em;
+    color: rgba(173, 173, 173, 1);
+    text-wrap: pretty;
+  }
+
+  .duet-prose :where(h1, h2, h3) {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.97);
+    text-wrap: balance;
+  }
+
+  .duet-prose :where(h1) {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-top: 1.75em;
+  }
+
+  .duet-prose :where(h2) {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-top: 2em;
+  }
+
+  .duet-prose :where(h3) {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 1.6em;
+  }
+
+  .duet-prose :where(p) {
+    margin: 1em 0 0;
+  }
+
+  .duet-prose :where(h1, h2, h3) + :where(p) {
+    margin-top: 0.65em;
+  }
+
+  .duet-prose :where(ul, ol) {
+    margin: 1em 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .duet-prose :where(ul) {
+    list-style: disc;
+  }
+
+  .duet-prose :where(ol) {
+    list-style: decimal;
+  }
+
+  .duet-prose :where(li) {
+    margin-top: 0.45em;
+  }
+
+  .duet-prose :where(li)::marker {
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .duet-prose :where(a) {
+    color: var(--duet-accent-2);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 160ms ease, text-decoration-color 160ms ease;
+  }
+
+  .duet-prose :where(a:hover) {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .duet-prose :where(strong) {
+    color: rgba(255, 255, 255, 0.93);
+    font-weight: 650;
+  }
+
+  .duet-prose :where(hr) {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 2em 0;
+  }
+
+  .duet-prose :where(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95em;
+    padding: 0.15em 0.4em;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .duet-prose :where(pre) {
+    overflow-x: auto;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .duet-prose :where(pre code) {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .duet-prose :where(blockquote) {
+    margin: 1.5em 0 0;
+    padding-left: 14px;
+    border-left: 2px solid rgba(255, 255, 255, 0.12);
+    color: rgba(214, 215, 214, 1);
+  }
+}

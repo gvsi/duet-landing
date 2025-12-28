@@ -2,16 +2,17 @@
 import "../styles/global.css"
 import gtmHeadHtml from "../snippets/gtm-head.html?raw"
 import gtmNoscriptHtml from "../snippets/gtm-noscript.html?raw"
-import homeJsonLdHtml from "../snippets/home-jsonld.html?raw"
 
 type Props = {
     title: string
     description: string
     canonicalPath: string
     ogImagePath: string
+    extraHeadHtml?: string
 }
 
-const { title, description, canonicalPath, ogImagePath } = Astro.props
+const { title, description, canonicalPath, ogImagePath, extraHeadHtml } =
+    Astro.props
 
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString()
 const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
@@ -44,7 +45,7 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageUrl} />
 
-        <Fragment set:html={homeJsonLdHtml} />
+        {extraHeadHtml ? <Fragment set:html={extraHeadHtml} /> : null}
     </head>
     <body>
         <Fragment set:html={gtmNoscriptHtml} />
