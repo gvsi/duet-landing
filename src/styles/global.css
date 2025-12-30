@@ -8,9 +8,14 @@
     --duet-bg: #08081a;
     --duet-fg: #ffffff;
     --duet-muted: #a1a1aa;
-    --duet-border: rgba(255, 255, 255, 0.08);
+    --duet-border: rgba(255, 255, 255, 0.08); /* Legacy, keep for now */
+    --duet-border-editorial: rgba(255, 255, 255, 0.12);
     --duet-accent: #4530ea;
     --duet-accent-2: #74c2ff;
+    
+    /* Editorial Palette */
+    --font-serif: "Domine Variable", ui-serif, Georgia, serif;
+    --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
   }
 
   html {

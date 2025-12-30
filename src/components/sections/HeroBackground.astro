@@ -1,18 +1,18 @@
 ---
 const focalPointY = 400
 const particles = [
-    { bottom: 65, left: 12, duration: 7.2, delay: 0, travel: 95, opacity: 0.95, size: 3.5 },
-    { bottom: 180, left: 28, duration: 6.5, delay: 0.6, travel: 88, opacity: 0.65, size: 2 },
-    { bottom: 100, left: 45, duration: 8.1, delay: 1.2, travel: 105, opacity: 0.85, size: 3 },
-    { bottom: 220, left: 62, duration: 6.8, delay: 1.8, travel: 92, opacity: 1.0, size: 4 },
-    { bottom: 45, left: 78, duration: 7.5, delay: 2.4, travel: 98, opacity: 0.7, size: 2.5 },
-    { bottom: 165, left: 88, duration: 6.2, delay: 3.0, travel: 85, opacity: 0.9, size: 3.5 },
-    { bottom: 140, left: 22, duration: 7.8, delay: 3.6, travel: 102, opacity: 0.6, size: 2 },
-    { bottom: 200, left: 52, duration: 6.9, delay: 4.2, travel: 90, opacity: 0.98, size: 4 },
-    { bottom: 55, left: 35, duration: 7.3, delay: 4.8, travel: 96, opacity: 0.75, size: 2.5 },
-    { bottom: 175, left: 70, duration: 8.0, delay: 5.4, travel: 100, opacity: 0.88, size: 3 },
-    { bottom: 40, left: 15, duration: 6.6, delay: 6.0, travel: 87, opacity: 0.68, size: 2 },
-    { bottom: 190, left: 82, duration: 7.1, delay: 6.6, travel: 94, opacity: 0.82, size: 3 },
+    { bottom: 65, left: 12, duration: 9.2, delay: 0, travel: 65, opacity: 0.85, size: 3 },
+    { bottom: 180, left: 28, duration: 8.5, delay: 0.6, travel: 58, opacity: 0.55, size: 2 },
+    { bottom: 100, left: 45, duration: 10.1, delay: 1.2, travel: 75, opacity: 0.75, size: 2.5 },
+    { bottom: 220, left: 62, duration: 8.8, delay: 1.8, travel: 62, opacity: 0.9, size: 3.5 },
+    { bottom: 45, left: 78, duration: 9.5, delay: 2.4, travel: 68, opacity: 0.6, size: 2 },
+    { bottom: 165, left: 88, duration: 8.2, delay: 3.0, travel: 55, opacity: 0.8, size: 3 },
+    { bottom: 140, left: 22, duration: 9.8, delay: 3.6, travel: 72, opacity: 0.5, size: 2 },
+    { bottom: 200, left: 52, duration: 8.9, delay: 4.2, travel: 60, opacity: 0.88, size: 3.5 },
+    { bottom: 55, left: 35, duration: 9.3, delay: 4.8, travel: 66, opacity: 0.65, size: 2 },
+    { bottom: 175, left: 70, duration: 10.0, delay: 5.4, travel: 70, opacity: 0.78, size: 2.5 },
+    { bottom: 40, left: 15, duration: 8.6, delay: 6.0, travel: 57, opacity: 0.58, size: 2 },
+    { bottom: 190, left: 82, duration: 9.1, delay: 6.6, travel: 64, opacity: 0.72, size: 2.5 },
 ]
 
 const noiseDataUrl =
@@ -20,77 +20,87 @@ const noiseDataUrl =
 ---
 
 <div class="hero-bg pointer-events-none absolute inset-0 overflow-hidden">
+    <!-- Deep/Dark Background Base -->
     <div
         aria-hidden="true"
         class="absolute inset-0"
-        style={`background: radial-gradient(ellipse 140% 100% at 50% ${focalPointY}px, rgba(18, 16, 35, 1) 0%, rgba(12, 11, 28, 1) 40%, rgba(8, 8, 26, 1) 100%);`}
+        style={`background: radial-gradient(ellipse 140% 100% at 50% ${focalPointY}px, #1a1a24 0%, #121217 40%, #09090b 100%);`}
+    ></div>
+
+    <!-- Very Subtle Center Glows (Less Neon) -->
+    <div
+        aria-hidden="true"
+        class="glow absolute left-1/2"
+        data-animate
+        style={`top: ${focalPointY - 350}px; width: 900px; height: 700px; background: radial-gradient(ellipse 100% 80% at 50% 55%, rgba(69, 48, 234, 0.08) 0%, rgba(69, 48, 234, 0.04) 35%, transparent 70%); filter: blur(60px); animation: glowPulse1 12s ease-in-out infinite;`}
     ></div>
 
     <div
         aria-hidden="true"
         class="glow absolute left-1/2"
         data-animate
-        style={`top: ${focalPointY - 350}px; width: 900px; height: 700px; background: radial-gradient(ellipse 100% 80% at 50% 55%, rgba(69, 48, 234, 0.3) 0%, rgba(69, 48, 234, 0.15) 35%, rgba(52, 39, 234, 0.05) 60%, transparent 80%); filter: blur(35px); animation: glowPulse1 10s ease-in-out infinite;`}
+        style={`top: ${focalPointY - 250}px; width: 700px; height: 500px; background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(116, 194, 255, 0.1) 0%, rgba(116, 194, 255, 0.03) 45%, transparent 70%); filter: blur(50px); animation: glowPulse2 14s ease-in-out infinite;`}
     ></div>
 
+    <!-- Accent Glows (Reduced Opacity) -->
     <div
         aria-hidden="true"
         class="glow absolute left-1/2"
         data-animate
-        style={`top: ${focalPointY - 250}px; width: 700px; height: 500px; background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(116, 194, 255, 0.2) 0%, rgba(116, 194, 255, 0.08) 45%, transparent 70%); filter: blur(40px); animation: glowPulse2 12s ease-in-out infinite;`}
+        style={`top: ${focalPointY - 150}px; width: 600px; height: 400px; transform: translateX(-50%); background: radial-gradient(ellipse 100% 80% at 50% 60%, rgba(147, 130, 255, 0.08) 0%, rgba(180, 160, 255, 0.03) 50%, transparent 70%); filter: blur(40px); opacity: 0.3; animation: glowPulse3 16s ease-in-out 2s infinite; will-change: opacity;`}
     ></div>
 
-    <div
-        aria-hidden="true"
-        class="glow absolute left-1/2"
-        data-animate
-        style={`top: ${focalPointY - 150}px; width: 600px; height: 400px; transform: translateX(-50%); background: radial-gradient(ellipse 100% 80% at 50% 60%, rgba(147, 130, 255, 0.15) 0%, rgba(180, 160, 255, 0.06) 50%, transparent 70%); filter: blur(30px); opacity: 0.25; animation: glowPulse3 15s ease-in-out 2s infinite; will-change: opacity;`}
-    ></div>
-
+    <!-- Subtle Side Glows -->
     <div
         aria-hidden="true"
         class="glow absolute left-[6%]"
         data-animate
-        style={`top: ${focalPointY - 80}px; width: 350px; height: 350px; background: radial-gradient(circle at center, rgba(69, 48, 234, 0.22) 0%, rgba(69, 48, 234, 0.08) 45%, transparent 70%); filter: blur(25px); animation: glowPulse4 14s ease-in-out infinite;`}
+        style={`top: ${focalPointY - 80}px; width: 350px; height: 350px; background: radial-gradient(circle at center, rgba(69, 48, 234, 0.12) 0%, rgba(69, 48, 234, 0.04) 45%, transparent 70%); filter: blur(40px); animation: glowPulse4 16s ease-in-out infinite;`}
     ></div>
 
     <div
         aria-hidden="true"
         class="glow absolute right-[8%]"
         data-animate
-        style={`top: ${focalPointY - 30}px; width: 300px; height: 300px; background: radial-gradient(circle at center, rgba(116, 194, 255, 0.18) 0%, rgba(116, 194, 255, 0.06) 50%, transparent 70%); filter: blur(22px); opacity: 0.3; animation: glowPulse5 16s ease-in-out 3s infinite;`}
+        style={`top: ${focalPointY - 30}px; width: 300px; height: 300px; background: radial-gradient(circle at center, rgba(116, 194, 255, 0.1) 0%, rgba(116, 194, 255, 0.03) 50%, transparent 70%); filter: blur(35px); opacity: 0.3; animation: glowPulse5 18s ease-in-out 3s infinite;`}
     ></div>
 
+    <!-- Fine Grid Texture -->
     <div
         aria-hidden="true"
         class="absolute inset-0"
-        style={`background-image: linear-gradient(rgba(116, 194, 255, 0.012) 1px, transparent 1px), linear-gradient(90deg, rgba(116, 194, 255, 0.012) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 55% 45% at 50% ${focalPointY}px, rgba(0, 0, 0, 0.5) 0%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 55% 45% at 50% ${focalPointY}px, rgba(0, 0, 0, 0.5) 0%, transparent 70%);`}
+        style={`background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 60% 50% at 50% ${focalPointY}px, rgba(0, 0, 0, 0.5) 0%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% ${focalPointY}px, rgba(0, 0, 0, 0.5) 0%, transparent 80%);`}
     ></div>
 
+    <!-- Grain overlaid -->
     <div
         aria-hidden="true"
         class="absolute inset-0"
-        style={`opacity: 0.025; background-image: url(\"${noiseDataUrl}\"); mix-blend-mode: overlay;`}
+        style={`opacity: 0.04; background-image: url(\"${noiseDataUrl}\"); mix-blend-mode: overlay;`}
     ></div>
 
+    <!-- Top Fade -->
     <div
         aria-hidden="true"
         class="absolute left-0 right-0 top-0 h-[220px]"
-        style="background: linear-gradient(180deg, rgba(8, 8, 26, 0.95) 0%, rgba(8, 8, 26, 0.5) 50%, transparent 100%);"
+        style="background: linear-gradient(180deg, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.5) 50%, transparent 100%);"
     ></div>
 
+    <!-- Bottom Fade -->
     <div
         aria-hidden="true"
         class="absolute bottom-0 left-0 right-0 h-[45%]"
-        style="background: linear-gradient(180deg, transparent 0%, rgba(8, 8, 26, 0.4) 35%, rgba(8, 8, 26, 0.85) 70%, #08081a 100%);"
+        style="background: linear-gradient(180deg, transparent 0%, rgba(9, 9, 11, 0.3) 35%, rgba(9, 9, 11, 0.8) 70%, #09090b 100%);"
     ></div>
 
+    <!-- Center Vignette -->
     <div
         aria-hidden="true"
         class="absolute inset-0"
-        style="background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 25%, rgba(8, 8, 26, 0.35) 70%, rgba(8, 8, 26, 0.6) 100%);"
+        style="background: radial-gradient(ellipse 85% 75% at 50% 45%, transparent 25%, rgba(9, 9, 11, 0.4) 70%, rgba(9, 9, 11, 0.7) 100%);"
     ></div>
 
+    <!-- Particles (Slower and subtler) -->
     <div
         aria-hidden="true"
         class="absolute left-1/2"
@@ -101,7 +111,7 @@ const noiseDataUrl =
                 aria-hidden="true"
                 class="absolute rounded-full"
                 data-animate
-                style={`bottom: ${particle.bottom}px; left: ${particle.left}%; width: ${particle.size}px; height: ${particle.size}px; background: rgba(116, 194, 255, ${particle.opacity}); box-shadow: 0 0 ${particle.size * 2.5}px ${particle.size * 0.7}px rgba(116, 194, 255, 0.6); opacity: 0; will-change: transform, opacity; --travel: -${particle.travel}px; animation: particleFloat ${particle.duration}s ease-out ${particle.delay}s infinite;`}
+                style={`bottom: ${particle.bottom}px; left: ${particle.left}%; width: ${particle.size}px; height: ${particle.size}px; background: rgba(116, 194, 255, ${particle.opacity}); box-shadow: 0 0 ${particle.size * 2}px ${particle.size * 0.5}px rgba(116, 194, 255, 0.5); opacity: 0; will-change: transform, opacity; --travel: -${particle.travel}px; animation: particleFloat ${particle.duration}s ease-out ${particle.delay}s infinite;`}
             ></div>
         ))}
     </div>
@@ -109,7 +119,7 @@ const noiseDataUrl =
 
 <style>
     .hero-bg {
-        background: #08081a;
+        background: #09090b; /* Editorial Dark Base */
         z-index: -1;
     }
 
@@ -123,80 +133,36 @@ const noiseDataUrl =
         }
     }
 
+    /* Subtle/Slower Animations */
     @keyframes glowPulse1 {
-        0%,
-        100% {
-            opacity: 0.6;
-            transform: translateX(-50%) scale(1);
-        }
-        50% {
-            opacity: 0.75;
-            transform: translateX(-50%) scale(1.02);
-        }
+        0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+        50% { opacity: 0.65; transform: translateX(-50%) scale(1.02); }
     }
 
     @keyframes glowPulse2 {
-        0%,
-        100% {
-            opacity: 0.4;
-            transform: translateX(-50%) translateY(-5px);
-        }
-        50% {
-            opacity: 0.55;
-            transform: translateX(-50%) translateY(5px);
-        }
+        0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(-5px); }
+        50% { opacity: 0.4; transform: translateX(-50%) translateY(5px); }
     }
 
     @keyframes glowPulse3 {
-        0%,
-        100% {
-            opacity: 0.25;
-            transform: translateX(-50%);
-        }
-        50% {
-            opacity: 0.35;
-            transform: translateX(-50%);
-        }
+        0%, 100% { opacity: 0.2; transform: translateX(-50%); }
+        50% { opacity: 0.3; transform: translateX(-50%); }
     }
 
     @keyframes glowPulse4 {
-        0%,
-        100% {
-            opacity: 0.35;
-            transform: translateY(0);
-        }
-        50% {
-            opacity: 0.5;
-            transform: translateY(-12px);
-        }
+        0%, 100% { opacity: 0.25; transform: translateY(0); }
+        50% { opacity: 0.35; transform: translateY(-12px); }
     }
 
     @keyframes glowPulse5 {
-        0%,
-        100% {
-            opacity: 0.3;
-            transform: translateY(0);
-        }
-        50% {
-            opacity: 0.45;
-            transform: translateY(10px);
-        }
+        0%, 100% { opacity: 0.2; transform: translateY(0); }
+        50% { opacity: 0.3; transform: translateY(10px); }
     }
 
     @keyframes particleFloat {
-        0% {
-            opacity: 0;
-            transform: translateY(0);
-        }
-        15% {
-            opacity: 1;
-        }
-        85% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(var(--travel));
-        }
+        0% { opacity: 0; transform: translateY(0); }
+        15% { opacity: 0.8; }
+        85% { opacity: 0.8; }
+        100% { opacity: 0; transform: translateY(var(--travel)); }
     }
 </style>
