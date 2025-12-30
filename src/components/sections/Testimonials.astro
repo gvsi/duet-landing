@@ -1,22 +1,22 @@
 ---
-import { HOME_LOGOS, type HomeLogo } from "./logosData"
+import { HOME_LOGOS, type HomeLogo } from "./logosData";
 
 type Testimonial = {
-    name: string
-    title: string
-    quote: string
-    logoName: HomeLogo["name"]
-    avatarKey?: string
-}
+    name: string;
+    title: string;
+    quote: string;
+    logoName: HomeLogo["name"];
+    avatarKey?: string;
+};
 
 const avatarPath = (key: string, size: 64 | 96 | 128) =>
-    `/avatars/testimonials/${key}-${size}.jpg`
+    `/avatars/testimonials/${key}-${size}.jpg`;
 
 const avatarSrcSet = (key: string) =>
     `${avatarPath(key, 64)} 64w, ${avatarPath(key, 96)} 96w, ${avatarPath(
         key,
-        128
-    )} 128w`
+        128,
+    )} 128w`;
 
 const TESTIMONIALS: Testimonial[] = [
     {
@@ -54,34 +54,140 @@ const TESTIMONIALS: Testimonial[] = [
         logoName: "Wise",
         avatarKey: "sarah",
     },
-]
+];
 
-const repeatedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS]
-const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
+const repeatedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS];
+const logoByName = new Map(
+    HOME_LOGOS.map((logo) => [logo.name, logo] as const),
+);
 ---
 
 <section id="testimonials" class="home-testimonials" aria-label="Testimonials">
     <div class="mx-auto max-w-6xl px-6 md:px-10">
         <header class="home-testimonials__header">
             <p class="home-testimonials__pill">Testimonials</p>
-            <h2 class="home-testimonials__title">Loved by busy professionals</h2>
+            <h2 class="home-testimonials__title">
+                Loved by busy professionals
+            </h2>
             <p class="home-testimonials__subtitle">
                 Real people. Real inbox wins.
             </p>
         </header>
 
-        <div class="home-testimonials__ticker" aria-label="Scrolling testimonials">
+        <div
+            class="home-testimonials__ticker"
+            aria-label="Scrolling testimonials"
+        >
             <ul class="home-testimonials__track" role="list">
-                {repeatedTestimonials.map((testimonial, index) => {
-                    const logo = logoByName.get(testimonial.logoName)
-                    const isDuplicate = index >= TESTIMONIALS.length
-                    const initial = testimonial.name.trim().slice(0, 1).toUpperCase()
+                {
+                    repeatedTestimonials.map((testimonial, index) => {
+                        const logo = logoByName.get(testimonial.logoName);
+                        const isDuplicate = index >= TESTIMONIALS.length;
+                        const initial = testimonial.name
+                            .trim()
+                            .slice(0, 1)
+                            .toUpperCase();
+
+                        return (
+                            <li
+                                class="testimonial-card"
+                                aria-hidden={isDuplicate ? "true" : undefined}
+                            >
+                                <article class="testimonial-card__inner">
+                                    <p class="testimonial-card__quote">
+                                        “{testimonial.quote}”
+                                    </p>
+
+                                    <footer class="testimonial-card__footer">
+                                        <div class="testimonial-card__author">
+                                            <div
+                                                class="testimonial-card__avatar"
+                                                aria-hidden="true"
+                                            >
+                                                {testimonial.avatarKey ? (
+                                                    <img
+                                                        src={avatarPath(
+                                                            testimonial.avatarKey,
+                                                            96,
+                                                        )}
+                                                        srcset={avatarSrcSet(
+                                                            testimonial.avatarKey,
+                                                        )}
+                                                        sizes="36px"
+                                                        width="36"
+                                                        height="36"
+                                                        alt=""
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                    />
+                                                ) : (
+                                                    initial
+                                                )}
+                                            </div>
+
+                                            <div class="min-w-0">
+                                                <p class="testimonial-card__name">
+                                                    {testimonial.name}
+                                                </p>
+                                                <p class="testimonial-card__title">
+                                                    {testimonial.title}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        {logo && (
+                                            <div
+                                                class="testimonial-card__logo"
+                                                aria-hidden="true"
+                                            >
+                                                <svg
+                                                    viewBox={logo.viewBox}
+                                                    aria-hidden="true"
+                                                    focusable="false"
+                                                >
+                                                    {logo.paths.map((path) => (
+                                                        <path
+                                                            d={path.d}
+                                                            fill="currentColor"
+                                                            fill-rule={
+                                                                path.evenodd
+                                                                    ? "evenodd"
+                                                                    : undefined
+                                                            }
+                                                            clip-rule={
+                                                                path.evenodd
+                                                                    ? "evenodd"
+                                                                    : undefined
+                                                            }
+                                                        />
+                                                    ))}
+                                                </svg>
+                                            </div>
+                                        )}
+                                    </footer>
+                                </article>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </div>
+
+        <ul
+            class="home-testimonials__grid"
+            role="list"
+            aria-label="Testimonials"
+        >
+            {
+                TESTIMONIALS.map((testimonial) => {
+                    const logo = logoByName.get(testimonial.logoName);
+                    const initial = testimonial.name
+                        .trim()
+                        .slice(0, 1)
+                        .toUpperCase();
 
                     return (
-                        <li
-                            class="testimonial-card"
-                            aria-hidden={isDuplicate ? "true" : undefined}
-                        >
+                        <li class="testimonial-card">
                             <article class="testimonial-card__inner">
                                 <p class="testimonial-card__quote">
                                     “{testimonial.quote}”
@@ -95,8 +201,13 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
                                         >
                                             {testimonial.avatarKey ? (
                                                 <img
-                                                    src={avatarPath(testimonial.avatarKey, 96)}
-                                                    srcset={avatarSrcSet(testimonial.avatarKey)}
+                                                    src={avatarPath(
+                                                        testimonial.avatarKey,
+                                                        96,
+                                                    )}
+                                                    srcset={avatarSrcSet(
+                                                        testimonial.avatarKey,
+                                                    )}
                                                     sizes="36px"
                                                     width="36"
                                                     height="36"
@@ -120,7 +231,10 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
                                     </div>
 
                                     {logo && (
-                                        <div class="testimonial-card__logo" aria-hidden="true">
+                                        <div
+                                            class="testimonial-card__logo"
+                                            aria-hidden="true"
+                                        >
                                             <svg
                                                 viewBox={logo.viewBox}
                                                 aria-hidden="true"
@@ -148,79 +262,9 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
                                 </footer>
                             </article>
                         </li>
-                    )
-                })}
-            </ul>
-        </div>
-
-        <ul class="home-testimonials__grid" role="list" aria-label="Testimonials">
-            {TESTIMONIALS.map((testimonial) => {
-                const logo = logoByName.get(testimonial.logoName)
-                const initial = testimonial.name.trim().slice(0, 1).toUpperCase()
-
-                return (
-                    <li class="testimonial-card">
-                        <article class="testimonial-card__inner">
-                            <p class="testimonial-card__quote">
-                                “{testimonial.quote}”
-                            </p>
-
-                            <footer class="testimonial-card__footer">
-                                <div class="testimonial-card__author">
-                                    <div class="testimonial-card__avatar" aria-hidden="true">
-                                        {testimonial.avatarKey ? (
-                                            <img
-                                                src={avatarPath(testimonial.avatarKey, 96)}
-                                                srcset={avatarSrcSet(testimonial.avatarKey)}
-                                                sizes="36px"
-                                                width="36"
-                                                height="36"
-                                                alt=""
-                                                loading="lazy"
-                                                decoding="async"
-                                            />
-                                        ) : (
-                                            initial
-                                        )}
-                                    </div>
-
-                                    <div class="min-w-0">
-                                        <p class="testimonial-card__name">
-                                            {testimonial.name}
-                                        </p>
-                                        <p class="testimonial-card__title">
-                                            {testimonial.title}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {logo && (
-                                    <div class="testimonial-card__logo" aria-hidden="true">
-                                        <svg
-                                            viewBox={logo.viewBox}
-                                            aria-hidden="true"
-                                            focusable="false"
-                                        >
-                                            {logo.paths.map((path) => (
-                                                <path
-                                                    d={path.d}
-                                                    fill="currentColor"
-                                                    fill-rule={
-                                                        path.evenodd ? "evenodd" : undefined
-                                                    }
-                                                    clip-rule={
-                                                        path.evenodd ? "evenodd" : undefined
-                                                    }
-                                                />
-                                            ))}
-                                        </svg>
-                                    </div>
-                                )}
-                            </footer>
-                        </article>
-                    </li>
-                )
-            })}
+                    );
+                })
+            }
         </ul>
     </div>
 </section>
@@ -252,13 +296,23 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
         border: 1px solid rgba(255, 255, 255, 0.12);
         background: rgba(0, 0, 0, 0.22);
         color: rgb(173, 173, 173);
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
         letter-spacing: -0.01em;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.35),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -266,13 +320,22 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
 
     .home-testimonials__title {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 40px;
         font-weight: 400;
         line-height: 48px;
         letter-spacing: -0.8px;
-        color: #ffffff;
+        color: #18181b; /* zinc-900 */
         text-wrap: balance;
         max-width: 720px;
     }
@@ -286,12 +349,21 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
 
     .home-testimonials__subtitle {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-        color: rgb(173, 173, 173);
+        color: #52525b; /* zinc-600 */
         max-width: 520px;
         text-wrap: pretty;
     }
@@ -407,14 +479,17 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
         flex-direction: column;
         justify-content: space-between;
         gap: 18px;
-        transition: border-color 220ms ease, box-shadow 220ms ease,
+        transition:
+            border-color 220ms ease,
+            box-shadow 220ms ease,
             transform 220ms ease;
     }
 
     @media (hover: hover) {
         .testimonial-card__inner:hover {
             border-color: rgba(255, 255, 255, 0.14);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06),
+            box-shadow:
+                0 0 0 4px rgba(255, 255, 255, 0.06),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
             transform: translateY(-1px);
         }
@@ -422,8 +497,17 @@ const logoByName = new Map(HOME_LOGOS.map((logo) => [logo.name, logo] as const))
 
     .testimonial-card__quote {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 15px;
         font-weight: 400;
         line-height: 24px;

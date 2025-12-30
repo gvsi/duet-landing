@@ -16,7 +16,7 @@ export const HOME_LOGOS: HomeLogo[] = [
   },
   {
     name: 'Upwork',
-    color: '#FFFFFF',
+    color: '#18181b',
     viewBox: '0 0 2500 747',
     paths: [
       {
@@ -39,7 +39,7 @@ export const HOME_LOGOS: HomeLogo[] = [
   },
   {
     name: 'Trello',
-    color: '#FFFFFF',
+    color: '#18181b',
     viewBox: '0 0 2500 714',
     paths: [
       {
@@ -66,7 +66,7 @@ export const HOME_LOGOS: HomeLogo[] = [
   },
   {
     name: 'Fiverr',
-    color: '#FFFFFF',
+    color: '#18181b',
     viewBox: '0 0 2500 754',
     paths: [
       {
@@ -76,7 +76,7 @@ export const HOME_LOGOS: HomeLogo[] = [
   },
   {
     name: 'Ahrefs',
-    color: '#FFFFFF',
+    color: '#18181b',
     viewBox: '0 0 414.5 106.7',
     paths: [
       {

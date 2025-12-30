@@ -1,7 +1,7 @@
 ---
-import { HOME_LOGOS } from "./logosData"
+import { HOME_LOGOS } from "./logosData";
 
-const repeatedLogos = [...HOME_LOGOS, ...HOME_LOGOS]
+const repeatedLogos = [...HOME_LOGOS, ...HOME_LOGOS];
 
 const logoWidths: Record<string, number> = {
     Stripe: 72,
@@ -11,7 +11,7 @@ const logoWidths: Record<string, number> = {
     Wise: 98,
     Fiverr: 80,
     Ahrefs: 81,
-}
+};
 ---
 
 <section class="home-logos" aria-label="Customer logos">
@@ -29,29 +29,37 @@ const logoWidths: Record<string, number> = {
 
         <div class="home-logos__ticker" aria-hidden="true">
             <ul class="home-logos__track" role="list">
-                {repeatedLogos.map((logo, index) => (
-                    <li
-                        class="home-logos__item"
-                        style={`--logo-width: ${logoWidths[logo.name] ?? 98}px; color: ${logo.color};`}
-                        data-duplicate={index >= HOME_LOGOS.length ? "" : undefined}
-                    >
-                        <svg
-                            class="home-logos__svg"
-                            viewBox={logo.viewBox}
-                            aria-hidden="true"
-                            focusable="false"
+                {
+                    repeatedLogos.map((logo, index) => (
+                        <li
+                            class="home-logos__item"
+                            style={`--logo-width: ${logoWidths[logo.name] ?? 98}px; color: ${logo.color};`}
+                            data-duplicate={
+                                index >= HOME_LOGOS.length ? "" : undefined
+                            }
                         >
-                            {logo.paths.map((path) => (
-                                <path
-                                    d={path.d}
-                                    fill="currentColor"
-                                    fill-rule={path.evenodd ? "evenodd" : undefined}
-                                    clip-rule={path.evenodd ? "evenodd" : undefined}
-                                />
-                            ))}
-                        </svg>
-                    </li>
-                ))}
+                            <svg
+                                class="home-logos__svg"
+                                viewBox={logo.viewBox}
+                                aria-hidden="true"
+                                focusable="false"
+                            >
+                                {logo.paths.map((path) => (
+                                    <path
+                                        d={path.d}
+                                        fill="currentColor"
+                                        fill-rule={
+                                            path.evenodd ? "evenodd" : undefined
+                                        }
+                                        clip-rule={
+                                            path.evenodd ? "evenodd" : undefined
+                                        }
+                                    />
+                                ))}
+                            </svg>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     </div>
@@ -74,16 +82,25 @@ const logoWidths: Record<string, number> = {
         margin: 0;
         text-align: center;
         text-wrap: balance;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 15px;
         font-weight: 500;
         line-height: 19px;
-        color: rgb(144, 142, 142);
+        color: #52525b; /* zinc-600 */
     }
 
     .home-logos__text-highlight {
-        color: rgb(214, 215, 214);
+        color: #18181b; /* zinc-900 */
     }
 
     .home-logos__ticker {
@@ -96,17 +113,17 @@ const logoWidths: Record<string, number> = {
         overflow: hidden;
         mask-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgb(0, 0, 0) 30%,
-            rgb(0, 0, 0) 70%,
-            rgba(0, 0, 0, 0) 100%
+            rgba(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255) 30%,
+            rgb(255, 255, 255) 70%,
+            rgba(255, 255, 255, 0) 100%
         );
         -webkit-mask-image: linear-gradient(
             to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgb(0, 0, 0) 30%,
-            rgb(0, 0, 0) 70%,
-            rgba(0, 0, 0, 0) 100%
+            rgba(255, 255, 255, 0) 0%,
+            rgb(255, 255, 255) 30%,
+            rgb(255, 255, 255) 70%,
+            rgba(255, 255, 255, 0) 100%
         );
     }
 

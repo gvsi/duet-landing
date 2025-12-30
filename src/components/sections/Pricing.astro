@@ -1,19 +1,19 @@
 ---
-type Billing = "annual" | "monthly"
+type Billing = "annual" | "monthly";
 
 type Plan = {
-    name: string
-    badge?: string
-    description: string
-    priceLabel?: string
-    priceByBilling?: Partial<Record<Billing, string>>
-    featuresTitle: string
-    features: string[]
-    ctaLabel: string
-    ctaHref: string
-    ctaNote?: string
-    featured?: boolean
-}
+    name: string;
+    badge?: string;
+    description: string;
+    priceLabel?: string;
+    priceByBilling?: Partial<Record<Billing, string>>;
+    featuresTitle: string;
+    features: string[];
+    ctaLabel: string;
+    ctaHref: string;
+    ctaNote?: string;
+    featured?: boolean;
+};
 
 const plans: Plan[] = [
     {
@@ -69,7 +69,7 @@ const plans: Plan[] = [
         ctaHref: "mailto:hello@duetmail.com?subject=Duet%20Mail%20Enterprise",
         ctaNote: "Prices are per month/user",
     },
-]
+];
 ---
 
 <section id="pricing" class="home-pricing" aria-label="Pricing">
@@ -103,7 +103,11 @@ const plans: Plan[] = [
                 value="monthly"
             />
 
-            <div class="pricing-toggle" role="radiogroup" aria-label="Billing cadence">
+            <div
+                class="pricing-toggle"
+                role="radiogroup"
+                aria-label="Billing cadence"
+            >
                 <label class="pricing-toggle__label" for="billing-annual">
                     Annual
                     <span class="pricing-toggle__badge" aria-hidden="true"
@@ -113,91 +117,118 @@ const plans: Plan[] = [
                 <label class="pricing-toggle__label" for="billing-monthly">
                     Monthly
                 </label>
-                <span class="pricing-toggle__indicator" aria-hidden="true"></span>
+                <span class="pricing-toggle__indicator" aria-hidden="true"
+                ></span>
             </div>
 
             <div class="pricing-grid" role="list">
-                {plans.map((plan) => (
-                    <article
-                        class:list={[
-                            "pricing-card",
-                            plan.featured && "pricing-card--featured",
-                        ]}
-                        role="listitem"
-                        aria-label={`${plan.name} plan`}
-                    >
-                        <header class="pricing-card__header">
-                            <div class="pricing-card__top">
-                                <p class="pricing-card__name">{plan.name}</p>
-                                {plan.badge && (
-                                    <span class="pricing-card__badge">{plan.badge}</span>
+                {
+                    plans.map((plan) => (
+                        <article
+                            class:list={[
+                                "pricing-card",
+                                plan.featured && "pricing-card--featured",
+                            ]}
+                            role="listitem"
+                            aria-label={`${plan.name} plan`}
+                        >
+                            <header class="pricing-card__header">
+                                <div class="pricing-card__top">
+                                    <p class="pricing-card__name">
+                                        {plan.name}
+                                    </p>
+                                    {plan.badge && (
+                                        <span class="pricing-card__badge">
+                                            {plan.badge}
+                                        </span>
+                                    )}
+                                </div>
+
+                                <p class="pricing-card__desc">
+                                    {plan.description}
+                                </p>
+
+                                {plan.priceLabel ? (
+                                    <div class="pricing-card__price">
+                                        <span class="pricing-card__price-label">
+                                            {plan.priceLabel}
+                                        </span>
+                                    </div>
+                                ) : (
+                                    <div class="pricing-card__price">
+                                        <span class="pricing-card__currency">
+                                            $
+                                        </span>
+                                        <span class="pricing-card__amount">
+                                            <span
+                                                class="price"
+                                                data-billing="annual"
+                                            >
+                                                {plan.priceByBilling?.annual}
+                                            </span>
+                                            <span
+                                                class="price"
+                                                data-billing="monthly"
+                                            >
+                                                {plan.priceByBilling?.monthly}
+                                            </span>
+                                        </span>
+                                        <span class="pricing-card__unit">
+                                            /mo
+                                        </span>
+                                    </div>
                                 )}
+                            </header>
+
+                            <div class="pricing-card__body">
+                                <p class="pricing-card__features-title">
+                                    {plan.featuresTitle}
+                                </p>
+
+                                <ul class="pricing-card__features" role="list">
+                                    {plan.features.map((feature) => (
+                                        <li class="pricing-card__feature">
+                                            <span
+                                                class="pricing-card__check"
+                                                aria-hidden="true"
+                                            >
+                                                <svg
+                                                    width="16"
+                                                    height="16"
+                                                    viewBox="0 0 20 20"
+                                                    fill="none"
+                                                >
+                                                    <path
+                                                        d="M4.2 10.6 8.2 14.6 16.2 6.6"
+                                                        stroke="currentColor"
+                                                        stroke-width="1.6"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                    />
+                                                </svg>
+                                            </span>
+                                            <span>{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
 
-                            <p class="pricing-card__desc">{plan.description}</p>
-
-                            {plan.priceLabel ? (
-                                <div class="pricing-card__price">
-                                    <span class="pricing-card__price-label">
-                                        {plan.priceLabel}
-                                    </span>
-                                </div>
-                            ) : (
-                                <div class="pricing-card__price">
-                                    <span class="pricing-card__currency">$</span>
-                                    <span class="pricing-card__amount">
-                                        <span class="price" data-billing="annual">
-                                            {plan.priceByBilling?.annual}
-                                        </span>
-                                        <span class="price" data-billing="monthly">
-                                            {plan.priceByBilling?.monthly}
-                                        </span>
-                                    </span>
-                                    <span class="pricing-card__unit">/mo</span>
-                                </div>
-                            )}
-                        </header>
-
-                        <div class="pricing-card__body">
-                            <p class="pricing-card__features-title">
-                                {plan.featuresTitle}
-                            </p>
-
-                            <ul class="pricing-card__features" role="list">
-                                {plan.features.map((feature) => (
-                                    <li class="pricing-card__feature">
-                                        <span class="pricing-card__check" aria-hidden="true">
-                                            <svg
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 20 20"
-                                                fill="none"
-                                            >
-                                                <path
-                                                    d="M4.2 10.6 8.2 14.6 16.2 6.6"
-                                                    stroke="currentColor"
-                                                    stroke-width="1.6"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                />
-                                            </svg>
-                                        </span>
-                                        <span>{feature}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <footer class="pricing-card__footer">
-                            <a class="pricing-card__cta" href={plan.ctaHref}>
-                                {plan.ctaLabel}
-                            </a>
-                            {plan.ctaNote && (
-                                <p class="pricing-card__cta-note">{plan.ctaNote}</p>
-                            )}
-                        </footer>
-                    </article>
-                ))}
+                            <footer class="pricing-card__footer">
+                                <a
+                                    class="pricing-card__cta"
+                                    href={plan.ctaHref}
+                                >
+                                    {plan.ctaLabel}
+                                </a>
+                                {plan.ctaNote && (
+                                    <p class="pricing-card__cta-note">
+                                        {plan.ctaNote}
+                                    </p>
+                                )}
+                            </footer>
+                        </article>
+                    ))
+                }
             </div>
         </fieldset>
     </div>
@@ -228,13 +259,23 @@ const plans: Plan[] = [
         border: 1px solid rgba(255, 255, 255, 0.12);
         background: rgba(0, 0, 0, 0.22);
         color: rgb(173, 173, 173);
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         font-weight: 500;
         line-height: 20px;
         letter-spacing: -0.01em;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.35),
             inset 0 1px 0 rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -242,13 +283,22 @@ const plans: Plan[] = [
 
     .home-pricing__title {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 40px;
         font-weight: 500;
         line-height: 48px;
         letter-spacing: -0.8px;
-        color: #ffffff;
+        color: #18181b; /* zinc-900 */
         text-wrap: balance;
         max-width: 720px;
     }
@@ -262,12 +312,21 @@ const plans: Plan[] = [
 
     .home-pricing__subtitle {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-        color: rgb(173, 173, 173);
+        color: #52525b; /* zinc-600 */
         max-width: 520px;
         text-wrap: pretty;
     }
@@ -308,8 +367,17 @@ const plans: Plan[] = [
         gap: 8px;
         padding: 10px 14px;
         border-radius: 9999px;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         font-weight: 600;
         letter-spacing: -0.01em;
@@ -350,15 +418,11 @@ const plans: Plan[] = [
         transition: transform 220ms ease;
     }
 
-    #billing-annual:checked
-        ~ .pricing-toggle
-        label[for="billing-annual"] {
+    #billing-annual:checked ~ .pricing-toggle label[for="billing-annual"] {
         color: rgba(255, 255, 255, 0.95);
     }
 
-    #billing-monthly:checked
-        ~ .pricing-toggle
-        label[for="billing-monthly"] {
+    #billing-monthly:checked ~ .pricing-toggle label[for="billing-monthly"] {
         color: rgba(255, 255, 255, 0.95);
     }
 
@@ -389,7 +453,8 @@ const plans: Plan[] = [
         padding: 24px;
         border-radius: 16px;
         border: 1px solid rgba(255, 255, 255, 0.12);
-        background: radial-gradient(
+        background:
+            radial-gradient(
                 55% 45% at 50% 0%,
                 rgba(255, 255, 255, 0.16) 0%,
                 rgba(0, 0, 0, 0.1) 35%,
@@ -412,7 +477,8 @@ const plans: Plan[] = [
             rgba(255, 255, 255, 0.22),
             rgba(255, 255, 255, 0.03)
         );
-        -webkit-mask: linear-gradient(#000 0 0) content-box,
+        -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
             linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -422,7 +488,8 @@ const plans: Plan[] = [
 
     .pricing-card--featured {
         border-color: rgba(116, 194, 255, 0.26);
-        box-shadow: 0 30px 80px rgba(69, 48, 234, 0.22),
+        box-shadow:
+            0 30px 80px rgba(69, 48, 234, 0.22),
             0 20px 60px rgba(0, 0, 0, 0.55);
     }
 
@@ -453,8 +520,17 @@ const plans: Plan[] = [
 
     .pricing-card__name {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 15px;
         font-weight: 700;
         letter-spacing: -0.01em;
@@ -471,8 +547,17 @@ const plans: Plan[] = [
         background: rgba(116, 194, 255, 0.14);
         border: 1px solid rgba(116, 194, 255, 0.22);
         color: rgba(255, 255, 255, 0.9);
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 13px;
         font-weight: 700;
         letter-spacing: -0.01em;
@@ -481,8 +566,17 @@ const plans: Plan[] = [
 
     .pricing-card__desc {
         margin: 12px 0 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         line-height: 20px;
         color: rgba(173, 173, 173, 1);
@@ -494,8 +588,17 @@ const plans: Plan[] = [
         align-items: baseline;
         gap: 6px;
         margin-top: 16px;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
     }
 
     .pricing-card__currency {
@@ -529,8 +632,17 @@ const plans: Plan[] = [
 
     .pricing-card__note {
         margin: 10px 0 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 13px;
         line-height: 18px;
         color: rgba(144, 142, 142, 1);
@@ -547,8 +659,17 @@ const plans: Plan[] = [
 
     .pricing-card__features-title {
         margin: 0;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 13px;
         font-weight: 600;
         letter-spacing: -0.01em;
@@ -568,8 +689,17 @@ const plans: Plan[] = [
         display: flex;
         align-items: flex-start;
         gap: 10px;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         line-height: 20px;
         color: rgba(255, 255, 255, 0.82);
@@ -606,13 +736,24 @@ const plans: Plan[] = [
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
         color: rgba(255, 255, 255, 0.92);
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 14px;
         font-weight: 700;
         letter-spacing: -0.01em;
         text-decoration: none;
-        transition: transform 0.2s ease, background 0.2s ease,
+        transition:
+            transform 0.2s ease,
+            background 0.2s ease,
             border-color 0.2s ease;
     }
 
@@ -641,8 +782,17 @@ const plans: Plan[] = [
     .pricing-card__cta-note {
         margin: 0;
         text-align: center;
-        font-family: "Manrope Variable", ui-sans-serif, system-ui, -apple-system,
-            BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+            "Manrope Variable",
+            ui-sans-serif,
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
         font-size: 13px;
         line-height: 18px;
         color: rgba(144, 142, 142, 1);

@@ -1,11 +1,8 @@
 ---
+
 ---
 
-<section
-    class="agent-showcase"
-    aria-label="AI Agent Chat"
-    data-agent-section
->
+<section class="agent-showcase" aria-label="AI Agent Chat" data-agent-section>
     <!-- Editorial Divider -->
     <div class="editorial-divider">
         <span class="feature-label">FEATURE 03 — INTELLIGENCE</span>
@@ -15,7 +12,8 @@
         <header class="agent-header">
             <h2 class="agent-title">The Intelligence Desk</h2>
             <p class="agent-subtitle">
-                A proactive agent that works across your inbox, calendar, and contacts.
+                A proactive agent that works across your inbox, calendar, and
+                contacts.
                 <br class="hidden md:block" />
                 Ask challenging questions. Get instant answers.
             </p>
@@ -48,40 +46,75 @@
                         <!-- User Message -->
                         <div class="message user-message">
                             <div class="message-content">
-                                Can you find the invoice from Stripe for last month and draft a reply to Accounting?
+                                Can you find the invoice from Stripe for last
+                                month and draft a reply to Accounting?
                             </div>
                         </div>
 
                         <!-- Processing Indicator -->
                         <div class="processing-state">
                             <div class="processing-line"></div>
-                            <span class="processing-text">Searching inbox...</span>
+                            <span class="processing-text"
+                                >Searching inbox...</span
+                            >
                         </div>
 
                         <!-- Agent Response (Pre-rendered for JS to animate if needed, but keeping structure clean) -->
                         <div class="message agent-message">
                             <div class="message-content">
                                 <div class="agent-response-header">
-                                    <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    <svg
+                                        class="check-icon"
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <polyline points="20 6 9 17 4 12"
+                                        ></polyline>
                                     </svg>
                                     <span>Found 2 emails from Stripe</span>
                                 </div>
-                                <p>I found the receipt for <strong>$29.00 USD</strong> from Oct 24th.</p>
-                                <p class="mt-2 text-white/50 text-xs">Drafting reply to accounting@...</p>
-                                
+                                <p>
+                                    I found the receipt for <strong
+                                        >$29.00 USD</strong
+                                    > from Oct 24th.
+                                </p>
+                                <p class="mt-2 text-white/50 text-xs">
+                                    Drafting reply to accounting@...
+                                </p>
+
                                 <div class="attachment-card">
                                     <div class="file-icon">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                            <polyline points="14 2 14 8 20 8"></polyline>
-                                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                                            <polyline points="10 9 9 9 8 9"></polyline>
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path
+                                                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                            ></path>
+                                            <polyline points="14 2 14 8 20 8"
+                                            ></polyline>
+                                            <line x1="16" y1="13" x2="8" y2="13"
+                                            ></line>
+                                            <line x1="16" y1="17" x2="8" y2="17"
+                                            ></line>
+                                            <polyline points="10 9 9 9 8 9"
+                                            ></polyline>
                                         </svg>
                                     </div>
                                     <div class="file-info">
-                                        <span class="file-name">invoice_oct24.pdf</span>
+                                        <span class="file-name"
+                                            >invoice_oct24.pdf</span
+                                        >
                                         <span class="file-size">142 KB</span>
                                     </div>
                                 </div>
@@ -90,16 +123,30 @@
                     </div>
 
                     <div class="suggestions-container">
-                        <button class="suggestion-chip" data-action="draft">Yes, show me the draft</button>
-                        <button class="suggestion-chip" data-action="calendar">When can I meet them?</button>
+                        <button class="suggestion-chip" data-action="draft"
+                            >Yes, show me the draft</button
+                        >
+                        <button class="suggestion-chip" data-action="calendar"
+                            >When can I meet them?</button
+                        >
                     </div>
 
                     <div class="input-area">
                         <div class="input-placeholder">Reply to Duet...</div>
                         <div class="send-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"
+                                ></polygon>
                             </svg>
                         </div>
                     </div>
@@ -162,8 +209,8 @@
         font-weight: 500;
         line-height: 1.1;
         letter-spacing: -0.02em;
-        color: #ffffff;
         text-wrap: balance;
+        color: #18181b; /* zinc-900 */
     }
 
     .agent-subtitle {
@@ -196,12 +243,11 @@
         background: #121217; /* Flat Editorial BG */
         border-radius: 4px; /* Sharper */
         border: 1px solid var(--duet-border-editorial);
-        box-shadow: 
-            0 24px 48px -12px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
         overflow: hidden;
         transform: translateY(20px);
         opacity: 0;
-        transition: 
+        transition:
             transform 1s cubic-bezier(0.2, 0.8, 0.2, 1),
             opacity 1s ease;
     }
@@ -233,9 +279,15 @@
         opacity: 0.6;
     }
 
-    .dot-red { background: #ff5f57; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #28c840; }
+    .dot-red {
+        background: #ff5f57;
+    }
+    .dot-yellow {
+        background: #ffbd2e;
+    }
+    .dot-green {
+        background: #28c840;
+    }
 
     .agent-info {
         display: flex;
@@ -266,8 +318,10 @@
         background: #22c55e;
         border-radius: 50%;
     }
-    
-    .header-spacer { width: 44px; }
+
+    .header-spacer {
+        width: 44px;
+    }
 
     /* Chat Body */
     .chat-body {
@@ -280,9 +334,13 @@
         scroll-behavior: smooth;
         scrollbar-width: thin;
     }
-    
-    .chat-body::-webkit-scrollbar { width: 4px; }
-    .chat-body::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.1); }
+
+    .chat-body::-webkit-scrollbar {
+        width: 4px;
+    }
+    .chat-body::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
     .chat-body :global(.message) {
         max-width: 85%;
@@ -343,8 +401,16 @@
         color: #a1a1aa;
     }
 
-    .chat-body :global(.file-name) { color: #fff; font-size: 13px; font-weight: 500; font-family: var(--font-serif); }
-    .chat-body :global(.file-size) { color: rgba(255, 255, 255, 0.4); font-size: 11px; }
+    .chat-body :global(.file-name) {
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        font-family: var(--font-serif);
+    }
+    .chat-body :global(.file-size) {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 11px;
+    }
 
     /* Processing State - Minimalist */
     .chat-body :global(.processing-state) {
@@ -354,7 +420,9 @@
         gap: 12px;
         padding-left: 16px; /* Match agent message padding */
         opacity: 0;
-        animation: processShow 1.5s ease 1.1s forwards, processHide 0.5s ease 2.4s forwards;
+        animation:
+            processShow 1.5s ease 1.1s forwards,
+            processHide 0.5s ease 2.4s forwards;
     }
 
     .chat-body :global(.processing-line) {
@@ -394,26 +462,51 @@
         color: rgba(255, 255, 255, 0.4);
         transition: color 0.2s;
     }
-    .send-btn:hover { color: #fff; }
+    .send-btn:hover {
+        color: #fff;
+    }
 
     /* Animations */
     @keyframes msgSlideIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @keyframes processShow {
-        from { opacity: 0; transform: translateY(5px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    
+
     @keyframes processHide {
-        to { opacity: 0; transform: translateY(-5px); height: 0; margin: 0; overflow: hidden; }
+        to {
+            opacity: 0;
+            transform: translateY(-5px);
+            height: 0;
+            margin: 0;
+            overflow: hidden;
+        }
     }
 
     @keyframes lineBlink {
-        0%, 100% { opacity: 0.2; }
-        50% { opacity: 1; }
+        0%,
+        100% {
+            opacity: 0.2;
+        }
+        50% {
+            opacity: 1;
+        }
     }
 
     /* Suggestions */
@@ -443,16 +536,31 @@
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Responsiveness */
     @media (max-width: 768px) {
-        .agent-title { font-size: 32px; }
-        .window { transform: translateY(20px); }
-        .chat-body { padding: 16px; min-height: 300px; }
-        .suggestions-container { padding: 0 16px 12px; }
+        .agent-title {
+            font-size: 32px;
+        }
+        .window {
+            transform: translateY(20px);
+        }
+        .chat-body {
+            padding: 16px;
+            min-height: 300px;
+        }
+        .suggestions-container {
+            padding: 0 16px 12px;
+        }
     }
 
     /* Dynamic Content Styles */
@@ -469,7 +577,7 @@
     :global(.action-btn-secondary) {
         background: transparent;
         color: #e4e4e7;
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         padding: 8px 16px;
         border-radius: 2px;
         font-size: 12px;
@@ -477,7 +585,7 @@
     }
     :global(.calendar-slot) {
         background: transparent;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         padding: 12px;
         border-radius: 2px;
         display: flex;
@@ -490,8 +598,14 @@
     :global(.calendar-slot:hover) {
         border-color: #2dd4bf;
     }
-    :global(.slot-time) { font-family: var(--font-serif); font-size: 14px; }
-    :global(.slot-duration) { font-size: 12px; color: rgba(255,255,255,0.5); }
+    :global(.slot-time) {
+        font-family: var(--font-serif);
+        font-size: 14px;
+    }
+    :global(.slot-duration) {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+    }
 </style>
 
 <script>
@@ -519,10 +633,16 @@
 
         // Interaction Logic
         const chatBody = section.querySelector(".chat-body");
-        const suggestionsContainer = section.querySelector(".suggestions-container");
+        const suggestionsContainer = section.querySelector(
+            ".suggestions-container",
+        );
 
         // Helper to process user action
-        const handleUserAction = (action: string, label: string, containerToRemove?: HTMLElement) => {
+        const handleUserAction = (
+            action: string,
+            label: string,
+            containerToRemove?: HTMLElement,
+        ) => {
             if (!chatBody) return;
 
             // 1. Hide suggestions container
@@ -545,10 +665,11 @@
             processing.className = "processing-state";
             processing.style.animation = "none";
             processing.style.opacity = "1";
-            
+
             let processingText = "Processing...";
             if (action === "draft") processingText = "Generating draft...";
-            if (action === "calendar") processingText = "Checking availability...";
+            if (action === "calendar")
+                processingText = "Checking availability...";
 
             processing.innerHTML = `
                 <div class="processing-line" style="animation: lineBlink 1s ease-in-out infinite"></div>
@@ -612,48 +733,63 @@
                 chatBody.scrollTop = chatBody.scrollHeight;
 
                 // 5. Trigger Third Turn
-                const alreadyServed = section.getAttribute('data-served-options') || "";
-                
+                const alreadyServed =
+                    section.getAttribute("data-served-options") || "";
+
                 if (!alreadyServed.includes(action)) {
-                     section.setAttribute('data-served-options', alreadyServed + action + ",");
-                     
-                     let nextAction = "";
-                     let nextLabel = "";
-                     
-                     if (action === "draft" && !alreadyServed.includes("calendar")) {
-                         nextAction = "calendar";
-                         nextLabel = "Also schedule a follow-up?";
-                     } else if (action === "calendar" && !alreadyServed.includes("draft")) {
-                         nextAction = "draft";
-                         nextLabel = "Also draft the reply?";
-                     }
+                    section.setAttribute(
+                        "data-served-options",
+                        alreadyServed + action + ",",
+                    );
 
-                     if (nextAction) {
-                         setTimeout(() => {
-                             const newContainer = document.createElement("div");
-                             newContainer.className = "suggestions-container";
-                             newContainer.style.padding = "0"; 
-                             newContainer.style.marginTop = "10px";
-                             newContainer.style.opacity = "0";
-                             newContainer.style.animation = "fadeIn 0.5s ease forwards";
-                             
-                             const nextChip = document.createElement("button");
-                             nextChip.className = "suggestion-chip";
-                             nextChip.textContent = nextLabel;
-                             nextChip.onclick = () => handleUserAction(nextAction, nextLabel, newContainer);
-                             
-                             newContainer.appendChild(nextChip);
-                             chatBody.appendChild(newContainer);
-                             chatBody.scrollTop = chatBody.scrollHeight;
-                         }, 800);
-                     }
+                    let nextAction = "";
+                    let nextLabel = "";
+
+                    if (
+                        action === "draft" &&
+                        !alreadyServed.includes("calendar")
+                    ) {
+                        nextAction = "calendar";
+                        nextLabel = "Also schedule a follow-up?";
+                    } else if (
+                        action === "calendar" &&
+                        !alreadyServed.includes("draft")
+                    ) {
+                        nextAction = "draft";
+                        nextLabel = "Also draft the reply?";
+                    }
+
+                    if (nextAction) {
+                        setTimeout(() => {
+                            const newContainer = document.createElement("div");
+                            newContainer.className = "suggestions-container";
+                            newContainer.style.padding = "0";
+                            newContainer.style.marginTop = "10px";
+                            newContainer.style.opacity = "0";
+                            newContainer.style.animation =
+                                "fadeIn 0.5s ease forwards";
+
+                            const nextChip = document.createElement("button");
+                            nextChip.className = "suggestion-chip";
+                            nextChip.textContent = nextLabel;
+                            nextChip.onclick = () =>
+                                handleUserAction(
+                                    nextAction,
+                                    nextLabel,
+                                    newContainer,
+                                );
+
+                            newContainer.appendChild(nextChip);
+                            chatBody.appendChild(newContainer);
+                            chatBody.scrollTop = chatBody.scrollHeight;
+                        }, 800);
+                    }
                 }
-
             }, 1000);
         };
 
         const chips = section.querySelectorAll(".suggestion-chip");
-        chips.forEach(chip => {
+        chips.forEach((chip) => {
             chip.addEventListener("click", (e) => {
                 const target = e.currentTarget as HTMLElement;
                 const action = target.getAttribute("data-action");
