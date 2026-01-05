@@ -1,21 +1,21 @@
 ---
-import "../styles/global.css"
-import gtmHeadHtml from "../snippets/gtm-head.html?raw"
-import gtmNoscriptHtml from "../snippets/gtm-noscript.html?raw"
+import "../styles/global.css";
+import gtmHeadHtml from "../snippets/gtm-head.html?raw";
+import gtmNoscriptHtml from "../snippets/gtm-noscript.html?raw";
 
 type Props = {
-    title: string
-    description: string
-    canonicalPath: string
-    ogImagePath: string
-    extraHeadHtml?: string
-}
+    title: string;
+    description: string;
+    canonicalPath: string;
+    ogImagePath: string;
+    extraHeadHtml?: string;
+};
 
 const { title, description, canonicalPath, ogImagePath, extraHeadHtml } =
-    Astro.props
+    Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, Astro.site).toString()
-const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -25,6 +25,35 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
         <meta name="viewport" content="width=device-width" />
 
         <Fragment set:html={gtmHeadHtml} />
+
+        <script is:inline>
+            (() => {
+                const getTheme = () => {
+                    if (
+                        typeof localStorage !== "undefined" &&
+                        localStorage.getItem("theme")
+                    ) {
+                        return localStorage.getItem("theme");
+                    }
+                    if (
+                        window.matchMedia("(prefers-color-scheme: light)")
+                            .matches
+                    ) {
+                        return "light";
+                    }
+                    return "dark";
+                };
+                const theme = getTheme();
+                if (theme === "light") {
+                    document.documentElement.setAttribute(
+                        "data-theme",
+                        "light",
+                    );
+                } else {
+                    document.documentElement.removeAttribute("data-theme");
+                }
+            })();
+        </script>
 
         <title>{title}</title>
         <meta name="description" content={description} />

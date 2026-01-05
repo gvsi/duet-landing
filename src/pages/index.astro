@@ -8,7 +8,7 @@ import Logos from "../components/sections/Logos.astro";
 import CategorizationShowcase from "../components/sections/CategorizationShowcase.astro";
 import DraftShowcase from "../components/sections/DraftShowcase.astro";
 import AgentChatShowcase from "../components/sections/AgentChatShowcase.astro";
-import Features from "../components/sections/Features.astro";
+// import Features from "../components/sections/Features.astro";
 import Testimonials from "../components/sections/Testimonials.astro";
 import Pricing from "../components/sections/Pricing.astro";
 import FAQ from "../components/sections/FAQ.astro";
@@ -40,7 +40,7 @@ const description =
         <CategorizationShowcase />
         <DraftShowcase />
         <AgentChatShowcase />
-        <Features />
+        <!-- <Features /> -->
         <Testimonials />
         <Pricing />
         <FAQ />
@@ -48,18 +48,3 @@ const description =
     <FinalCTA />
     <Footer />
 </BaseLayout>
-
-<style is:global>
-    :root {
-        --duet-bg: #ffffff;
-        --duet-fg: #09090b;
-        --duet-muted: #52525b; /* Zinc-600 */
-        --duet-border: #e4e4e7; /* Zinc-200 */
-        --duet-border-editorial: #d4d4d8; /* Zinc-300 */
-    }
-
-    body {
-        background: var(--duet-bg);
-        color: var(--duet-fg);
-    }
-</style>

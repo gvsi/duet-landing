@@ -84,7 +84,10 @@
                                         >$29.00 USD</strong
                                     > from Oct 24th.
                                 </p>
-                                <p class="mt-2 text-white/50 text-xs">
+                                <p
+                                    class="mt-2 text-xs"
+                                    style="color: var(--duet-muted);"
+                                >
                                     Drafting reply to accounting@...
                                 </p>
 
@@ -210,7 +213,7 @@
         line-height: 1.1;
         letter-spacing: -0.02em;
         text-wrap: balance;
-        color: #18181b; /* zinc-900 */
+        color: var(--prose-heading);
     }
 
     .agent-subtitle {
@@ -240,10 +243,10 @@
 
     /* Window */
     .window {
-        background: #121217; /* Flat Editorial BG */
+        background: var(--mockup-window-bg);
         border-radius: 4px; /* Sharper */
-        border: 1px solid var(--duet-border-editorial);
-        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--mockup-border);
+        box-shadow: var(--mockup-shadow);
         overflow: hidden;
         transform: translateY(20px);
         opacity: 0;
@@ -260,8 +263,8 @@
     /* Window Header */
     .window-header {
         padding: 12px 16px;
-        border-bottom: 1px solid var(--duet-border-editorial);
-        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid var(--mockup-border);
+        background: transparent;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -299,12 +302,12 @@
     .agent-name {
         font-size: 12px;
         font-weight: 500;
-        color: #e4e4e7;
+        color: var(--duet-fg);
     }
 
     .agent-state {
         font-size: 10px;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--duet-muted);
         display: flex;
         align-items: center;
         gap: 4px;
@@ -354,9 +357,9 @@
 
     .chat-body :global(.user-message) {
         align-self: flex-end;
-        background: rgba(255, 255, 255, 0.08); /* Neutral Grey */
+        background: var(--email-bg-1); /* Neutral Grey */
         border-radius: 4px; /* Sharper */
-        color: #fff;
+        color: var(--duet-fg);
         animation: msgSlideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
     }
 
@@ -369,7 +372,7 @@
         padding-top: 0;
         padding-bottom: 0;
         border-radius: 0;
-        color: #e4e4e7;
+        color: var(--duet-fg);
         animation: msgSlideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 2.5s forwards;
     }
 
@@ -388,8 +391,8 @@
     /* Attachment */
     .chat-body :global(.attachment-card) {
         margin-top: 16px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--email-bg-1);
+        border: 1px solid var(--mockup-border);
         border-radius: 4px;
         padding: 12px;
         display: flex;
@@ -398,17 +401,17 @@
     }
 
     .chat-body :global(.file-icon) {
-        color: #a1a1aa;
+        color: var(--duet-muted);
     }
 
     .chat-body :global(.file-name) {
-        color: #fff;
+        color: var(--duet-fg);
         font-size: 13px;
         font-weight: 500;
         font-family: var(--font-serif);
     }
     .chat-body :global(.file-size) {
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--duet-muted);
         font-size: 11px;
     }
 
@@ -437,33 +440,33 @@
         font-size: 11px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--duet-muted);
     }
 
     /* Input Area */
     .input-area {
         margin-top: auto;
         padding: 16px 20px;
-        border-top: 1px solid var(--duet-border-editorial);
+        border-top: 1px solid var(--mockup-border);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(255, 255, 255, 0.01);
+        background: transparent;
     }
 
     .input-placeholder {
         font-family: var(--font-serif);
         font-style: italic;
         font-size: 14px;
-        color: rgba(255, 255, 255, 0.3);
+        color: var(--duet-muted);
     }
 
     .send-btn {
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--duet-muted);
         transition: color 0.2s;
     }
     .send-btn:hover {
-        color: #fff;
+        color: var(--duet-fg);
     }
 
     /* Animations */
@@ -521,11 +524,11 @@
 
     .agent-showcase :global(.suggestion-chip) {
         background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid var(--mockup-border);
         border-radius: 2px;
         padding: 6px 14px;
         font-size: 12px;
-        color: #d4d4d8;
+        color: var(--duet-muted);
         cursor: pointer;
         transition: all 0.2s ease;
     }
@@ -576,8 +579,8 @@
     }
     :global(.action-btn-secondary) {
         background: transparent;
-        color: #e4e4e7;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--duet-fg);
+        border: 1px solid var(--duet-border);
         padding: 8px 16px;
         border-radius: 2px;
         font-size: 12px;
@@ -585,12 +588,12 @@
     }
     :global(.calendar-slot) {
         background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--duet-border);
         padding: 12px;
         border-radius: 2px;
         display: flex;
         justify-content: space-between;
-        color: #fff;
+        color: var(--duet-fg);
         cursor: pointer;
         width: 100%;
         transition: border-color 0.2s;
@@ -604,7 +607,28 @@
     }
     :global(.slot-duration) {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--duet-muted);
+    }
+
+    /* Refactored JS inline classes */
+    :global(.draft-preview-card) {
+        margin-top: 12px;
+        background: var(--email-bg-1);
+        border-left: 2px solid var(--duet-border);
+        padding: 12px 16px;
+    }
+    :global(.draft-preview-header) {
+        font-size: 10px;
+        color: var(--duet-muted);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    :global(.draft-preview-body) {
+        font-family: "Domine Variable", serif;
+        font-size: 14px;
+        color: var(--duet-fg);
+        line-height: 1.6;
     }
 </style>
 
@@ -691,9 +715,9 @@
                     responseHTML = `
                         <div class="message-content">
                             <p style="margin-bottom: 12px; font-size: 13px;">Here is a draft to Accounting. I've attached the invoice as requested.</p>
-                            <div class="draft-preview-card" style="margin-top: 12px; background: rgba(255,255,255,0.02); border-left: 2px solid rgba(255,255,255,0.1); padding: 12px 16px;">
-                                <div style="font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Draft: accounting@company.com</div>
-                                <div style="font-family: 'Domine Variable', serif; font-size: 14px; color: #fff; line-height: 1.6;">
+                            <div class="draft-preview-card">
+                                <div class="draft-preview-header">Draft: accounting@company.com</div>
+                                <div class="draft-preview-body">
                                     Hi Team,<br><br>
                                     Please find attached the Stripe invoice for October ($29.00).<br>
                                     Let me know if you need anything else.<br><br>

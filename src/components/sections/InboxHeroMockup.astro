@@ -11,8 +11,10 @@
             <div class="luminous-frame" aria-hidden="true">
                 <div class="luminous-border" data-animate></div>
                 <div class="luminous-glow" data-animate></div>
-                <div class="luminous-corner luminous-corner-tr" data-animate></div>
-                <div class="luminous-corner luminous-corner-bl" data-animate></div>
+                <div class="luminous-corner luminous-corner-tr" data-animate>
+                </div>
+                <div class="luminous-corner luminous-corner-bl" data-animate>
+                </div>
             </div>
 
             <div class="window" data-animate>
@@ -38,23 +40,22 @@
                             <path
                                 fill="#4285f4"
                                 d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"
-                            />
+                            ></path>
                             <path
                                 fill="#34a853"
                                 d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"
-                            />
+                            ></path>
                             <path
                                 fill="#fbbc04"
                                 d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"
-                            />
+                            ></path>
                             <path
                                 fill="#ea4335"
-                                d="M72 74V48l24 18 24-18v26L96 92"
-                            />
+                                d="M72 74V48l24 18 24-18v26L96 92"></path>
                             <path
                                 fill="#c5221f"
                                 d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"
-                            />
+                            ></path>
                         </svg>
                         <span>Gmail</span>
                     </div>
@@ -72,7 +73,7 @@
                             >
                                 <path
                                     d="M18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
-                                />
+                                ></path>
                             </svg>
                         </div>
 
@@ -86,7 +87,7 @@
                             >
                                 <path
                                     d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM10 18C5.6 18 2 14.4 2 10C2 5.6 5.6 2 10 2C14.4 2 18 5.6 18 10C18 14.4 14.4 18 10 18ZM10.5 5H9V11L14.2 14.2L15 12.9L10.5 10.2V5Z"
-                                />
+                                ></path>
                             </svg>
                         </div>
 
@@ -100,7 +101,7 @@
                             >
                                 <path
                                     d="M14 0H2C0.9 0 0 0.9 0 2V20L8 16L16 20V2C16 0.9 15.1 0 14 0ZM14 17L8 14.2L2 17V2H14V17Z"
-                                />
+                                ></path>
                             </svg>
                         </div>
                     </div>
@@ -114,7 +115,8 @@
                                     <span class="email-from email-from-strong">
                                         Alex Rivera
                                     </span>
-                                    <span class="pill pill-red">To Respond</span>
+                                    <span class="pill pill-red">To Respond</span
+                                    >
                                     <span class="email-time">3:42 PM</span>
                                 </div>
 
@@ -123,8 +125,9 @@
                                 </div>
 
                                 <div class="email-preview">
-                                    Hey! Wanted to check in on the launch assets. Are
-                                    we still on track for next week...
+                                    Hey! Wanted to check in on the launch
+                                    assets. Are we still on track for next
+                                    week...
                                 </div>
 
                                 <div class="autodraft">
@@ -133,9 +136,10 @@
                                         <span class="autodraft-dot"></span>
                                     </div>
                                     <div class="autodraft-text">
-                                        Hi Alex! Yes, we're on track. The design team
-                                        finished the assets yesterday and I'll send
-                                        over the final files by EOD today.
+                                        Hi Alex! Yes, we're on track. The design
+                                        team finished the assets yesterday and
+                                        I'll send over the final files by EOD
+                                        today.
                                     </div>
                                 </div>
                             </div>
@@ -153,11 +157,13 @@
                                     </span>
                                 </div>
 
-                                <div class="email-subject">Quick sync this afternoon?</div>
+                                <div class="email-subject">
+                                    Quick sync this afternoon?
+                                </div>
 
                                 <div class="email-preview email-preview-dim">
-                                    Would love to catch up on the roadmap updates. Are
-                                    you free around 4pm...
+                                    Would love to catch up on the roadmap
+                                    updates. Are you free around 4pm...
                                 </div>
                             </div>
                         </div>
@@ -190,7 +196,9 @@
                                     <span class="email-from email-from-faint">
                                         Shopify
                                     </span>
-                                    <span class="pill pill-lavender">Promotions</span>
+                                    <span class="pill pill-lavender"
+                                        >Promotions</span
+                                    >
                                     <span class="email-time email-time-dim">
                                         Yesterday
                                     </span>
@@ -224,8 +232,9 @@
         justify-content: center;
         padding: 10px 40px;
         box-sizing: border-box;
-        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-            system-ui, sans-serif;
+        font-family:
+            -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui,
+            sans-serif;
         contain: layout style;
     }
 
@@ -289,22 +298,21 @@
         gap: 8px;
         padding: 10px 18px;
         border-radius: 20px;
-        background: linear-gradient(
-            135deg,
-            rgba(30, 30, 35, 0.95) 0%,
-            rgba(24, 24, 28, 0.98) 100%
-        );
+        padding: 10px 18px;
+        border-radius: 20px;
+        background: var(--mockup-window-bg);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-            0 0 0 1px rgba(255, 255, 255, 0.08);
+        box-shadow: var(--mockup-shadow);
+        border: 1px solid var(--mockup-border);
         font-size: 13px;
         font-weight: 500;
-        color: #e4e4e7;
+        color: var(--duet-fg);
         letter-spacing: -0.01em;
         opacity: 0;
         transform: scale(0.9);
-        animation: calloutIn 0.5s cubic-bezier(0.23, 1, 0.32, 1)
+        animation:
+            calloutIn 0.5s cubic-bezier(0.23, 1, 0.32, 1)
                 var(--callout-in-delay) forwards,
             calloutFloat 4s ease-in-out var(--callout-float-delay) infinite;
         will-change: transform, opacity;
@@ -417,7 +425,8 @@
             rgba(69, 48, 234, 0.6) 75%,
             rgba(116, 194, 255, 0.5) 100%
         );
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
             linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -431,7 +440,8 @@
         inset: -4px;
         border-radius: 30px;
         background: transparent;
-        box-shadow: 0 0 20px 4px rgba(69, 48, 234, 0.15),
+        box-shadow:
+            0 0 20px 4px rgba(69, 48, 234, 0.15),
             0 0 40px 8px rgba(116, 194, 255, 0.08),
             inset 0 0 20px 4px rgba(69, 48, 234, 0.05);
         opacity: 0.3;
@@ -492,17 +502,13 @@
 
     .window {
         width: 100%;
-        background: linear-gradient(
-            180deg,
-            rgba(28, 28, 32, 0.95) 0%,
-            rgba(20, 20, 24, 0.98) 100%
-        );
+        background: var(--mockup-window-bg);
         backdrop-filter: blur(40px);
         -webkit-backdrop-filter: blur(40px);
         border-radius: 16px;
-        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4),
-            0 16px 32px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(255, 255, 255, 0.08);
+        box-shadow:
+            var(--mockup-shadow),
+            0 0 0 1px var(--mockup-border);
         overflow: hidden;
         position: relative;
         z-index: 1;
@@ -520,7 +526,8 @@
     @media (max-width: 809px) {
         .window {
             border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.08);
             transform: translateY(16px);
         }
@@ -535,7 +542,7 @@
         background: linear-gradient(
             90deg,
             transparent,
-            rgba(255, 255, 255, 0.12),
+            var(--mockup-border),
             transparent
         );
         pointer-events: none;
@@ -543,13 +550,13 @@
 
     .window-header {
         height: 48px;
-        background: rgba(255, 255, 255, 0.02);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: transparent;
+        border-bottom: 1px solid var(--mockup-border);
         display: flex;
         align-items: center;
         padding: 0 18px;
         position: relative;
-        color: #71717a;
+        color: var(--duet-muted);
     }
 
     @media (max-width: 1199px) {
@@ -645,7 +652,7 @@
         font-size: 12px;
         font-weight: 500;
         letter-spacing: -0.01em;
-        color: #71717a;
+        color: var(--duet-muted);
     }
 
     @media (max-width: 1199px) {
@@ -701,8 +708,8 @@
 
     .sidebar {
         width: 58px;
-        background: rgba(255, 255, 255, 0.02);
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        background: transparent;
+        border-right: 1px solid var(--mockup-border);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -765,20 +772,20 @@
     .email-1 {
         --delay: 0.3s;
         --final-opacity: 1;
-        background: rgba(59, 130, 246, 0.04);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        background: var(--email-bg-1);
+        border-bottom: 1px solid var(--email-border);
     }
 
     .email-2 {
         --delay: 0.42s;
         --final-opacity: 0.55;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid var(--mockup-border);
     }
 
     .email-3 {
         --delay: 0.54s;
         --final-opacity: 0.4;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid var(--mockup-border);
     }
 
     .email-4 {
@@ -874,14 +881,14 @@
     .email-from {
         font-size: 13px;
         font-weight: 500;
-        color: #a1a1aa;
+        color: var(--duet-muted);
         letter-spacing: -0.01em;
     }
 
     .email-from-strong {
         font-size: 14px;
         font-weight: 600;
-        color: #fafafa;
+        color: var(--duet-fg);
     }
 
     .email-from-dim {
@@ -915,7 +922,7 @@
     .email-time {
         margin-left: auto;
         font-size: 11px;
-        color: #52525b;
+        color: var(--duet-muted);
         font-weight: 500;
     }
 
@@ -967,7 +974,8 @@
         background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
         color: white;
         box-shadow: 0 2px 8px rgba(248, 113, 113, 0.2);
-        animation: pillIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) var(--pill-delay)
+        animation:
+            pillIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) var(--pill-delay)
                 forwards,
             pillGlow 0.6s ease-in-out 1.1s 1;
     }
@@ -1019,14 +1027,14 @@
     .email-subject {
         font-size: 12px;
         font-weight: 500;
-        color: #71717a;
+        color: var(--duet-muted);
         letter-spacing: -0.01em;
         margin-bottom: 4px;
     }
 
     .email-subject-strong {
         font-size: 13px;
-        color: #d4d4d8;
+        color: var(--duet-fg);
         margin-bottom: 5px;
     }
 
@@ -1063,7 +1071,7 @@
 
     .email-preview {
         font-size: 12px;
-        color: #71717a;
+        color: var(--duet-muted);
         line-height: 1.5;
         margin-bottom: 14px;
     }
@@ -1123,7 +1131,7 @@
 
     .autodraft-text {
         font-size: 12px;
-        color: #d6d3d1;
+        color: var(--duet-fg);
         line-height: 1.5;
         overflow: hidden;
     }

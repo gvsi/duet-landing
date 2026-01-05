@@ -17,18 +17,19 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             class="mx-auto flex w-full max-w-3xl flex-col items-center text-center"
         >
             <div
-                class="badge mb-10 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50/50 px-[18px] py-[10px] text-sm text-zinc-600 backdrop-blur transition-colors hover:bg-zinc-100 hover:border-zinc-300"
+                style="background-color: var(--badge-bg); border-color: var(--badge-border); color: var(--badge-text);"
+                class="badge mb-10 inline-flex items-center gap-2 rounded-full border px-[18px] py-[10px] text-sm backdrop-blur transition-colors hover:bg-zinc-100/10"
             >
                 <span
                     class="online-dot h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"
                 ></span>
-                <span class="font-sans font-medium text-zinc-900"
+                <span class="font-sans font-medium"
                     >Join 20,000+ professionals</span
                 >
             </div>
 
             <div class="mb-12">
-                <h1 class="headline text-zinc-900">
+                <h1 class="headline" style="color: var(--prose-heading);">
                     <span>Your </span>
                     <span class="headline-highlight">chief of staff</span>
                     <span> for</span>
@@ -56,7 +57,8 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             </div>
 
             <p
-                class="mb-5 max-w-xl font-sans text-pretty text-[17px] leading-[1.5] tracking-[0.01em] text-zinc-600"
+                class="mb-5 max-w-xl font-sans text-pretty text-[17px] leading-[1.5] tracking-[0.01em]"
+                style="color: var(--prose-text);"
             >
                 Save 4+ hours every week on email
             </p>
@@ -119,7 +121,8 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             </div>
 
             <div
-                class="mt-4 flex items-center justify-center gap-3 text-sm tracking-[0.01em] text-zinc-500"
+                class="mt-4 flex items-center justify-center gap-3 text-sm tracking-[0.01em]"
+                style="color: var(--duet-muted);"
             >
                 <span>Free 14-day trial</span>
                 <span class="h-1 w-1 rounded-full bg-zinc-300"></span>
@@ -220,7 +223,7 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
         font-weight: 500;
         line-height: 1.15;
         letter-spacing: -0.02em;
-        color: #18181b; /* zinc-900 */
+        color: var(--prose-heading);
         opacity: 0;
         transform: translateY(20px);
         filter: blur(4px);

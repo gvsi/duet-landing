@@ -256,9 +256,9 @@ const plans: Plan[] = [
         justify-content: center;
         padding: 8px 18px;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(0, 0, 0, 0.22);
-        color: rgb(173, 173, 173);
+        border: 1px solid var(--badge-border);
+        background: var(--badge-bg);
+        color: var(--badge-text);
         font-family:
             "Manrope Variable",
             ui-sans-serif,
@@ -298,7 +298,7 @@ const plans: Plan[] = [
         font-weight: 500;
         line-height: 48px;
         letter-spacing: -0.8px;
-        color: #18181b; /* zinc-900 */
+        color: var(--prose-heading);
         text-wrap: balance;
         max-width: 720px;
     }
@@ -326,7 +326,7 @@ const plans: Plan[] = [
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-        color: #52525b; /* zinc-600 */
+        color: var(--prose-text);
         max-width: 520px;
         text-wrap: pretty;
     }
@@ -353,8 +353,8 @@ const plans: Plan[] = [
         grid-template-columns: 1fr 1fr;
         padding: 4px;
         border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
@@ -381,7 +381,7 @@ const plans: Plan[] = [
         font-size: 14px;
         font-weight: 600;
         letter-spacing: -0.01em;
-        color: rgba(255, 255, 255, 0.72);
+        color: var(--duet-muted);
         cursor: pointer;
         user-select: none;
         transition: color 0.2s ease;
@@ -389,7 +389,7 @@ const plans: Plan[] = [
 
     .pricing-toggle__label:focus-visible {
         outline: none;
-        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+        box-shadow: 0 0 0 2px var(--duet-accent);
     }
 
     .pricing-toggle__badge {
@@ -401,9 +401,9 @@ const plans: Plan[] = [
         font-size: 12px;
         font-weight: 700;
         letter-spacing: -0.01em;
-        color: rgba(255, 255, 255, 0.92);
-        background: rgba(69, 48, 234, 0.35);
-        border: 1px solid rgba(116, 194, 255, 0.25);
+        color: #fff;
+        background: var(--duet-accent);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .pricing-toggle__indicator {
@@ -413,17 +413,23 @@ const plans: Plan[] = [
         left: 4px;
         width: calc(50% - 4px);
         border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.14);
-        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: var(--badge-border);
+        border: 1px solid var(--badge-border);
         transition: transform 220ms ease;
     }
 
+    :global(html[data-theme="light"]) .pricing-toggle__indicator {
+        background: #fff;
+        border-color: #e4e4e7;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     #billing-annual:checked ~ .pricing-toggle label[for="billing-annual"] {
-        color: rgba(255, 255, 255, 0.95);
+        color: var(--prose-heading);
     }
 
     #billing-monthly:checked ~ .pricing-toggle label[for="billing-monthly"] {
-        color: rgba(255, 255, 255, 0.95);
+        color: var(--prose-heading);
     }
 
     #billing-monthly:checked ~ .pricing-toggle .pricing-toggle__indicator {
@@ -452,7 +458,7 @@ const plans: Plan[] = [
         gap: 18px;
         padding: 24px;
         border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        border: 1px solid var(--mockup-border);
         background:
             radial-gradient(
                 55% 45% at 50% 0%,
@@ -464,6 +470,13 @@ const plans: Plan[] = [
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
         overflow: hidden;
         position: relative;
+    }
+
+    :global(html[data-theme="light"]) .pricing-card {
+        background: #fff;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
     .pricing-card::before {
@@ -484,6 +497,11 @@ const plans: Plan[] = [
         mask-composite: exclude;
         pointer-events: none;
         opacity: 0.65;
+        display: block;
+    }
+
+    :global(html[data-theme="light"]) .pricing-card::before {
+        display: none;
     }
 
     .pricing-card--featured {
@@ -491,6 +509,13 @@ const plans: Plan[] = [
         box-shadow:
             0 30px 80px rgba(69, 48, 234, 0.22),
             0 20px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    :global(html[data-theme="light"]) .pricing-card--featured {
+        border-color: var(--duet-accent);
+        box-shadow:
+            0 20px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
     .pricing-card--featured::after {
@@ -504,6 +529,11 @@ const plans: Plan[] = [
         );
         pointer-events: none;
         opacity: 0.6;
+        display: block;
+    }
+
+    :global(html[data-theme="light"]) .pricing-card--featured::after {
+        display: none;
     }
 
     .pricing-card__header {
@@ -534,7 +564,7 @@ const plans: Plan[] = [
         font-size: 15px;
         font-weight: 700;
         letter-spacing: -0.01em;
-        color: rgba(255, 255, 255, 0.92);
+        color: var(--prose-heading);
     }
 
     .pricing-card__badge {
@@ -544,9 +574,9 @@ const plans: Plan[] = [
         height: 28px;
         padding: 0 12px;
         border-radius: 9999px;
-        background: rgba(116, 194, 255, 0.14);
-        border: 1px solid rgba(116, 194, 255, 0.22);
-        color: rgba(255, 255, 255, 0.9);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
+        color: var(--badge-text);
         font-family:
             "Manrope Variable",
             ui-sans-serif,
@@ -579,7 +609,7 @@ const plans: Plan[] = [
             sans-serif;
         font-size: 14px;
         line-height: 20px;
-        color: rgba(173, 173, 173, 1);
+        color: var(--prose-text);
         text-wrap: pretty;
     }
 
@@ -603,7 +633,8 @@ const plans: Plan[] = [
 
     .pricing-card__currency {
         font-size: 18px;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--prose-text);
+        opacity: 0.8;
         transform: translateY(-2px);
     }
 
@@ -611,7 +642,7 @@ const plans: Plan[] = [
         font-size: 44px;
         font-weight: 700;
         letter-spacing: -0.04em;
-        color: rgba(255, 255, 255, 0.96);
+        color: var(--prose-heading);
         line-height: 1;
     }
 
@@ -619,14 +650,14 @@ const plans: Plan[] = [
         font-size: 14px;
         font-weight: 600;
         letter-spacing: -0.01em;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--duet-muted);
     }
 
     .pricing-card__price-label {
         font-size: 44px;
         font-weight: 700;
         letter-spacing: -0.04em;
-        color: rgba(255, 255, 255, 0.96);
+        color: var(--prose-heading);
         line-height: 1;
     }
 
@@ -645,7 +676,7 @@ const plans: Plan[] = [
             sans-serif;
         font-size: 13px;
         line-height: 18px;
-        color: rgba(144, 142, 142, 1);
+        color: var(--duet-muted);
     }
 
     .pricing-card__body {
@@ -673,7 +704,7 @@ const plans: Plan[] = [
         font-size: 13px;
         font-weight: 600;
         letter-spacing: -0.01em;
-        color: rgba(214, 215, 214, 1);
+        color: var(--duet-muted);
     }
 
     .pricing-card__features {
@@ -702,7 +733,7 @@ const plans: Plan[] = [
             sans-serif;
         font-size: 14px;
         line-height: 20px;
-        color: rgba(255, 255, 255, 0.82);
+        color: var(--prose-text);
     }
 
     .pricing-card__check {
@@ -712,10 +743,15 @@ const plans: Plan[] = [
         border-radius: 6px;
         display: grid;
         place-items: center;
-        color: rgba(116, 194, 255, 0.95);
-        background: rgba(116, 194, 255, 0.08);
+        color: var(--duet-accent);
+        background: rgba(116, 194, 255, 0.08); /* This could be revisited */
         border: 1px solid rgba(116, 194, 255, 0.18);
         margin-top: 1px;
+    }
+
+    :global(html[data-theme="light"]) .pricing-card__check {
+        background: #eef2ff;
+        border-color: #c7d2fe;
     }
 
     .pricing-card__footer {
@@ -733,9 +769,9 @@ const plans: Plan[] = [
         width: 100%;
         height: 46px;
         border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        color: rgba(255, 255, 255, 0.92);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
+        color: var(--prose-heading);
         font-family:
             "Manrope Variable",
             ui-sans-serif,
@@ -758,8 +794,7 @@ const plans: Plan[] = [
     }
 
     .pricing-card__cta:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.18);
+        background: var(--badge-border);
         transform: translateY(-1px);
     }
 
@@ -770,7 +805,7 @@ const plans: Plan[] = [
     .pricing-card--featured .pricing-card__cta {
         background: linear-gradient(135deg, #74c2ff 0%, #4530ea 100%);
         border-color: rgba(255, 255, 255, 0.14);
-        color: #07071a;
+        color: #fff;
         box-shadow: 0 18px 40px rgba(69, 48, 234, 0.28);
     }
 
@@ -795,7 +830,7 @@ const plans: Plan[] = [
             sans-serif;
         font-size: 13px;
         line-height: 18px;
-        color: rgba(144, 142, 142, 1);
+        color: var(--duet-muted);
     }
 
     .price[data-billing="annual"] {

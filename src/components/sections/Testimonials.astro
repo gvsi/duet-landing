@@ -293,9 +293,9 @@ const logoByName = new Map(
         justify-content: center;
         padding: 8px 18px;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(0, 0, 0, 0.22);
-        color: rgb(173, 173, 173);
+        border: 1px solid var(--badge-border);
+        background: var(--badge-bg);
+        color: var(--badge-text);
         font-family:
             "Manrope Variable",
             ui-sans-serif,
@@ -335,7 +335,9 @@ const logoByName = new Map(
         font-weight: 400;
         line-height: 48px;
         letter-spacing: -0.8px;
-        color: #18181b; /* zinc-900 */
+        line-height: 48px;
+        letter-spacing: -0.8px;
+        color: var(--prose-heading);
         text-wrap: balance;
         max-width: 720px;
     }
@@ -363,7 +365,8 @@ const logoByName = new Map(
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
-        color: #52525b; /* zinc-600 */
+        line-height: 24px;
+        color: var(--prose-text);
         max-width: 520px;
         text-wrap: pretty;
     }
@@ -468,13 +471,9 @@ const logoByName = new Map(
         padding: 22px 22px 18px;
         position: relative;
         overflow: hidden;
-        background: radial-gradient(
-            111.294% 44% at 50% 0%,
-            rgba(20, 20, 20, 0.85) 0%,
-            rgba(0, 0, 0, 0.72) 80%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        background: var(--mockup-window-bg);
+        border: 1px solid var(--mockup-border);
+        box-shadow: var(--mockup-shadow);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -487,10 +486,7 @@ const logoByName = new Map(
 
     @media (hover: hover) {
         .testimonial-card__inner:hover {
-            border-color: rgba(255, 255, 255, 0.14);
-            box-shadow:
-                0 0 0 4px rgba(255, 255, 255, 0.06),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border-color: var(--prose-heading);
             transform: translateY(-1px);
         }
     }
@@ -512,13 +508,13 @@ const logoByName = new Map(
         font-weight: 400;
         line-height: 24px;
         letter-spacing: -0.01em;
-        color: rgba(173, 173, 173, 1);
+        color: var(--prose-text);
         text-wrap: pretty;
     }
 
     @media (hover: hover) {
         .testimonial-card__inner:hover .testimonial-card__quote {
-            color: rgba(226, 226, 226, 1);
+            color: var(--prose-heading);
         }
     }
 
@@ -528,7 +524,7 @@ const logoByName = new Map(
         justify-content: space-between;
         gap: 12px;
         padding-top: 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid var(--mockup-border);
     }
 
     .testimonial-card__author {
@@ -545,9 +541,9 @@ const logoByName = new Map(
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.86);
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
+        color: var(--badge-text);
         font-size: 14px;
         font-weight: 600;
         letter-spacing: -0.01em;
@@ -569,7 +565,7 @@ const logoByName = new Map(
         font-weight: 600;
         line-height: 20px;
         letter-spacing: -0.01em;
-        color: rgba(214, 215, 214, 1);
+        color: var(--prose-heading);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -581,16 +577,19 @@ const logoByName = new Map(
         font-weight: 500;
         line-height: 18px;
         letter-spacing: -0.01em;
-        color: rgba(144, 142, 142, 1);
+        color: var(--duet-muted);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .testimonial-card__logo {
-        color: rgba(255, 255, 255, 0.75);
-        opacity: 0.75;
-        transition: opacity 220ms ease;
+        color: var(--duet-muted);
+        opacity: 0.8;
+        filter: grayscale(100%);
+        transition:
+            opacity 220ms ease,
+            color 220ms ease;
         flex: none;
     }
 
@@ -604,6 +603,7 @@ const logoByName = new Map(
     @media (hover: hover) {
         .testimonial-card__inner:hover .testimonial-card__logo {
             opacity: 1;
+            color: var(--prose-heading);
         }
     }
 </style>

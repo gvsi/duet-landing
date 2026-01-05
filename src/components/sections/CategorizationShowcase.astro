@@ -304,8 +304,9 @@
         font-weight: 500;
         line-height: 1.1;
         letter-spacing: -0.02em;
+        letter-spacing: -0.02em;
         text-wrap: balance;
-        color: #18181b; /* zinc-900 */
+        color: var(--prose-heading);
     }
 
     .categorization-subtitle {
@@ -314,7 +315,8 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 1.7;
-        color: var(--duet-muted);
+        line-height: 1.7;
+        color: var(--prose-text);
         max-width: 320px;
     }
 
@@ -339,12 +341,10 @@
     /* Window */
     .window {
         width: 100%;
-        background: #121217; /* Flat Editorial BG */
+        background: var(--mockup-window-bg);
         border-radius: 4px; /* Sharper */
-        border: 1px solid var(--duet-border-editorial);
-        box-shadow:
-            0 50px 100px rgba(0, 0, 0, 0.5),
-            0 20px 40px rgba(0, 0, 0, 0.35);
+        border: 1px solid var(--mockup-border);
+        box-shadow: var(--mockup-shadow);
         overflow: hidden;
         position: relative;
         opacity: 0;
@@ -362,12 +362,12 @@
     /* Window Header */
     .window-header {
         height: 52px;
-        background: rgba(255, 255, 255, 0.02);
-        border-bottom: 1px solid var(--duet-border-editorial);
+        background: transparent;
+        border-bottom: 1px solid var(--mockup-border);
         display: flex;
         align-items: center;
         padding: 0 20px;
-        color: #71717a;
+        color: var(--duet-muted);
     }
 
     .traffic {
@@ -406,7 +406,7 @@
         gap: 8px;
         font-size: 12px;
         font-weight: 500;
-        color: #71717a;
+        color: var(--duet-muted);
     }
 
     /* Emails */
@@ -421,7 +421,7 @@
         display: flex;
         gap: 16px;
         padding: 16px 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid var(--email-border);
         opacity: 0;
         transform: translateY(20px);
         transition:
@@ -437,7 +437,7 @@
     .email-1 {
         --delay: 0.3s;
         --final-opacity: 1;
-        background: rgba(255, 255, 255, 0.02);
+        background: var(--email-bg-1);
     }
     .email-2 {
         --delay: 0.5s;
@@ -503,30 +503,30 @@
     .email-from {
         font-size: 13px;
         font-weight: 500;
-        color: #a1a1aa;
+        color: var(--duet-muted);
     }
     .email-from-strong {
-        color: #fff;
+        color: var(--duet-fg);
         font-weight: 600;
     }
 
     .email-time {
         margin-left: auto;
         font-size: 12px;
-        color: #52525b;
+        color: var(--duet-muted);
     }
 
     .email-subject {
         font-size: 13px;
-        color: #a1a1aa;
+        color: var(--duet-muted);
     }
     .email-subject-strong {
-        color: #e4e4e7;
+        color: var(--duet-fg);
     }
 
     .email-preview {
         font-size: 12px;
-        color: #71717a;
+        color: var(--duet-muted);
         margin-top: 2px;
         display: -webkit-box;
         -webkit-line-clamp: 1;

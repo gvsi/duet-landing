@@ -5,22 +5,127 @@
 
 @layer base {
   :root {
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  :root {
     --duet-bg: #08081a;
     --duet-fg: #ffffff;
     --duet-muted: #a1a1aa;
-    --duet-border: rgba(255, 255, 255, 0.08); /* Legacy, keep for now */
+    --duet-border: rgba(255, 255, 255, 0.08);
+    /* Legacy, keep for now */
     --duet-border-editorial: rgba(255, 255, 255, 0.12);
     --duet-accent: #4530ea;
     --duet-accent-2: #74c2ff;
-    
+
+    /* Semantics - Component Specific (Dark) */
+    --badge-bg: rgba(255, 255, 255, 0.08);
+    /* zinc-50/50 equivalent adjustment for dark */
+    --badge-text: rgba(255, 255, 255, 0.9);
+    --badge-border: rgba(255, 255, 255, 0.1);
+
+    --mockup-window-bg: linear-gradient(180deg, rgba(28, 28, 32, 0.95) 0%, rgba(20, 20, 24, 0.98) 100%);
+    --mockup-border: rgba(255, 255, 255, 0.08);
+    --mockup-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.3);
+
+    --email-bg-1: rgba(59, 130, 246, 0.04);
+    --email-border: rgba(255, 255, 255, 0.04);
+
     /* Editorial Palette */
     --font-serif: "Domine Variable", ui-serif, Georgia, serif;
     --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+
+    /* Default (Dark) Hero Background */
+    --hero-bg-image: none;
+    --hero-bg-size: auto;
+    --hero-bg-repeat: no-repeat;
+
+    /* Semantic Colors (Dark) */
+    --prose-text: rgba(173, 173, 173, 1);
+    --prose-heading: rgba(255, 255, 255, 0.97);
+    --nav-bg: rgba(0, 0, 0, 0.1);
+    --nav-border: rgba(255, 255, 255, 0.1);
+    --nav-text: rgba(255, 255, 255, 0.72);
+    --nav-text-hover: rgba(255, 255, 255, 0.95);
+    --nav-cta-bg: rgba(255, 255, 255, 0.06);
+    --nav-cta-border: rgba(255, 255, 255, 0.12);
+    --nav-cta-text: rgba(255, 255, 255, 0.92);
+    --nav-mobile-bg: rgba(0, 0, 0, 0.863);
+  }
+
+  html[data-theme="light"] {
+    --duet-bg: #ffffff;
+    --duet-fg: #0f172a;
+    --duet-muted: #64748b;
+    --duet-border: rgba(0, 0, 0, 0.08);
+    --duet-border-editorial: rgba(0, 0, 0, 0.12);
+    --duet-accent: #4338ca;
+    --duet-accent-2: #2563eb;
+
+    /* Light Hero Background */
+    --hero-bg-image: url("/hero-texture-5-3.jpg");
+    --hero-bg-repeat: repeat-y;
+    --hero-bg-size: 100%;
+
+    /* Semantic Colors (Light) */
+    --prose-text: #4b5563;
+    /* gray-600 */
+    --prose-heading: #111827;
+    /* gray-900 */
+    --nav-bg: rgba(255, 255, 255, 0.7);
+    --nav-border: rgba(0, 0, 0, 0.06);
+    --nav-text: #4b5563;
+    --nav-text-hover: #111827;
+    --nav-cta-bg: rgba(0, 0, 0, 0.04);
+    --nav-cta-border: rgba(0, 0, 0, 0.1);
+    --nav-cta-text: #111827;
+    --nav-mobile-bg: rgba(255, 255, 255, 0.95);
+
+    /* Semantics - Component Specific (Light) */
+    --badge-bg: rgba(255, 255, 255, 0.6);
+    --badge-text: #4b5563;
+    /* zinc-600 */
+    --badge-border: #e4e4e7;
+    /* zinc-200 */
+
+    --mockup-window-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 250, 0.98) 100%);
+    --mockup-border: rgba(0, 0, 0, 0.06);
+    --mockup-shadow: 0 40px 80px rgba(0, 0, 0, 0.12), 0 16px 32px rgba(0, 0, 0, 0.08);
+
+    --email-bg-1: rgba(59, 130, 246, 0.08);
+    --email-border: rgba(0, 0, 0, 0.05);
+
+    /* Prose Code Overrides */
+    --code-bg: rgba(0, 0, 0, 0.05);
+    --code-text: #111827;
+    --code-border: rgba(0, 0, 0, 0.1);
+    --pre-bg: #f4f4f5;
+    /* zinc-100 */
   }
 
   html {
     color-scheme: dark;
     background: var(--duet-bg);
+  }
+
+  @media (min-width: 768px) {
+    html {
+      zoom: 1.1;
+    }
+
+    /* Fallback for Firefox */
+    @supports not (zoom: 1) {
+      html {
+        transform: scale(1.1);
+        transform-origin: top left;
+        width: 90.90909%;
+        height: 90.90909%;
+      }
+    }
   }
 
   body {
@@ -43,13 +148,13 @@
     font-size: 15px;
     line-height: 1.75;
     letter-spacing: -0.01em;
-    color: rgba(173, 173, 173, 1);
+    color: var(--prose-text);
     text-wrap: pretty;
   }
 
   .duet-prose :where(h1, h2, h3) {
     margin: 0;
-    color: rgba(255, 255, 255, 0.97);
+    color: var(--prose-heading);
     text-wrap: balance;
   }
 
@@ -78,7 +183,7 @@
     margin: 1em 0 0;
   }
 
-  .duet-prose :where(h1, h2, h3) + :where(p) {
+  .duet-prose :where(h1, h2, h3)+ :where(p) {
     margin-top: 0.65em;
   }
 
@@ -100,7 +205,7 @@
   }
 
   .duet-prose :where(li)::marker {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--duet-muted);
   }
 
   .duet-prose :where(a) {
@@ -112,17 +217,17 @@
   }
 
   .duet-prose :where(a:hover) {
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--prose-heading);
   }
 
   .duet-prose :where(strong) {
-    color: rgba(255, 255, 255, 0.93);
+    color: var(--prose-heading);
     font-weight: 650;
   }
 
   .duet-prose :where(hr) {
     border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--duet-border-editorial);
     margin: 2em 0;
   }
 
@@ -132,17 +237,19 @@
     font-size: 0.95em;
     padding: 0.15em 0.4em;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.06);
-    color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    border: 1px solid var(--code-border, rgba(255, 255, 255, 0.1));
+    background: var(--code-bg, rgba(255, 255, 255, 0.06));
+    color: var(--code-text, rgba(255, 255, 255, 0.9));
   }
 
   .duet-prose :where(pre) {
     overflow-x: auto;
     padding: 16px;
     border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.35);
+    border-radius: 14px;
+    border: 1px solid var(--code-border, rgba(255, 255, 255, 0.1));
+    background: var(--pre-bg, rgba(0, 0, 0, 0.35));
   }
 
   .duet-prose :where(pre code) {
@@ -155,7 +262,7 @@
   .duet-prose :where(blockquote) {
     margin: 1.5em 0 0;
     padding-left: 14px;
-    border-left: 2px solid rgba(255, 255, 255, 0.12);
-    color: rgba(214, 215, 214, 1);
+    border-left: 2px solid var(--duet-border-editorial);
+    color: var(--prose-text);
   }
 }
