@@ -534,50 +534,151 @@
         overflow: hidden;
     }
 
-    /* Pills - Refined */
+    /* Pills - with staged animation */
     .pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         font-size: 10px;
-        padding: 2px 6px;
-        border-radius: 2px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
+        padding: 4px 10px;
+        border-radius: 6px;
+        line-height: 1;
+        white-space: nowrap;
+        opacity: 0;
+        transform: scale(0);
+        filter: blur(4px);
+        transition:
+            opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1) var(--pill-delay, 2s),
+            transform 0.5s cubic-bezier(0.23, 1, 0.32, 1) var(--pill-delay, 2s),
+            filter 0.5s cubic-bezier(0.23, 1, 0.32, 1) var(--pill-delay, 2s);
+    }
+
+    .in-view .pill {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
     }
 
     .pill-red {
+        --pill-delay: 2s;
+        --pill-glow-color: rgba(239, 68, 68, 0.25);
+        --pill-glow-color-intense: rgba(239, 68, 68, 0.5);
         background: rgba(239, 68, 68, 0.15);
         color: #fca5a5;
     }
+
+    :global(html[data-theme="light"]) .pill-red {
+        --pill-glow-color: rgba(220, 38, 38, 0.2);
+        --pill-glow-color-intense: rgba(220, 38, 38, 0.4);
+        background: rgba(220, 38, 38, 0.12);
+        color: #dc2626;
+    }
+
+    .in-view .pill-red {
+        animation: pillGlow 0.8s ease-in-out 2.7s 1;
+    }
+
     .pill-blue {
+        --pill-delay: 2.35s;
         background: rgba(59, 130, 246, 0.15);
         color: #93c5fd;
     }
+
+    :global(html[data-theme="light"]) .pill-blue {
+        background: rgba(37, 99, 235, 0.12);
+        color: #2563eb;
+    }
+
     .pill-amber {
+        --pill-delay: 2.7s;
         background: rgba(212, 174, 94, 0.15);
         color: #fcd34d;
     }
+
+    :global(html[data-theme="light"]) .pill-amber {
+        background: rgba(180, 130, 20, 0.12);
+        color: #b45309;
+    }
+
     .pill-lavender {
+        --pill-delay: 3.05s;
         background: rgba(167, 139, 250, 0.15);
         color: #c4b5fd;
+    }
+
+    :global(html[data-theme="light"]) .pill-lavender {
+        background: rgba(124, 58, 237, 0.12);
+        color: #7c3aed;
+    }
+
+    .email-5 .pill-lavender {
+        --pill-delay: 3.4s;
+    }
+
+    /* Keyframes */
+    @keyframes pillGlow {
+        0%,
+        100% {
+            box-shadow: 0 2px 10px var(--pill-glow-color, rgba(239, 68, 68, 0.25));
+        }
+        50% {
+            box-shadow: 0 2px 20px var(--pill-glow-color-intense, rgba(239, 68, 68, 0.5));
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .window {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .email {
+            opacity: var(--final-opacity) !important;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        .pill {
+            opacity: 1 !important;
+            transform: none !important;
+            filter: none !important;
+            transition: none !important;
+            animation: none !important;
+        }
+
+        .in-view .pill-red {
+            animation: none !important;
+        }
     }
 </style>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const section = document.querySelector("[data-categorization-section]");
-        if (!section) return;
+    const section = document.querySelector("[data-categorization-section]");
+    if (section) {
+        const prefersReducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)",
+        ).matches;
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("in-view");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.3 },
-        );
-        observer.observe(section);
-    });
+        if (prefersReducedMotion) {
+            section.classList.add("in-view");
+        } else {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("in-view");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.3 },
+            );
+            observer.observe(section);
+        }
+    }
 </script>
