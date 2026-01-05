@@ -108,8 +108,12 @@
   }
 
   html {
-    color-scheme: dark;
+    color-scheme: light;
     background: var(--duet-bg);
+  }
+
+  html:not([data-theme="light"]) {
+    color-scheme: dark;
   }
 
   @media (min-width: 768px) {
