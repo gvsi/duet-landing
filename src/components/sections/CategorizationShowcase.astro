@@ -342,7 +342,7 @@
     .window {
         width: 100%;
         background: var(--mockup-window-bg);
-        border-radius: 4px; /* Sharper */
+        border-radius: 16px;
         border: 1px solid var(--mockup-border);
         box-shadow: var(--mockup-shadow);
         overflow: hidden;
@@ -352,6 +352,18 @@
         transition:
             opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
             transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @media (max-width: 1199px) {
+        .window {
+            border-radius: 12px;
+        }
+    }
+
+    @media (max-width: 809px) {
+        .window {
+            border-radius: 10px;
+        }
     }
 
     .in-view .window {
@@ -460,7 +472,7 @@
     .avatar {
         width: 32px;
         height: 32px;
-        border-radius: 4px; /* Squared avatars for sharper look */
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -544,7 +556,7 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
         padding: 4px 10px;
-        border-radius: 6px;
+        border-radius: 8px;
         line-height: 1;
         white-space: nowrap;
         opacity: 0;

@@ -244,7 +244,7 @@
     /* Window */
     .window {
         background: var(--mockup-window-bg);
-        border-radius: 4px; /* Sharper */
+        border-radius: 16px;
         border: 1px solid var(--mockup-border);
         box-shadow: var(--mockup-shadow);
         overflow: hidden;
@@ -253,6 +253,18 @@
         transition:
             transform 1s cubic-bezier(0.2, 0.8, 0.2, 1),
             opacity 1s ease;
+    }
+
+    @media (max-width: 1199px) {
+        .window {
+            border-radius: 12px;
+        }
+    }
+
+    @media (max-width: 809px) {
+        .window {
+            border-radius: 10px;
+        }
     }
 
     .in-view .window {
@@ -358,7 +370,7 @@
     .chat-body :global(.user-message) {
         align-self: flex-end;
         background: var(--email-bg-1); /* Neutral Grey */
-        border-radius: 4px; /* Sharper */
+        border-radius: 12px;
         color: var(--duet-fg);
         animation: msgSlideIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
     }
@@ -393,7 +405,7 @@
         margin-top: 16px;
         background: var(--email-bg-1);
         border: 1px solid var(--mockup-border);
-        border-radius: 4px;
+        border-radius: 10px;
         padding: 12px;
         display: flex;
         align-items: center;
@@ -525,7 +537,7 @@
     .agent-showcase :global(.suggestion-chip) {
         background: transparent;
         border: 1px solid var(--mockup-border);
-        border-radius: 2px;
+        border-radius: 8px;
         padding: 6px 14px;
         font-size: 12px;
         color: var(--duet-muted);
@@ -572,7 +584,7 @@
         color: #000;
         border: none;
         padding: 8px 16px;
-        border-radius: 2px;
+        border-radius: 8px;
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
@@ -582,7 +594,7 @@
         color: var(--duet-fg);
         border: 1px solid var(--duet-border);
         padding: 8px 16px;
-        border-radius: 2px;
+        border-radius: 8px;
         font-size: 12px;
         cursor: pointer;
     }
@@ -590,7 +602,7 @@
         background: transparent;
         border: 1px solid var(--duet-border);
         padding: 12px;
-        border-radius: 2px;
+        border-radius: 10px;
         display: flex;
         justify-content: space-between;
         color: var(--duet-fg);
