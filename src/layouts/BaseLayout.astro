@@ -36,12 +36,12 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
                         return localStorage.getItem("theme");
                     }
                     if (
-                        window.matchMedia("(prefers-color-scheme: light)")
+                        window.matchMedia("(prefers-color-scheme: dark)")
                             .matches
                     ) {
-                        return "light";
+                        return "dark";
                     }
-                    return "dark";
+                    return "light";
                 };
                 const theme = getTheme();
                 if (theme === "light") {
