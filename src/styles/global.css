@@ -15,7 +15,8 @@
   :root {
     --duet-bg: #08081a;
     --duet-fg: #ffffff;
-    --duet-muted: #a1a1aa;
+    --duet-muted: #c4c4cc;
+    /* Lighter muted text for dark mode */
     --duet-border: rgba(255, 255, 255, 0.08);
     /* Legacy, keep for now */
     --duet-border-editorial: rgba(255, 255, 255, 0.12);
@@ -45,8 +46,14 @@
     --hero-bg-repeat: no-repeat;
 
     /* Semantic Colors (Dark) */
-    --prose-text: rgba(173, 173, 173, 1);
+    --prose-text: rgba(220, 220, 225, 1);
+    /* Lighter for better contrast on dark backgrounds */
     --prose-heading: rgba(255, 255, 255, 0.97);
+
+    /* No halo needed in dark mode */
+    --hero-text-shadow: none;
+    --hero-meta-shadow: none;
+
     --nav-bg: rgba(0, 0, 0, 0.1);
     --nav-border: rgba(255, 255, 255, 0.1);
     --nav-text: rgba(255, 255, 255, 0.72);
@@ -60,7 +67,8 @@
   html[data-theme="light"] {
     --duet-bg: #ffffff;
     --duet-fg: #0f172a;
-    --duet-muted: #64748b;
+    --duet-muted: #475569;
+    /* slate-600 - darker for better contrast on varied backgrounds */
     --duet-border: rgba(0, 0, 0, 0.08);
     --duet-border-editorial: rgba(0, 0, 0, 0.12);
     --duet-accent: #4338ca;
@@ -72,10 +80,19 @@
     --hero-bg-size: 100%;
 
     /* Semantic Colors (Light) */
-    --prose-text: #4b5563;
-    /* gray-600 */
+    --prose-text: #374151;
+    /* gray-700 - darker for legibility on mountain backgrounds */
     --prose-heading: #111827;
     /* gray-900 */
+
+    /* Adaptive text halo for variable backgrounds */
+    --hero-text-shadow:
+      0 0 12px rgba(255, 255, 255, 0.95),
+      0 0 24px rgba(255, 255, 255, 0.7),
+      0 0 48px rgba(255, 255, 255, 0.4);
+    --hero-meta-shadow:
+      0 0 8px rgba(255, 255, 255, 0.9),
+      0 0 16px rgba(255, 255, 255, 0.6);
     --nav-bg: rgba(255, 255, 255, 0.7);
     --nav-border: rgba(0, 0, 0, 0.06);
     --nav-text: #4b5563;

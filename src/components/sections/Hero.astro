@@ -57,7 +57,7 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             </div>
 
             <p
-                class="mb-5 max-w-xl font-sans text-pretty text-[17px] leading-[1.5] tracking-[0.01em]"
+                class="hero-subheading mb-5 max-w-xl font-sans text-pretty text-[17px] leading-[1.5] tracking-[0.01em]"
                 style="color: var(--prose-text);"
             >
                 Save 4+ hours every week on email
@@ -121,11 +121,11 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             </div>
 
             <div
-                class="mt-4 flex items-center justify-center gap-3 text-sm tracking-[0.01em]"
+                class="hero-meta mt-4 flex items-center justify-center gap-3 text-sm tracking-[0.01em]"
                 style="color: var(--duet-muted);"
             >
                 <span>Free 14-day trial</span>
-                <span class="h-1 w-1 rounded-full bg-zinc-300"></span>
+                <span class="hero-meta-dot h-1 w-1 rounded-full"></span>
                 <span>Cancel anytime</span>
             </div>
         </div>
@@ -407,5 +407,20 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
         50% {
             box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
         }
+    }
+
+    /* Adaptive text legibility for variable backgrounds (light mode mountain texture) */
+    .hero-subheading {
+        text-shadow: var(--hero-text-shadow);
+    }
+
+    .hero-meta {
+        text-shadow: var(--hero-meta-shadow);
+        font-weight: 500;
+    }
+
+    .hero-meta-dot {
+        background-color: var(--duet-muted);
+        box-shadow: var(--hero-meta-shadow);
     }
 </style>
