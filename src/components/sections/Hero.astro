@@ -210,9 +210,25 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
         display: inline-grid;
         place-items: center;
         overflow: hidden;
-        clip-path: inset(0);
         contain: paint;
         vertical-align: bottom;
+        /* Soft gradient mask instead of hard clip edge */
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 15%,
+            black 85%,
+            transparent 100%
+        );
+        /* Slight vertical padding to give the mask room to fade */
+        padding: 8px 0;
     }
 
     .feature-item {
