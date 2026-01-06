@@ -87,29 +87,37 @@
                                                 d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
                                             ></path>
                                         </svg>
-                                        <span>Drafted by Duet</span>
+                                        <span>Autodrafted</span>
                                     </div>
 
                                     <div class="draft-text-container">
                                         <p class="draft-line line-1">
-                                            Hey Alex!
+                                            <span class="typing-text"
+                                                >Hey Alex!</span
+                                            >
                                         </p>
                                         <p class="draft-line line-2">
-                                            Would love to sync on the roadmap.
-                                            <span class="highlight-text"
-                                                >I'm free Thursday 2-4pm or
-                                                Friday morning</span
+                                            <span class="typing-text"
+                                                >Would love to sync on the
+                                                roadmap. <span
+                                                    class="highlight-text"
+                                                    >I'm free Thursday 2-4pm or
+                                                    Friday morning</span
+                                                > — either works great for me.</span
                                             >
-                                            — either works great for me.
                                         </p>
                                         <p class="draft-line line-3">
-                                            Let me know what suits you best and
-                                            I'll send over an invite.
+                                            <span class="typing-text"
+                                                >Let me know what suits you best
+                                                and I'll send over an invite.</span
+                                            >
                                         </p>
                                         <p
                                             class="draft-line line-4 draft-signature"
                                         >
-                                            Cheers!
+                                            <span class="typing-text"
+                                                >Thanks!&nbsp;&nbsp;</span
+                                            >
                                         </p>
                                     </div>
                                 </div>
@@ -444,7 +452,7 @@
 
     /* Draft content */
     .draft-content {
-        padding: 24px 24px 32px;
+        padding: 0px 24px;
         background: linear-gradient(
             to bottom,
             rgba(255, 255, 255, 0.01),
@@ -497,15 +505,27 @@
     }
     .line-1 {
         --line-delay: 1.5s;
+        --typing-delay: 1.5s;
+        --typing-duration: 0.4s;
+        --typing-steps: 10;
     }
     .line-2 {
         --line-delay: 1.7s;
+        --typing-delay: 1.9s;
+        --typing-duration: 1.8s;
+        --typing-steps: 60;
     }
     .line-3 {
         --line-delay: 1.9s;
+        --typing-delay: 3.7s;
+        --typing-duration: 1.2s;
+        --typing-steps: 40;
     }
     .line-4 {
         --line-delay: 2.1s;
+        --typing-delay: 4.9s;
+        --typing-duration: 0.3s;
+        --typing-steps: 8;
     }
 
     .in-view .draft-line {
@@ -513,10 +533,44 @@
         transform: translateY(0);
     }
 
+    .typing-text {
+        background: linear-gradient(90deg, var(--duet-fg) 50%, transparent 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: draftTypingReveal var(--typing-duration)
+            steps(var(--typing-steps), end) var(--typing-delay) forwards;
+        animation-play-state: paused;
+    }
+
+    .in-view .typing-text {
+        animation-play-state: running;
+    }
+
+    @keyframes draftTypingReveal {
+        to {
+            background-position: 0% 0;
+        }
+    }
+
     .highlight-text {
-        background: rgba(212, 174, 94, 0.15); /* Gold highlight */
-        color: inherit;
         padding: 0 2px;
+        border-radius: 2px;
+        box-shadow: inset 0 -0.4em 0 rgba(212, 174, 94, 0);
+        animation: highlightReveal 0.6s ease 2.6s forwards;
+        animation-play-state: paused;
+    }
+
+    .in-view .highlight-text {
+        animation-play-state: running;
+    }
+
+    @keyframes highlightReveal {
+        to {
+            box-shadow: inset 0 -0.4em 0 rgba(212, 174, 94, 0.3);
+        }
     }
 
     .draft-signature {
@@ -649,6 +703,30 @@
     .feature-item svg {
         color: #52525b;
         flex-shrink: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .typing-text {
+            animation: none !important;
+            background: none !important;
+            -webkit-text-fill-color: var(--duet-fg) !important;
+        }
+
+        .highlight-text {
+            animation: none !important;
+            box-shadow: inset 0 -0.4em 0 rgba(212, 174, 94, 0.3) !important;
+        }
+
+        .window,
+        .compose-field,
+        .original-preview,
+        .duet-badge,
+        .draft-line,
+        .context-tooltip {
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
     }
 </style>
 
