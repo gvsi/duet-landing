@@ -136,10 +136,7 @@
                                         <span class="autodraft-dot"></span>
                                     </div>
                                     <div class="autodraft-text">
-                                        Hi Alex! Yes, we're on track. The design
-                                        team finished the assets yesterday and
-                                        I'll send over the final files by EOD
-                                        today.
+                                        <span class="typing-line">Hi Alex! Yes, we're on track. The design team finished the assets yesterday and I'll send over the final files by EOD today.</span>
                                     </div>
                                 </div>
                             </div>
@@ -1134,7 +1131,25 @@
         color: var(--duet-fg);
         line-height: 1.5;
         overflow: hidden;
+        position: relative;
     }
+
+    .typing-line {
+        background: linear-gradient(90deg, var(--duet-fg) 50%, transparent 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: typingReveal 2.4s steps(80, end) 2.2s forwards;
+    }
+
+    @keyframes typingReveal {
+        to {
+            background-position: 0% 0;
+        }
+    }
+
 
     @media (max-width: 1199px) {
         .autodraft-text {
@@ -1289,6 +1304,12 @@
             max-height: 220px !important;
             opacity: 1 !important;
             transform: none !important;
+        }
+
+        .typing-line {
+            animation: none !important;
+            background: none !important;
+            color: var(--duet-fg) !important;
         }
 
         .window {
