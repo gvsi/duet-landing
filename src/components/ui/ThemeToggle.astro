@@ -94,16 +94,29 @@
     (() => {
         const themeToggle = document.getElementById("theme-toggle");
 
-        const getTheme = () => {
-            if (
-                typeof localStorage !== "undefined" &&
-                localStorage.getItem("theme")
-            ) {
-                return localStorage.getItem("theme");
+        const safeLocalStorageGet = (key) => {
+            try {
+                return localStorage.getItem(key);
+            } catch (error) {
+                return null;
             }
-            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        };
+
+        const safeLocalStorageSet = (key, value) => {
+            try {
+                localStorage.setItem(key, value);
+            } catch (error) {
+                // Ignore storage write failures (Safari private mode, blocked cookies, etc.)
+            }
+        };
+
+        const getTheme = () => {
+            const storedTheme = safeLocalStorageGet("theme");
+            if (storedTheme === "dark") {
                 return "dark";
             }
+
+            // Default to light unless the user explicitly chose dark.
             return "light";
         };
 
@@ -113,7 +126,8 @@
             } else {
                 document.documentElement.removeAttribute("data-theme");
             }
-            localStorage.setItem("theme", theme);
+
+            safeLocalStorageSet("theme", theme);
         };
 
         // Initialize toggle click handler

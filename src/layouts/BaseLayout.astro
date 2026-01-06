@@ -28,27 +28,27 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
 
         <script is:inline>
             (() => {
-                const getTheme = () => {
-                    if (
-                        typeof localStorage !== "undefined" &&
-                        localStorage.getItem("theme")
-                    ) {
-                        return localStorage.getItem("theme");
+                const safeLocalStorageGet = (key) => {
+                    try {
+                        return localStorage.getItem(key);
+                    } catch (error) {
+                        return null;
                     }
-                    if (
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches
-                    ) {
+                };
+
+                const getTheme = () => {
+                    const storedTheme = safeLocalStorageGet("theme");
+                    if (storedTheme === "dark") {
                         return "dark";
                     }
+
+                    // Default to light unless the user explicitly chose dark.
                     return "light";
                 };
+
                 const theme = getTheme();
                 if (theme === "light") {
-                    document.documentElement.setAttribute(
-                        "data-theme",
-                        "light",
-                    );
+                    document.documentElement.setAttribute("data-theme", "light");
                 } else {
                     document.documentElement.removeAttribute("data-theme");
                 }
