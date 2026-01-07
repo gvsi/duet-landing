@@ -46,8 +46,7 @@
                         <!-- User Message -->
                         <div class="message user-message">
                             <div class="message-content">
-                                Can you find the invoice from Stripe for last
-                                month and draft a reply to Accounting?
+                                Can you find the Stripe invoice sent by Accounting?
                             </div>
                         </div>
 
@@ -77,18 +76,10 @@
                                         <polyline points="20 6 9 17 4 12"
                                         ></polyline>
                                     </svg>
-                                    <span>Found 2 emails from Stripe</span>
+                                    <span class="typing-text typing-line-1">Found 2 emails from Stripe</span>
                                 </div>
                                 <p>
-                                    I found the receipt for <strong
-                                        >$29.00 USD</strong
-                                    > from Oct 24th.
-                                </p>
-                                <p
-                                    class="mt-2 text-xs"
-                                    style="color: var(--duet-muted);"
-                                >
-                                    Drafting reply to accounting@...
+                                    <span class="typing-text typing-line-2">I found the receipt for <strong>$29.00 USD</strong> from Oct 24th.</span>
                                 </p>
 
                                 <div class="attachment-card">
@@ -127,15 +118,15 @@
 
                     <div class="suggestions-container">
                         <button class="suggestion-chip" data-action="draft"
-                            >Yes, show me the draft</button
+                            >Draft a reply</button
                         >
                         <button class="suggestion-chip" data-action="calendar"
-                            >When can I meet them?</button
+                            >Find time to meet</button
                         >
                     </div>
 
                     <div class="input-area">
-                        <div class="input-placeholder">Reply to Duet...</div>
+                        <div class="input-placeholder">Ask anything...</div>
                         <div class="send-btn">
                             <svg
                                 width="16"
@@ -642,6 +633,111 @@
         color: var(--duet-fg);
         line-height: 1.6;
     }
+
+    /* Typing animation for agent response */
+    .typing-text {
+        background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: agentTypingReveal var(--typing-duration) steps(var(--typing-steps), end) var(--typing-delay) forwards;
+        animation-play-state: paused;
+    }
+
+    .typing-line-1 {
+        --typing-delay: 2.6s;
+        --typing-duration: 0.6s;
+        --typing-steps: 25;
+    }
+
+    .typing-line-2 {
+        --typing-delay: 3.2s;
+        --typing-duration: 1s;
+        --typing-steps: 40;
+    }
+
+    .typing-line-3 {
+        --typing-delay: 4.2s;
+        --typing-duration: 0.7s;
+        --typing-steps: 30;
+    }
+
+    .in-view .typing-text {
+        animation-play-state: running;
+    }
+
+    @keyframes agentTypingReveal {
+        to {
+            background-position: 0% 0;
+        }
+    }
+
+    /* Dynamic typing for JS-generated responses - must be global for dynamic content */
+    :global(.typing-text-dynamic) {
+        background: linear-gradient(90deg, var(--duet-fg) 50%, transparent 50%);
+        background-size: 200% 100%;
+        background-position: 100% 0;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: agentTypingReveal var(--typing-duration, 0.8s) steps(var(--typing-steps, 30), end) var(--typing-delay, 0s) forwards;
+    }
+
+    :global(.typing-dynamic-1) {
+        --typing-delay: 0s;
+        --typing-duration: 0.7s;
+        --typing-steps: 35;
+    }
+
+    :global(.typing-dynamic-2) {
+        --typing-delay: 0.7s;
+        --typing-duration: 0.5s;
+        --typing-steps: 25;
+    }
+
+    :global(.typing-dynamic-3) {
+        --typing-delay: 1.2s;
+        --typing-duration: 0.3s;
+        --typing-steps: 10;
+    }
+
+    :global(.typing-dynamic-4) {
+        --typing-delay: 1.5s;
+        --typing-duration: 1s;
+        --typing-steps: 50;
+    }
+
+    :global(.typing-dynamic-5) {
+        --typing-delay: 2.5s;
+        --typing-duration: 0.8s;
+        --typing-steps: 40;
+    }
+
+    :global(.typing-dynamic-6) {
+        --typing-delay: 3.3s;
+        --typing-duration: 0.2s;
+        --typing-steps: 6;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .typing-text,
+        :global(.typing-text-dynamic) {
+            animation: none !important;
+            background: none !important;
+            -webkit-text-fill-color: var(--duet-fg) !important;
+        }
+
+        .window,
+        .message,
+        .processing-state,
+        .suggestions-container {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
 </style>
 
 <script>
@@ -726,14 +822,14 @@
                 if (action === "draft") {
                     responseHTML = `
                         <div class="message-content">
-                            <p style="margin-bottom: 12px; font-size: 13px;">Here is a draft to Accounting. I've attached the invoice as requested.</p>
+                            <p style="margin-bottom: 12px; font-size: 13px;"><span class="typing-text-dynamic typing-dynamic-1">Here's a draft reply to Accounting:</span></p>
                             <div class="draft-preview-card">
-                                <div class="draft-preview-header">Draft: accounting@company.com</div>
+                                <div class="draft-preview-header"><span class="typing-text-dynamic typing-dynamic-2">Draft: accounting@company.com</span></div>
                                 <div class="draft-preview-body">
-                                    Hi Team,<br><br>
-                                    Please find attached the Stripe invoice for October ($29.00).<br>
-                                    Let me know if you need anything else.<br><br>
-                                    Best,
+                                    <span class="typing-text-dynamic typing-dynamic-3">Hi Team,</span><br><br>
+                                    <span class="typing-text-dynamic typing-dynamic-4">Please find attached the Stripe invoice for October ($29.00).</span><br>
+                                    <span class="typing-text-dynamic typing-dynamic-5">Let me know if you need anything else.</span><br><br>
+                                    <span class="typing-text-dynamic typing-dynamic-6">Best,</span>
                                 </div>
                             </div>
                             <div style="margin-top: 16px; display: flex; gap: 8px;">
@@ -745,7 +841,7 @@
                 } else if (action === "calendar") {
                     responseHTML = `
                         <div class="message-content">
-                            <p style="margin-bottom: 12px; font-size: 13px;">You have 3 slots open tomorrow that work for everyone:</p>
+                            <p style="margin-bottom: 12px; font-size: 13px;"><span class="typing-text-dynamic typing-dynamic-1">You have 3 slots open tomorrow:</span></p>
                             <div class="calendar-options" style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
                                 <button class="calendar-slot">
                                     <span class="slot-time">9:30 AM</span>
