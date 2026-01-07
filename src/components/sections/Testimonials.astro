@@ -320,23 +320,11 @@ const logoByName = new Map(
 
     .home-testimonials__title {
         margin: 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 40px;
-        font-weight: 400;
-        line-height: 48px;
-        letter-spacing: -0.8px;
-        line-height: 48px;
-        letter-spacing: -0.8px;
+        font-family: var(--font-serif);
+        font-size: 42px;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
         color: var(--prose-heading);
         text-wrap: balance;
         max-width: 720px;
@@ -345,27 +333,15 @@ const logoByName = new Map(
     @media (max-width: 767px) {
         .home-testimonials__title {
             font-size: 32px;
-            line-height: 40px;
         }
     }
 
     .home-testimonials__subtitle {
         margin: 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+        font-family: var(--font-sans);
         font-size: 16px;
         font-weight: 400;
-        line-height: 24px;
-        line-height: 24px;
+        line-height: 1.7;
         color: var(--prose-text);
         max-width: 520px;
         text-wrap: pretty;
@@ -397,7 +373,7 @@ const logoByName = new Map(
         gap: 20px;
         width: max-content;
         margin: 0;
-        padding: 8px 0 32px;
+        padding: 24px 0 56px;
         list-style: none;
         will-change: transform;
         animation: testimonialsMarquee 55s linear infinite;
@@ -473,7 +449,7 @@ const logoByName = new Map(
         overflow: hidden;
         background: var(--mockup-window-bg);
         border: 1px solid var(--mockup-border);
-        box-shadow: var(--mockup-shadow);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
