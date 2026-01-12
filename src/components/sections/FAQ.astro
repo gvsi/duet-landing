@@ -2,8 +2,8 @@
 /**
  * FAQ Section
  * 
- * Clean brutalist design with monospace typography,
- * bold borders, and frosted glass transparency.
+ * Refined editorial design with serif headlines,
+ * soft borders, and frosted glass transparency.
  */
 
 const faqs = [
@@ -32,17 +32,15 @@ const faqs = [
 
 <section class="faq" aria-label="Frequently asked questions">
     <div class="faq__container">
-        <!-- Bold header block -->
+        <!-- Header -->
         <header class="faq__header">
             <div class="faq__header-top">
-                <span class="faq__marker">[FAQ]</span>
+                <span class="faq__marker">FAQ</span>
             </div>
             <h2 class="faq__title">
-                <span class="faq__title-line">COMMON</span>
-                <span class="faq__title-line">QUESTIONS</span>
-                <span class="faq__title-accent">—ANSWERED</span>
+                <span class="faq__title-main">Common questions,</span>
+                <span class="faq__title-accent">answered</span>
             </h2>
-            <div class="faq__header-bar" aria-hidden="true"></div>
         </header>
 
         <!-- FAQ Grid with offset -->
@@ -96,10 +94,8 @@ const faqs = [
 <style>
     /* ═══════════════════════════════════════════════════════════════
        FAQ Section
-       Clean brutalist design with monospace type and bold borders
+       Refined editorial design with serif headlines and clean borders
     ═══════════════════════════════════════════════════════════════ */
-
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
     .faq {
         position: relative;
@@ -109,7 +105,8 @@ const faqs = [
     .faq__container {
         max-width: 1100px;
         margin: 0 auto;
-        border: 2px solid var(--prose-heading);
+        border: 1px solid var(--duet-border-editorial);
+        border-radius: 2px;
     }
 
     :global(html[data-theme="light"]) .faq__container {
@@ -132,69 +129,53 @@ const faqs = [
 
     /* ─── Header ─── */
     .faq__header {
-        padding: 32px 40px;
-        border-bottom: 2px solid var(--prose-heading);
+        padding: 48px 48px 40px;
+        border-bottom: 1px solid var(--duet-border-editorial);
     }
 
     @media (max-width: 768px) {
         .faq__header {
-            padding: 24px;
+            padding: 32px 24px 28px;
         }
     }
 
     .faq__header-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .faq__marker {
+        display: inline-block;
+        font-family: var(--font-sans);
+        font-size: 13px;
         font-weight: 500;
-        letter-spacing: 0.05em;
-        color: var(--prose-heading);
-        opacity: 0.6;
+        letter-spacing: 0.02em;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background: var(--badge-bg);
+        border: 1px solid var(--badge-border);
+        color: var(--badge-text);
     }
 
     .faq__title {
         margin: 0;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: clamp(32px, 6vw, 56px);
-        font-weight: 700;
-        line-height: 1;
+        font-family: var(--font-serif);
+        font-size: clamp(32px, 5vw, 42px);
+        font-weight: 500;
+        line-height: 1.15;
         letter-spacing: -0.02em;
         color: var(--prose-heading);
     }
 
-    .faq__title-line {
+    .faq__title-main {
         display: block;
     }
 
     .faq__title-accent {
         display: block;
-        font-weight: 400;
-        font-style: italic;
-        margin-top: 8px;
-    }
-
-    :global(html[data-theme="light"]) .faq__title-accent {
-        color: #6366f1;
-    }
-
-    :global(html:not([data-theme="light"])) .faq__title-accent {
-        color: #a5b4fc;
-    }
-
-    .faq__header-bar {
-        height: 8px;
-        margin-top: 24px;
-        background: repeating-linear-gradient(
-            90deg,
-            var(--prose-heading) 0px,
-            var(--prose-heading) 8px,
-            transparent 8px,
-            transparent 16px
-        );
-        opacity: 0.15;
+        background: linear-gradient(135deg, #a78bfa 0%, #74c2ff 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     /* ─── Content Layout ─── */
@@ -212,7 +193,7 @@ const faqs = [
     /* ─── Sidebar ─── */
     .faq__sidebar {
         padding: 32px;
-        border-right: 2px solid var(--prose-heading);
+        border-right: 1px solid var(--duet-border-editorial);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -221,7 +202,7 @@ const faqs = [
     @media (max-width: 900px) {
         .faq__sidebar {
             border-right: none;
-            border-bottom: 2px solid var(--prose-heading);
+            border-bottom: 1px solid var(--duet-border-editorial);
             padding: 24px;
         }
     }
@@ -234,9 +215,9 @@ const faqs = [
         position: absolute;
         top: -20px;
         right: -15px;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: var(--font-serif);
         font-size: 140px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 1;
         pointer-events: none;
         user-select: none;
@@ -260,11 +241,12 @@ const faqs = [
 
     .faq__sidebar-label {
         display: block;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
+        font-family: var(--font-sans);
+        font-size: 11px;
         font-weight: 600;
-        letter-spacing: 0.15em;
-        margin-bottom: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
     }
 
     :global(html[data-theme="light"]) .faq__sidebar-label {
@@ -276,23 +258,25 @@ const faqs = [
     }
 
     .faq__sidebar-heading {
-        margin: 0 0 16px;
-        font-family: 'JetBrains Mono', monospace;
+        margin: 0 0 14px;
+        font-family: var(--font-serif);
         font-size: 18px;
-        font-weight: 600;
-        line-height: 1.3;
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: -0.01em;
         color: var(--prose-heading);
     }
 
     .faq__sidebar-link {
         display: inline-block;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0;
         text-decoration: none;
-        padding: 10px 16px;
-        border: 2px solid currentColor;
+        padding: 8px 14px;
+        border: 1px solid currentColor;
+        border-radius: 6px;
         transition: all 200ms ease;
         white-space: nowrap;
     }
@@ -384,41 +368,49 @@ const faqs = [
 
     .faq__number {
         flex-shrink: 0;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: var(--font-sans);
         font-size: 12px;
         font-weight: 600;
-        color: var(--prose-heading);
+        color: var(--prose-text);
         opacity: 0.4;
-        padding-top: 2px;
+        padding-top: 3px;
     }
 
     .faq__item[open] .faq__number {
-        opacity: 1;
+        opacity: 0.8;
     }
 
     :global(html[data-theme="light"]) .faq__item[open] .faq__number {
         color: #6366f1;
+        opacity: 1;
     }
 
     :global(html:not([data-theme="light"])) .faq__item[open] .faq__number {
         color: #a5b4fc;
+        opacity: 1;
     }
 
     .faq__question {
         margin: 0;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
+        font-family: var(--font-sans);
+        font-size: 15px;
         font-weight: 500;
         line-height: 1.5;
+        letter-spacing: -0.01em;
         color: var(--prose-heading);
     }
 
     .faq__toggle {
         flex-shrink: 0;
-        font-family: 'JetBrains Mono', monospace;
+        font-family: var(--font-sans);
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         color: var(--prose-heading);
+        opacity: 0.4;
+    }
+
+    .faq__item[open] .faq__toggle {
+        opacity: 1;
     }
 
     .faq__toggle-close {
@@ -464,8 +456,9 @@ const faqs = [
 
     .faq__answer-marker {
         flex-shrink: 0;
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 14px;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 500;
     }
 
     :global(html[data-theme="light"]) .faq__answer-marker {
@@ -490,14 +483,15 @@ const faqs = [
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 16px 32px;
-        border-top: 2px solid var(--prose-heading);
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        color: var(--prose-heading);
-        opacity: 0.5;
+        padding: 14px 32px;
+        border-top: 1px solid var(--duet-border-editorial);
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--prose-text);
+        opacity: 0.6;
     }
 
     @media (max-width: 768px) {
