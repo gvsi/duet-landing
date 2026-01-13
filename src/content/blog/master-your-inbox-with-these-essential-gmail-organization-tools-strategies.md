@@ -35,7 +35,7 @@ Think of **Labels** as flexible, powerful tags you can apply to emails. Unlike t
 
   - _Pro Tip:_ Combining 'Skip the Inbox' with 'Apply the label' is incredibly powerful for non-urgent mail like newsletters or notifications. They get categorized automatically without cluttering your primary view.
 
-- **Use Advanced Operators:** Make filters more precise with search operators like **from:**, **to:**, **subject:**, **has:attachment**, **list:** (for mailing lists), **OR**, and **-** (exclude term). Example: Filter all internal company emails _except_ those from your direct manager: **from:\*@yourcompany.com -from:manager\@yourcompany.com**.
+- **Use Advanced Operators:** Make filters more precise with search operators like **from:**, **to:**, **subject:**, **has:attachment**, **list:** (for mailing lists), **OR**, and **-** (exclude term). Example: Filter all internal company emails _except_ those from your direct manager: **from:*@yourcompany.com -from:manager\@yourcompany.com**.
 
 **Best Practices:** While powerful, don't go overboard. Google suggests keeping labels under 500, while some institutions recommend under 5,000, as excessive labels can slow performance. Focus on strategic categories and rely on search for specifics. Regularly review and tweak your filters to ensure they remain relevant. The goal isn't to label everything, but to automate the sorting of predictable email types.
 
@@ -55,7 +55,7 @@ Stop scrolling endlessly! Gmail's search functionality is incredibly robust – 
 
 - **Attachments:** **has:attachment**, **filename:report.pdf**.
 
-- **Dates:** **after:YYYY/MM/DD**, **before:YYYY/MM/DD**, **older\_than:1y**, **newer\_than:7d**.
+- **Dates:** **after:YYYY/MM/DD**, **before:YYYY/MM/DD**, **older_than:1y**, **newer_than:7d**.
 
 - **Proximity:** **keyword1 AROUND 10 keyword2** (finds words within 10 words of each other).
 
