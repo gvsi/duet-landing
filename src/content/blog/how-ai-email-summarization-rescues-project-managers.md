@@ -1,7 +1,7 @@
 ---
 title: "How AI Email Summarization Rescues Project Managers"
 description: "Drowning in emails? Learn how AI email summarization helps project managers save time, track decisions, and reduce inbox chaos. Boost your productivity today!"
-publishedAt: 2025-01-13
+publishedAt: 2025-09-21
 author: "Duet Mail Team"
 tags: []
 draft: false

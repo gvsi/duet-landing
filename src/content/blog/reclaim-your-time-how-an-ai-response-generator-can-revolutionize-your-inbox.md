@@ -1,7 +1,7 @@
 ---
 title: "Reclaim Your Time: How an AI Response Generator Can Revolutionize Your Inbox"
 description: "Drowning in emails? Discover how an AI response generator saves hours, boosts productivity, and helps busy professionals write better, faster replies"
-publishedAt: 2025-01-13
+publishedAt: 2025-12-24
 author: "Duet Mail Team"
 tags: []
 draft: false

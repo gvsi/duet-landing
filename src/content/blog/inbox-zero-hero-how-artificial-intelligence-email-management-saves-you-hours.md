@@ -1,7 +1,7 @@
 ---
 title: "Inbox Zero Hero: How Artificial Intelligence Email Management Saves You Hours"
 description: "Stop drowning in emails! Learn how artificial intelligence email management tools automate sorting, prioritize tasks, and draft replies to save you hours."
-publishedAt: 2025-01-13
+publishedAt: 2025-09-29
 author: "Duet Mail Team"
 tags: []
 draft: false
@@ -81,7 +81,6 @@ There are two main approaches:
 
 Regardless of the method, the benefit is clear: you grasp the essence of the conversation in seconds, not minutes. A [Gartner study](https://www.maestrolabs.com/blog-detail/how-is-ai-revolutionizing-inbox-management) indicated that AI summarization can boost user productivity by up to 32%. AI Summarization, like the Smart Summarization feature in [Duet Mail](https://duetmail.com/), quickly extracts key points and action items, even remembering context from previous interactions, saving you invaluable reading time.
 
-\[query:AI email summarization comparison before after; alt_text:Comparison showing a long email thread versus a concise AI-generated summary.; caption:AI summarization condenses lengthy email threads into key points, saving significant reading time.]
 
 AI summarization condenses lengthy email threads into key points, saving significant reading time.
 

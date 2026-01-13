@@ -1,7 +1,7 @@
 ---
 title: "The Ultimate Guide to HTML Email Footers: Compliance, Design & Examples"
 description: "Unlock the power of the often-overlooked HTML email footer. Learn essential elements, design tips, legal rules (CAN-SPAM, GDPR, CASL) & examples for compliance & branding."
-publishedAt: 2025-01-13
+publishedAt: 2026-01-05
 author: "Duet Mail Team"
 tags: []
 draft: false
@@ -31,7 +31,6 @@ Why dedicate precious time to this small space? The benefits are significant:
 
 While you can add various elements depending on your goals, some components are fundamental, often legally required, especially for commercial emails (like newsletters or promotions).
 
-\[query: email footer essential elements checklist graphic; alt_text: Checklist graphic highlighting essential email footer components like unsubscribe link, physical address, contact info, and privacy policy link.; caption: Don't forget these crucial elements in your email footer.]
 
 | Element                     | Why It's Important                                                                                    | Notes                                                                                                                              |
 | --------------------------- | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |

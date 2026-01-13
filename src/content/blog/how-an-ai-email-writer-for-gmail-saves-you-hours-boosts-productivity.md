@@ -1,7 +1,7 @@
 ---
 title: "How an AI Email Writer for Gmail Saves You Hours & Boosts Productivity"
 description: "Drowning in emails? Discover how an AI email writer for Gmail can draft replies, summarize threads, and reclaim your workday. Boost productivity today!"
-publishedAt: 2025-01-13
+publishedAt: 2025-07-25
 author: "Duet Mail Team"
 tags: []
 draft: false
@@ -129,7 +129,6 @@ Instead of just generating grammatically correct text, advanced AI aims to captu
 
 On the receiving end, tackling inbox chaos requires more than just faster replies. It demands prioritization. Imagine an intelligent system that automatically scans your incoming emails, identifies those requiring urgent action or a decision, and surfaces them in a clear, focused view, separate from the noise of newsletters and low-priority CCs. This is the power of **AI Triage**. Assistants like Duet Mail feature a **Focused Dashboard** powered by AI Triage, designed to cut through the clutter and immediately highlight what needs your attention now. Combined with **Smart Summarization**, which boils down long threads, you can grasp context and required actions far more quickly.
 
-\[query:Duet Mail AI Triage Focused Dashboard screenshot; alt_text:Screenshot showing the Duet Mail interface with its AI Triage or Focused Dashboard feature, highlighting prioritized emails., caption:Tools like Duet Mail use AI Triage to surface critical emails, helping users focus on what truly requires action.]
 
 By combining authentic drafting with intelligent prioritization and summarization, AI email assistants evolve from simple writers to true productivity partners, tackling both the composition and management challenges of modern email.
 

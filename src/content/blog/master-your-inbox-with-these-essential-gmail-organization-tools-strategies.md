@@ -1,7 +1,7 @@
 ---
 title: "Master Your Inbox with These Essential Gmail Organization Tools & Strategies"
 description: "Learn essential Gmail organization tools, strategies like Inbox Zero & GTD, and how AI assistants can help you master your inbox and boost productivity."
-publishedAt: 2025-01-13
+publishedAt: 2025-09-01
 author: "Duet Mail Team"
 tags: []
 draft: false

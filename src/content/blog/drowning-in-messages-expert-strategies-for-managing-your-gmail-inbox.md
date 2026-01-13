@@ -1,7 +1,7 @@
 ---
 title: "Drowning in Messages? Expert Strategies for Managing Your Gmail Inbox"
 description: "Stop email overload! Learn expert strategies for managing your Gmail inbox, from classic tactics to AI tools, and reclaim your productivity."
-publishedAt: 2025-01-13
+publishedAt: 2025-07-04
 author: "Duet Mail Team"
 tags: []
 draft: false

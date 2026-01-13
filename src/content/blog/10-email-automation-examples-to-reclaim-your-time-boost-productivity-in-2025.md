@@ -1,7 +1,7 @@
 ---
 title: "10+ Email Automation Examples to Reclaim Your Time & Boost Productivity in 2025"
 description: "Discover practical email automation examples for sorting, replies, follow-ups & more. Boost productivity with these 2025 tips & tools."
-publishedAt: 2025-01-13
+publishedAt: 2025-04-07
 author: "Duet Mail Team"
 tags: []
 draft: false

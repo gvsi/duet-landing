@@ -1,7 +1,7 @@
 ---
 title: "How to Write a Professional Email: Write Clearly, Save Time & Boost Your Career"
 description: "Learn how to write professional emails that build trust & save time. Master subject lines, tone, structure & etiquette. Boost your career communication"
-publishedAt: 2025-01-13
+publishedAt: 2025-05-27
 author: "Duet Mail Team"
 tags: []
 draft: false

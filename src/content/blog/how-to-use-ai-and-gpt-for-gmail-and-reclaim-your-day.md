@@ -1,7 +1,7 @@
 ---
 title: "How to Use AI and GPT for Gmail and Reclaim Your Day"
 description: "Learn how to use GPT for Gmail to conquer email overload. Explore AI tools for drafting, summarization, and triage to boost productivity and save time."
-publishedAt: 2025-01-13
+publishedAt: 2025-06-10
 author: "Duet Mail Team"
 tags: []
 draft: false
