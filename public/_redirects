@@ -1,2 +1,2 @@
-# Redirect trailing slashes to non-trailing slash versions (SEO)
-/blog/ /blog 301
+# Cloudflare Pages handles trailing slashes automatically
+# No custom redirects needed with Astro's trailingSlash: "never" config
