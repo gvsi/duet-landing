@@ -1,3 +1,2 @@
 # Redirect trailing slashes to non-trailing slash versions (SEO)
 /blog/ /blog 301
-/:path/* /:path 301
