@@ -13,8 +13,6 @@ But what exactly *is* email automation? It's not just about those marketing blas
 
 The benefits are compelling: saving countless hours, reducing mental clutter, ensuring timely follow-ups, maintaining consistency, and freeing you up to focus on work that actually moves the needle. Ready to see how? Let's explore some powerful email automation examples you can implement today to reclaim your time and sanity.
 
-\[image: Query=email inbox overload illustration; alt_text=Illustration depicting a person overwhelmed by a flood of emails.; caption=Email overload is a common pain point that automation can help alleviate.]
-
 ## Taming the Inbox: Automation for Sorting & Prioritization
 
 The first step towards email sanity is often getting control over the influx. Instead of manually sifting through every message, automation can act as your first line of defense.
