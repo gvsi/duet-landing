@@ -3,7 +3,7 @@ title: "Unlock Peak Productivity: The Top Gmail Tools Your Inbox Needs in 2025"
 description: "Discover the top Gmail tools and AI assistants of 2025 to manage overload, boost productivity, and reclaim your day"
 publishedAt: 2025-05-18
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Inbox Management"]
 draft: false
 ---
 

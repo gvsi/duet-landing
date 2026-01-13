@@ -3,7 +3,7 @@ title: "Conquer Your Inbox Chaos: Top Free Gmail Organization Plugins for Peak P
 description: "Tired of Gmail chaos? Discover the top free Gmail organization plugins for 2025 to manage email overload, visualize workflows, and boost productivity."
 publishedAt: 2025-07-27
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Inbox Management"]
 draft: false
 ---
 
@@ -35,9 +35,7 @@ We've sifted through the options to highlight some of the most effective, well-r
 
 **UI/Setup:** Sortd integrates directly into Gmail, offering a toggle between the standard view and its board layout. Setup involves installing the extension and connecting your Gmail account, which users generally find straightforward.
 
-![](/blog/images/2tfttjR7IUIR2pQFUkH6X0PZ8.png)
-
-Sortd transforms your Gmail inbox into a visual Kanban board.
+![Sortd plugin interface showing Gmail inbox transformed into a visual Kanban board with drag-and-drop email task cards](/blog/images/2tfttjR7IUIR2pQFUkH6X0PZ8.png)
 
 **Pros:** Fantastic for visualizing workflow stages and managing email-centric tasks without constantly switching to a separate project management tool. Renaming subject lines and adding notes directly to email-tasks is also useful.
 
@@ -51,9 +49,7 @@ Sortd transforms your Gmail inbox into a visual Kanban board.
 
 **UI/Setup:** The integration adds a Todoist icon to your Gmail interface (either in the top toolbar or the right-hand side panel). Clicking this opens a small panel where you can quickly add the email as a task. Setup requires installing the add-on/extension and authorizing access to your Todoist account.
 
-![](/blog/images/WODBIbHOcz8Jv43ibHr9nmf6Ok.png)
-
-The Todoist for Gmail integration lets you quickly turn emails into tasks.
+![Todoist for Gmail integration panel showing how to convert an email into a task with due date and project selection](/blog/images/WODBIbHOcz8Jv43ibHr9nmf6Ok.png)
 
 **Pros:** Provides a seamless bridge between your communication hub (Gmail) and your task management system (Todoist). Leverages Todoist's excellent features like natural language date input and reliable cross-platform syncing. It's a great way to achieve "inbox zero" by moving actionable items out of the inbox and into a dedicated task list.
 

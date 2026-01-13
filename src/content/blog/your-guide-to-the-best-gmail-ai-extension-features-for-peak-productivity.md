@@ -3,7 +3,7 @@ title: "Your Guide to the Best Gmail AI Extension Features for Peak Productivity
 description: "Discover how a Gmail AI extension uses features like smart drafting, summarization & triage to conquer email overload and boost productivity."
 publishedAt: 2025-04-15
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Tools"]
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: "How to Create an Interactive Email Signature That Works"
 description: "Learn how to create an interactive email signature to boost engagement, branding & leads. Step-by-step guide for freelancers & startups"
 publishedAt: 2025-06-18
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Email"]
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: "10+ Email Automation Examples to Reclaim Your Time & Boost Productivity 
 description: "Discover practical email automation examples for sorting, replies, follow-ups & more. Boost productivity with these 2025 tips & tools."
 publishedAt: 2025-04-07
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Productivity", "Automation", "Email"]
 draft: false
 ---
 
@@ -113,7 +113,7 @@ Dealing with lengthy email threads or reports? AI is transforming how we consume
 
 This saves immense time getting up to speed on complex conversations. [Duet Mail incorporates **Smart Summarization** with contextual awareness](https://duetmail.com/), meaning it not only condenses long threads but also remembers details about projects and relationships mentioned previously, ensuring summaries are highly relevant and actionable.
 
-![](/blog/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
+![Screenshot showing Duet Mail's smart email summarization feature condensing a long email thread into key points and action items](/blog/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
 
 ## The Power of Automation: By the Numbers
 

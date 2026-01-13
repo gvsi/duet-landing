@@ -3,7 +3,7 @@ title: "The Ultimate Guide to Customer Service Email Management Software"
 description: "Stop drowning in support emails! Learn how customer service email management software, including AI tools, streamlines workflows & boosts satisfaction."
 publishedAt: 2025-05-17
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Inbox Management", "Email"]
 draft: false
 ---
 

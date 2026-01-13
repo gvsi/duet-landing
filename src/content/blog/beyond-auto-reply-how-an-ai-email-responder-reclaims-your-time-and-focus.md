@@ -3,7 +3,7 @@ title: "Beyond Auto-Reply: How an AI Email Responder Reclaims Your Time and Focu
 description: "Drowning in emails? Discover how the modern AI email responder transforms your inbox from a source of stress into a productivity engine. Manage overload today"
 publishedAt: 2025-04-26
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Productivity", "Email Writing"]
 draft: false
 ---
 

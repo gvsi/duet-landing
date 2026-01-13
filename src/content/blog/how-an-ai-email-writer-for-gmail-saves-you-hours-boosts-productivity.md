@@ -3,7 +3,7 @@ title: "How an AI Email Writer for Gmail Saves You Hours & Boosts Productivity"
 description: "Drowning in emails? Discover how an AI email writer for Gmail can draft replies, summarize threads, and reclaim your workday. Boost productivity today!"
 publishedAt: 2025-07-25
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Email Writing"]
 draft: false
 ---
 

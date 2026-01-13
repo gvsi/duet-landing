@@ -3,7 +3,7 @@ title: "Supercharge Your Workflow: The Best Gmail Business Extensions for Peak P
 description: "Discover the best Gmail business extensions of 2025 for productivity, CRM, AI assistance & more. Reclaim your time!"
 publishedAt: 2025-06-30
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Tools"]
 draft: false
 ---
 

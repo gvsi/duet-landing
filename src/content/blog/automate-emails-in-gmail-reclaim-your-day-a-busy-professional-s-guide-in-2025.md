@@ -3,7 +3,7 @@ title: "Automate Emails in Gmail & Reclaim Your Day: A Busy Professional's Guide
 description: "Stop drowning in your inbox! Learn how to automate emails in Gmail using built-in features, extensions, and AI assistants to save hours and boost productivity"
 publishedAt: 2025-11-16
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Productivity", "Automation"]
 draft: false
 ---
 

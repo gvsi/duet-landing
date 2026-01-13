@@ -3,7 +3,7 @@ title: "Inbox Zero Hero: How Artificial Intelligence Email Management Saves You 
 description: "Stop drowning in emails! Learn how artificial intelligence email management tools automate sorting, prioritize tasks, and draft replies to save you hours."
 publishedAt: 2025-09-29
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Inbox Management", "Email"]
 draft: false
 ---
 

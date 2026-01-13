@@ -3,7 +3,7 @@ title: "Unpacking Gmail Summarization Features"
 description: "Struggling with email overload? Explore Gmail's summarization features powered by Gemini, understand their pros & cons, and see if they're enough."
 publishedAt: 2025-09-26
 author: "Duet Mail Team"
-tags: []
+tags: ["AI", "Gmail", "Email Summarization"]
 draft: false
 ---
 
