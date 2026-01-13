@@ -1,4 +1,6 @@
-# Home Page Migration Plan (`/`)
+# [ARCHIVED] Home Page Migration Plan (`/`)
+
+> **Note:** This document is preserved for historical reference. The migration from Framer to Astro was successfully completed in January 2025.
 
 Pseudocode / approach:
 - Rebuild `https://duetmail.com/` as **static HTML** (Astro SSG) with **near‑zero JS**
