@@ -6,7 +6,20 @@ It is a static site built with **Astro** and **Tailwind CSS**, hosted on **Cloud
 
 **Primary Goal:** Achieve perfect or near-perfect PageSpeed/Lighthouse scores (SEO, LCP, CLS).
 **Philosophy:** Zero-JavaScript by default.
-**Design Guidelines:** Refer to `DESIGN.md` for all design philosophy, typography, colors, and UI patterns.
+
+## Design Guidelines
+
+See `../DESIGN_SYSTEM.md` for comprehensive design guidelines including:
+- Brand identity (colors, typography, design philosophy)
+- UI patterns and components (buttons, layout, spacing)
+- Editorial/blog styling (`.duet-prose` patterns)
+- Glassmorphism, gradients, and visual effects
+- Accessibility and performance standards
+
+**Landing-specific constraints:**
+- Zero-JavaScript by default (HTML/CSS first)
+- Static images (AVIF/WebP) with explicit dimensions
+- Simple static links to `app.duetmail.com`
 
 ## Tech Stack
 - **Framework:** Astro (Static Site Generation)
@@ -50,6 +63,24 @@ React should only be used as a last resort for complex stateful logic.
   - `ui/`: Small primitives (Button, Container).
 - `src/content/`: Collections for blog posts.
 - `public/`: Static assets (images, fonts).
+
+## Code Writing Principles
+
+**Astro/TypeScript:**
+- Write minimal, performance-first code
+- Prefer static generation over client-side rendering
+- Use TypeScript for type safety in component props and data files
+
+**Performance-Critical:**
+- Zero-JavaScript by default (HTML/CSS first)
+- Minimize bundle size (code-split, lazy load)
+- Optimize for Core Web Vitals (LCP, CLS, INP)
+- Test impact on Lighthouse scores before committing
+
+**General:**
+- Write clean, maintainable code
+- Follow accessibility standards (semantic HTML, ARIA)
+- See root `../AGENTS.md` (or `CLAUDE.md`/`GEMINI.md`) for shared principles across all repos
 
 ## Verification
 Before claiming a task is done:
