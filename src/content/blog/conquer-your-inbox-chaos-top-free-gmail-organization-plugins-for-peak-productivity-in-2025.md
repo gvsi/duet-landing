@@ -35,7 +35,7 @@ We've sifted through the options to highlight some of the most effective, well-r
 
 **UI/Setup:** Sortd integrates directly into Gmail, offering a toggle between the standard view and its board layout. Setup involves installing the extension and connecting your Gmail account, which users generally find straightforward.
 
-![](https://framerusercontent.com/images/2tfttjR7IUIR2pQFUkH6X0PZ8.png)
+![](/blog/images/2tfttjR7IUIR2pQFUkH6X0PZ8.png)
 
 Sortd transforms your Gmail inbox into a visual Kanban board.
 
@@ -51,7 +51,7 @@ Sortd transforms your Gmail inbox into a visual Kanban board.
 
 **UI/Setup:** The integration adds a Todoist icon to your Gmail interface (either in the top toolbar or the right-hand side panel). Clicking this opens a small panel where you can quickly add the email as a task. Setup requires installing the add-on/extension and authorizing access to your Todoist account.
 
-![](https://framerusercontent.com/images/WODBIbHOcz8Jv43ibHr9nmf6Ok.png)
+![](/blog/images/WODBIbHOcz8Jv43ibHr9nmf6Ok.png)
 
 The Todoist for Gmail integration lets you quickly turn emails into tasks.
 

@@ -23,7 +23,7 @@ Before diving into solutions, let's quantify the problem. Email isn't just a min
 
 - **Low-Value Labor:** A significant portion of that email time is spent on low-value activities. One study suggested that the average worker spends [51% of their workday](https://lifehackmethod.com/blog/time-management-statistics/) on tasks with little impact, with email being a major contributor.
 
-![Photo of a visibly stressed professional sitting at a desk piled high with papers, looking overwhelmed by their computer screen displaying emails](https://framerusercontent.com/images/Javd7cEfisxeNM3SgBjQacQQw9Y.png)
+![Photo of a visibly stressed professional sitting at a desk piled high with papers, looking overwhelmed by their computer screen displaying emails](/blog/images/Javd7cEfisxeNM3SgBjQacQQw9Y.png)
 
 Email overload is a major source of stress and lost productivity for busy professionals.
 
@@ -55,7 +55,7 @@ Filters are your first line of defense against inbox chaos. They automatically p
 
 
 
-![Screenshot showing the Gmail filter creation window with fields for From, To, Subject, Has the words, and options like Apply the label, Skip the Inbox](https://framerusercontent.com/images/DoQDhzWNOqJR6wW6fpQ4L1jgRRo.png)
+![Screenshot showing the Gmail filter creation window with fields for From, To, Subject, Has the words, and options like Apply the label, Skip the Inbox](/blog/images/DoQDhzWNOqJR6wW6fpQ4L1jgRRo.png)
 
 Use Gmail filters to automatically sort incoming emails based on criteria like sender or keywords
 
@@ -67,7 +67,7 @@ Do you find yourself typing similar responses repeatedly? Answering FAQs, sendin
 
 This saves significant time and ensures consistency in your routine communications. You can even [combine filters and templates](https://hiverhq.com/blog/gmail-filters) to automatically send a canned response based on certain email criteria!
 
-![Screenshot showing how to insert a saved template (canned response) in the Gmail compose window via the three-dot menu](https://framerusercontent.com/images/I7TFtOS14E1stD9650A6BBvA5Qw.png)
+![Screenshot showing how to insert a saved template (canned response) in the Gmail compose window via the three-dot menu](/blog/images/I7TFtOS14E1stD9650A6BBvA5Qw.png)
 
 Save time on repetitive replies by using Gmail Templates (Canned Responses)
 
@@ -162,7 +162,7 @@ Email doesn't have to be a source of daily dread. By strategically implementing 
 
 The goal isn't just an empty inbox, but a more focused, productive, and less stressful workday. Start small, experiment with the tools that resonate most with your needs, and reclaim your time for the work that truly matters.
 
-![Photo of a relaxed professional working efficiently on a laptop, smiling slightly, with a clean desk](https://framerusercontent.com/images/yddiVLBc1ajK7mUHKtkMl9aKc.png)
+![Photo of a relaxed professional working efficiently on a laptop, smiling slightly, with a clean desk](/blog/images/yddiVLBc1ajK7mUHKtkMl9aKc.png)
 
 Reclaim your time and reduce email stress through effective automation.
 

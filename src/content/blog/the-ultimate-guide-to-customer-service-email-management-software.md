@@ -37,7 +37,7 @@ When multiple team members dip into the same generic inbox (like **support\@comp
 
 How can you improve your email support if you don't know what's working and what isn't? Basic email systems offer little to no visibility into crucial metrics like response times, resolution rates, or agent productivity. Without data, identifying bottlenecks, understanding common customer pain points, or measuring the effectiveness of your support efforts becomes guesswork. You're essentially flying blind, unable to make informed decisions to optimize performance.
 
-![Dashboard showing customer service metrics with a red alert on average email response time, indicating inefficiency](https://framerusercontent.com/images/KIVKbzPvN1lBXJBKuw2sjPFmvTs.png)
+![Dashboard showing customer service metrics with a red alert on average email response time, indicating inefficiency](/blog/images/KIVKbzPvN1lBXJBKuw2sjPFmvTs.png)
 
 Slow email response times directly impact customer satisfaction and can lead to lost business.
 
@@ -197,7 +197,7 @@ Choosing the right software is only half the battle. How you implement and utili
   \
 
 
-  ![Image depicting a customer service agent using software with AI suggestions to craft a personalized and empathetic email response](https://framerusercontent.com/images/NxrqzzM0GEoijkwKurvDmHC0FBo.png)
+  ![Image depicting a customer service agent using software with AI suggestions to craft a personalized and empathetic email response](/blog/images/NxrqzzM0GEoijkwKurvDmHC0FBo.png)
 
 Balancing AI efficiency with human empathy is key to exceptional customer service.
 

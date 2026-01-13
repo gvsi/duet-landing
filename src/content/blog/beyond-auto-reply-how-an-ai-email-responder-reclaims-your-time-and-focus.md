@@ -19,7 +19,7 @@ The numbers paint a stark picture. In 2024, the world sends and receives an esti
 
 This isn't just an annoyance; it's a major productivity drain and a significant source of stress. Studies show that[ **67% of people feel overwhelmed by their inbox**](https://www.prnewswire.com/news-releases/67-percent-of-people-feel-overwhelmed-by-their-email-inbox-according-to-new-inbox-intelligence-report-from-email-management-solution-gated-301659242.html), and the constant interruptions make it hard to focus, taking an average of[ **23 minutes to regain concentration**](https://ppm.express/blog/checking-emails/) after checking email.
 
-![Infographic showing key statistics about email overload, including average emails per day, time spent managing email, and percentage of workers feeling overwhelmed](https://framerusercontent.com/images/uUO0iiHHwGgqWZ2h2p5PgtvHY.png)
+![Infographic showing key statistics about email overload, including average emails per day, time spent managing email, and percentage of workers feeling overwhelmed](/blog/images/uUO0iiHHwGgqWZ2h2p5PgtvHY.png)
 
 Traditional auto-responders, like those built into Gmail or Outlook, were never designed for this reality. Their limitations are clear:
 
@@ -114,7 +114,7 @@ The market for AI email assistants is growing rapidly. While many tools offer ov
 
 - **Pricing:** Does the cost align with the potential time savings and productivity gains? (Consider ROI estimates, like EmailTree.ai's claim of[ **saving the cost of 2 FTEs**](https://emailtree.ai/) per 1000 emails processed).
 
-![Screenshot of the Duet Mail Focused Dashboard showing prioritized emails categorized by Action Needed and Decisions Needed](https://framerusercontent.com/images/BKqakeJp6ww5m7qRBdut3D3mA.png)
+![Screenshot of the Duet Mail Focused Dashboard showing prioritized emails categorized by Action Needed and Decisions Needed](/blog/images/BKqakeJp6ww5m7qRBdut3D3mA.png)
 
 AI-powered dashboards, like this example from Duet Mail, provide a clear view of priority emails, drastically reducing sorting time
 

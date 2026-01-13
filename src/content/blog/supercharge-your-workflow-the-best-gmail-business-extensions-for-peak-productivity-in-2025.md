@@ -11,7 +11,7 @@ draft: false
 
 Does the modern professional's inbox feel less like a communication tool and more like a digital treadmill, perpetually demanding attention? The struggle with email overload is a near-universal experience in the business world. Statistics paint a stark picture: the average office worker spends over two hours daily just reading and replying to messages, often checking email 15 times per day [(Forbes, Timeular, Timewatch)](https://lifehackmethod.com/blog/time-management-statistics/). Compounding this, a [Mailbird survey](https://www.getmailbird.com/email-overload-survey/) revealed that for many professionals, a mere 10% or less of their weekly email volume is actually business-critical. This inefficiency translates into a significant time drain, potentially costing over 10 hours of productive work each week per employee. This isn't just a minor annoyance; it represents a substantial drain on productivity and a recognized source of workplace stress. Conversely, research indicates that employee productivity sees a marked increase, by as much as 20-25%, in organizations fostering effective communication and connection [(McKinsey & Company)](https://www.oak.com/blog/internal-communications-statistics/).
 
-![Illustration of a stressed office worker buried under a mountain of emails](https://framerusercontent.com/images/SVgVex2N6ggoB57zielUz1L6INA.png)
+![Illustration of a stressed office worker buried under a mountain of emails](/blog/images/SVgVex2N6ggoB57zielUz1L6INA.png)
 
 Email overload is a common source of stress and lost productivity for professionals
 
@@ -77,7 +77,7 @@ AI email assistants typically offer a range of capabilities designed to reduce c
 
 Several players are emerging in this space. **Gemini for Gmail**, Google's native offering, integrates features like smart compose and summarization directly into the Workspace environment [(Auto Gmail)](https://autogmail.com/gmail-ai-extensions-a-complete-guide-for-2025). **SaneBox** heavily leverages AI for intelligent filtering and prioritization, aiming to create a less cluttered, more manageable inbox experience [(Zapier)](https://zapier.com/blog/best-ai-email-assistant/). **Shortwave**, known for its email bundling features [(Zapier)](https://zapier.com/blog/best-ai-email-assistant/), also incorporates AI for tasks like summarization [(Shortwave)](https://www.shortwave.com/). Other tools like Flowrite [(DigitalOcean)](https://www.digitalocean.com/resources/articles/ai-email-assistants), SmartWriter [(DigitalOcean)](https://www.digitalocean.com/resources/articles/ai-email-assistants), and Klart AI Mail Assistant [(Auto Gmail)](https://autogmail.com/gmail-ai-extensions-a-complete-guide-for-2025) further illustrate the growing market for AI-driven email solutions.
 
-![Infographic showing icons representing AI email assistant features like smart drafting, email summarization, and intelligent triage/prioritization](https://framerusercontent.com/images/vOJdPeIX5o7PH4tbOaIrk812C0M.jpg)
+![Infographic showing icons representing AI email assistant features like smart drafting, email summarization, and intelligent triage/prioritization](/blog/images/vOJdPeIX5o7PH4tbOaIrk812C0M.jpg)
 
 AI email assistants offer advanced features like summarization and smart drafting to significantly reduce inbox management time.
 

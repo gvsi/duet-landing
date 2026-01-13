@@ -107,7 +107,7 @@ End your email gracefully and provide necessary contact information.
 
 
 
-![Example of a clean professional email signature with name, title, company, phone, website, and LinkedIn link](https://framerusercontent.com/images/VbJogfeb4mpoTB52t2fXhppUhJM.png)
+![Example of a clean professional email signature with name, title, company, phone, website, and LinkedIn link](/blog/images/VbJogfeb4mpoTB52t2fXhppUhJM.png)
 
 A clean, professional email signature includes essential contact info without clutter.
 

@@ -120,7 +120,7 @@ Okay, so AI can condense emails using different techniques. But how does that _s
 
 
 
-![Infographic of AI email summarization benefits for PMs](https://framerusercontent.com/images/uHM9LvMkmefJuElisc9ImHStE0.png)
+![Infographic of AI email summarization benefits for PMs](/blog/images/uHM9LvMkmefJuElisc9ImHStE0.png)
 
 AI email summarization offers tangible benefits, helping project managers save time, track key information, and reduce mental fatigue
 

@@ -37,7 +37,7 @@ This constant barrage leads to:
 
 AI summarization tools aim to tackle these issues head-on by quickly extracting the essence of communication, allowing you to prioritize effectively and stay informed without getting lost in the weeds. Studies on AI in the workplace, like those highlighted by the [Center for Data Innovation](https://datainnovation.org/2024/06/evidence-shows-productivity-benefits-of-ai/), show tangible productivity boosts when AI assists with tasks like summarization and information retrieval.
 
-![Infographic illustrating the problem of email overload with key statistics](https://framerusercontent.com/images/trmVx9kf8sUEbqcBIv96kQKn54c.png)
+![Infographic illustrating the problem of email overload with key statistics](/blog/images/trmVx9kf8sUEbqcBIv96kQKn54c.png)
 
 The sheer volume of daily emails highlights the need for efficient management tools.
 
@@ -59,7 +59,7 @@ Accessing the feature depends on your interface:
 
 - **Mobile App (Android/iOS):** Similar to the web, a "Summarize this email" button may appear under the subject. Tapping it typically brings up the summary in a dedicated Gemini sheet or panel. You can also often access summarization and other AI features via the Gemini icon in the app's top bar.
 
-![Gmail email view highlighting the 'Summarize this email' button below the subject line](https://framerusercontent.com/images/WReztihJs8B1tfQ0XyD0V6TX0I.png)
+![Gmail email view highlighting the 'Summarize this email' button below the subject line](/blog/images/WReztihJs8B1tfQ0XyD0V6TX0I.png)
 
 Gmail's native summarization feature is accessible via a button directly within email threads.
 

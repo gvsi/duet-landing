@@ -115,7 +115,7 @@ Dealing with lengthy email threads or reports? AI is transforming how we consume
 
 This saves immense time getting up to speed on complex conversations. [Duet Mail incorporates \*\*Smart Summarization\*\* with contextual awareness](https://duetmail.com/), meaning it not only condenses long threads but also remembers details about projects and relationships mentioned previously, ensuring summaries are highly relevant and actionable.
 
-![](https://framerusercontent.com/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
+![](/blog/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
 
 ## The Power of Automation: By the Numbers
 

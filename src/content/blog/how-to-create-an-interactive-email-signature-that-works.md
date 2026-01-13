@@ -59,7 +59,7 @@ Not all interactive elements are created equal. Here are some proven winners for
 
 - **Logo or Headshot:** Adds personality and brand recognition. Make it clickable, linking to your website. Use a high-quality, professional image.
 
-![Example of a simple professional email signature for a freelancer with clickable contact info and social links](https://framerusercontent.com/images/v2GAZDnMlZ4RY1RKQqfG5tdTLg.png)
+![Example of a simple professional email signature for a freelancer with clickable contact info and social links](/blog/images/v2GAZDnMlZ4RY1RKQqfG5tdTLg.png)
 
 Keep it clean: A simple signature with essential contact info and key social links.
 
@@ -84,7 +84,7 @@ Which is right for you? Let's compare:
 
 **Recommendation for Freelancers & Startups:** Unless you're comfortable with HTML and rigorous testing, starting with a reputable **email signature generator** is highly recommended. Tools like [MySignature](https://mysignature.io/) (noted as good for freelancers/small teams) or [WiseStamp](https://www.wisestamp.com/) offer free or affordable plans with professional templates, easy customization (including CTAs and banners), and built-in compatibility checks. [HubSpot also offers a popular free generator](https://www.hubspot.com/email-signature-generator) for simpler needs.
 
-![Screenshot of an email signature generator tool interface showing templates and customization options](https://framerusercontent.com/images/CDMZYvQ1LuyDSQmkpVkC65OHuB0.png)
+![Screenshot of an email signature generator tool interface showing templates and customization options](/blog/images/CDMZYvQ1LuyDSQmkpVkC65OHuB0.png)
 
 Tools like MySignature and WiseStamp offer templates and simple customization.
 
@@ -112,7 +112,7 @@ Creating an interactive signature is only half the battle. Ensuring it looks gre
 
 - **Limit Elements:** Don't include \*every\* social profile. Stick to 3-4 relevant ones. One strong CTA is usually better than multiple weak ones.
 
-![Comparison showing an email signature rendering correctly on both desktop and mobile screens](https://framerusercontent.com/images/Cd71v55qTrLYrTTHZ3rsQEVZqQM.png)
+![Comparison showing an email signature rendering correctly on both desktop and mobile screens](/blog/images/Cd71v55qTrLYrTTHZ3rsQEVZqQM.png)
 
 Mobile matters: Ensure your signature looks great and functions well on all devices.
 

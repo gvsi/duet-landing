@@ -63,7 +63,7 @@ With [a significant portion of emails opened on mobile devices](https://www.litm
 
 - Testing your footer across different devices and email clients using tools like [Litmus](https://www.litmus.com/) or [Email on Acid](https://www.emailonacid.com/).
 
-![Side-by-side comparison showing how a well-designed email footer adapts its layout from desktop view to mobile view](https://framerusercontent.com/images/Cd71v55qTrLYrTTHZ3rsQEVZqQM.png)
+![Side-by-side comparison showing how a well-designed email footer adapts its layout from desktop view to mobile view](/blog/images/Cd71v55qTrLYrTTHZ3rsQEVZqQM.png)
 
 Ensure your footer looks great and functions perfectly on any screen size.
 

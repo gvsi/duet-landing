@@ -21,7 +21,7 @@ Studies consistently show professionals spending a large chunk of their workweek
 
 The impact goes beyond lost time. Constant email checking fragments our focus, forcing costly context switching between deep work and inbox triage. This digital friction contributes to stress, hampers decision-making as important messages get buried, and can even lead to burnout. A [Forbes study mentioned by DragApp](https://www.dragapp.com/blog/effects-of-email-overload/) found that a third of employees cited email overload as a factor in leaving their jobs. Clearly, the traditional approach to email management is unsustainable for modern professionals.
 
-![Infographic showing statistics about email overload, including average emails received daily, hours spent managing email per week, and impact on productivity](https://framerusercontent.com/images/trmVx9kf8sUEbqcBIv96kQKn54c.png)
+![Infographic showing statistics about email overload, including average emails received daily, hours spent managing email per week, and impact on productivity](/blog/images/trmVx9kf8sUEbqcBIv96kQKn54c.png)
 
 Email overload isn't just perception; data shows it's a significant drain on productivity and well-being
 
@@ -59,7 +59,7 @@ LLMs, like OpenAI's GPT series or Google's Gemini models, are the powerhouse beh
 
 Crucially, many AI email writers also incorporate a learning mechanism. By analyzing the emails you \*send\* (especially edits you make to its drafts), the AI can gradually learn your preferred phrasing, sign-offs, and overall communication style, making its suggestions more personalized over time. This often happens seamlessly through a Chrome extension that integrates directly into your Gmail interface, putting the AI's power right where you need it.
 
-![Diagram illustrating how an AI email writer works: User Input (prompt/context) goes into the AI Model (NLP/LLM), which then produces an Email Output (draft/summary)](https://framerusercontent.com/images/OAKyTY10jdvjEj5OwP3Gr3Tck.png)
+![Diagram illustrating how an AI email writer works: User Input (prompt/context) goes into the AI Model (NLP/LLM), which then produces an Email Output (draft/summary)](/blog/images/OAKyTY10jdvjEj5OwP3Gr3Tck.png)
 
 AI email writers use NLP to understand your request and LLMs trained on vast data to generate human-like text.
 
@@ -159,7 +159,7 @@ This trend isn't about replacing human communication; it's about removing the fr
 
 AI email writers for Gmail represent a significant step in this direction. They offer a powerful way to manage the relentless flow of digital communication, transforming the inbox from a source of stress into a more manageable and productive tool.
 
-![Graphic displaying a quote or statistic about how AI implementation boosts workplace productivity](https://framerusercontent.com/images/ccgzJZqdVy94GsfVr5LrOPcQhS8.png)
+![Graphic displaying a quote or statistic about how AI implementation boosts workplace productivity](/blog/images/ccgzJZqdVy94GsfVr5LrOPcQhS8.png)
 
 AI tools are increasingly seen as essential for enhancing workplace productivity and efficiency.
 

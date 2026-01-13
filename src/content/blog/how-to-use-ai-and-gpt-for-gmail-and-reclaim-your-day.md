@@ -170,7 +170,7 @@ Here are some practical starting points:
 
 Ready to experience a comprehensive solution designed to tackle multiple email challenges at once? Explore how tools like [**Duet Mail**](https://duetmail.com/) combine intelligent **AI Triage** to surface what's urgent, **Authentic AI Drafting** that learns a user's unique voice, and **Smart Summarization** to cut through the clutter. See how it can transform the Gmail workflow.
 
-![Screenshot displaying Duet Mail summarizing a long email and highlighting key action items](https://framerusercontent.com/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
+![Screenshot displaying Duet Mail summarizing a long email and highlighting key action items](/blog/images/UthcCfnGr6tGwT6uc3SMBiO0Y3A.jpg)
 
 Smart Summarization features extract key points and action items, saving reading time.
 

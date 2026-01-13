@@ -47,7 +47,7 @@ This is where AI email assistants step in, offering targeted solutions to these 
 
 Instead of manually sorting through a chronological flood, AI assistants analyze incoming emails based on sender reputation, keywords, content patterns, and learned user behavior to automatically surface what truly needs attention. Think of features like Superhuman's [Auto Labels](https://superhuman.com/ai), [Shortwave](https://www.shortwave.com/)'s intelligent, [Spark Mail](https://sparkmailapp.com/)'s, or the sophisticated filtering in [SaneBox](https://www.sanebox.com/). This intelligent sorting is crucial. Instead of manually sifting, AI acts as a gatekeeper, dramatically reducing the cognitive load of deciding what to tackle next. This is where tools like [**Duet Mail**](https://duetmail.com/) excel, using AI Triage to automatically identify urgent items, required actions, or decisions needed, presenting them clearly so you tackle what matters first.
 
-![Duet Mail dashboard showing AI prioritizing emails based on urgency and required actions](https://framerusercontent.com/images/BKqakeJp6ww5m7qRBdut3D3mA.png)
+![Duet Mail dashboard showing AI prioritizing emails based on urgency and required actions](/blog/images/BKqakeJp6ww5m7qRBdut3D3mA.png)
 
 Duet Mail AI-powered triage surfaces critical emails, reducing sorting time and cognitive load
 
@@ -60,7 +60,7 @@ Replying quickly often means sacrificing personality, leading to generic respons
 
 We've all faced the dreaded multi-reply email thread that scrolls for pages. AI summarization tackles this head-on, condensing lengthy conversations into concise bullet points or brief paragraphs, highlighting key decisions, action items, and crucial details. Tools like Superhuman, Shortwave, and [Canary Mail](https://canarymail.io/) offer variations of this feature. Getting context quickly is vital, especially when jumping back into complex projects. AI summaries save significant time. Some tools, like [**Duet Mail**](https://duetmail.com/), go further by maintaining contextual awareness across threads, remembering project details and relationships to provide even more relevant summaries and draft suggestions.
 
-![Example showing a long email thread being condensed into key bullet points by A](https://framerusercontent.com/images/Q8MVyz3N80qxgrQ4QcSrc9lCGM.png)
+![Example showing a long email thread being condensed into key bullet points by A](/blog/images/Q8MVyz3N80qxgrQ4QcSrc9lCGM.png)
 
 AI summarization on Duet Mail quickly extracts key points from long email threads, saving valuable time
 

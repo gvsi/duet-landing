@@ -97,7 +97,7 @@ These features move beyond simple organization into active workflow management, 
 
 Having the right tools is essential, but without a system, you might still feel overwhelmed. Adopting a proven email management methodology provides the framework for using those tools effectively.
 
-![Graphic illustrating the concept of Inbox Zero, perhaps showing a clean inbox or an organized desk](https://framerusercontent.com/images/dsbHgqiBtrZChYL0cP6dIjQH3lE.png)
+![Graphic illustrating the concept of Inbox Zero, perhaps showing a clean inbox or an organized desk](/blog/images/dsbHgqiBtrZChYL0cP6dIjQH3lE.png)
 
 Methodologies like Inbox Zero provide a system for processing emails efficiently.
 
@@ -199,7 +199,7 @@ The existence of these popular tools highlights where native Gmail often falls s
 
 Beyond manual rules and third-party integrations lies the next frontier: Artificial Intelligence. AI email assistants are moving beyond simple sorting to provide intelligent automation that understands context and learns your preferences. With AI adoption growing rapidly in business and showing significant potential for productivity gains, its impact on email management is profound.
 
-![Illustration depicting an AI robot intelligently sorting and prioritizing emails on a sleek, futuristic computer interface](https://framerusercontent.com/images/vans0QxshgmL07evPTWfOTr2WIU.png)
+![Illustration depicting an AI robot intelligently sorting and prioritizing emails on a sleek, futuristic computer interface](/blog/images/vans0QxshgmL07evPTWfOTr2WIU.png)
 
 AI is transforming email management with smart triage, summarization, and drafting capabilities.
 

@@ -21,7 +21,7 @@ Managing this flood takes a heavy toll. Professionals report spending roughly [2
 
 The impact extends beyond lost time. Email overload is consistently linked to increased stress, anxiety, and burnout. A survey cited by [Frontiers in Psychology](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2024.1439070/full) found that [66% of Americans report feeling stressed](https://inboxdone.com/psychology-of-email-overload/) due to the sheer volume of emails they receive. This constant pressure contributes to decision fatigue and can even negatively impact job satisfaction, making it harder to focus on strategic, high-value work.
 
-![Infographic showing statistics about daily email volume and time spent managing email](https://framerusercontent.com/images/xnDtxCYzMBP3smtGCki6Ydlb4ms.png)
+![Infographic showing statistics about daily email volume and time spent managing email](/blog/images/xnDtxCYzMBP3smtGCki6Ydlb4ms.png)
 
 The average professional receives over 120 emails daily, consuming hours of valuable work time.
 
