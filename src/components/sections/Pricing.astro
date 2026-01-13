@@ -1,4 +1,12 @@
 ---
+/**
+ * Pricing Section - Floating Cards with Depth
+ * 
+ * Three cards that appear to float at different depths using
+ * layered shadows and subtle transforms. Creates a sense of
+ * premium dimensionality and spatial hierarchy.
+ */
+
 type Billing = "annual" | "monthly";
 
 type Plan = {
@@ -7,89 +15,94 @@ type Plan = {
     description: string;
     priceLabel?: string;
     priceByBilling?: Partial<Record<Billing, string>>;
-    featuresTitle: string;
-    features: string[];
+    perUser?: boolean;
+    features: Feature[];
     ctaLabel: string;
     ctaHref: string;
     ctaNote?: string;
     featured?: boolean;
 };
 
+type Feature = { 
+    title: string; 
+    description: string; 
+    highlight?: boolean;
+};
+
 const plans: Plan[] = [
     {
         name: "Basic",
-        description: "No cost plan. Free, forever.",
+        description: "For anyone curious about what a smarter inbox feels like. No commitment required.",
         priceLabel: "Free",
-        featuresTitle: "Core features with daily limits",
         features: [
-            "Smart Summaries (5/day)",
-            "Smart Drafts (2/day)",
-            "Auto Labels (1 max)",
-            "AI Assistant (5 chats/day)",
+            { title: "Instant Summaries", description: "Get the gist of any thread" },
+            { title: "AI Drafts", description: "A taste of replies in your voice" },
+            { title: "Smart Inbox", description: "Basic organization to start" },
+            { title: "Duet Assistant", description: "Try the AI assistant" },
         ],
-        ctaLabel: "Get started",
+        ctaLabel: "Get started free",
         ctaHref: "https://app.duetmail.com/",
-        ctaNote: "Free, forever",
     },
     {
         name: "Pro",
-        badge: "Most popular",
-        description: "Perfect for busy professionals",
+        badge: "14-day free trial",
+        description: "For professionals who want deeper automation, integrations, and an inbox that truly knows how you work.",
         priceByBilling: {
             annual: "19.99",
             monthly: "29.99",
         },
-        featuresTitle: "Everything you need, unlimited",
         features: [
-            "Smart Summaries (unlimited)",
-            "Smart Drafts (unlimited)",
-            "Smart Reminders",
-            "AI Assistant (unlimited)",
+            { title: "Smart Inbox", description: "Emails auto-sorted into smart categories", highlight: true },
+            { title: "AI Drafts", description: "Replies written in your voice, ready to send", highlight: true },
+            { title: "Duet Assistant", description: "Chat to find, draft, organize & more", highlight: true },
+            { title: "Calendar Integration", description: "Schedule, view & manage events from your inbox" },
+            { title: "Instant Summaries", description: "Get the gist of any thread or attachment" },
+            { title: "Smart Reminders", description: "Follow-ups surface automatically so nothing slips" },
+            { title: "Priority Support", description: "Real humans, fast responses" },
         ],
-        ctaLabel: "Get started",
+        ctaLabel: "Start free trial →",
         ctaHref: "https://app.duetmail.com/",
-        ctaNote: "14-day free trial. Cancel anytime.",
         featured: true,
     },
     {
         name: "Enterprise",
-        description: "For teams and organizations",
+        description: "For organizations that need enterprise-grade scale, dedicated support, and custom workflows. Best for teams of 50+.",
         priceByBilling: {
             annual: "49.99",
             monthly: "69.99",
         },
-        featuresTitle: "Built for teams",
+        perUser: true,
         features: [
-            "All Pro Plan features",
-            "Priority Support",
-            "Advanced Analytics",
-            "Team Collaboration",
+            { title: "Everything in Pro", description: "All features included" },
+            { title: "Dedicated Support", description: "Personal account manager" },
+            { title: "Team Analytics", description: "Insights across your organization" },
+            { title: "Shared Workflows", description: "Templates & automations for teams" },
         ],
         ctaLabel: "Contact sales",
         ctaHref: "mailto:hello@duetmail.com?subject=Duet%20Mail%20Enterprise",
-        ctaNote: "Prices are per month/user",
+        ctaNote: "Custom pricing available",
     },
 ];
 ---
 
-<section id="pricing" class="home-pricing" aria-label="Pricing">
-    <div class="mx-auto max-w-6xl px-6 md:px-10">
-        <header class="home-pricing__header">
-            <p class="home-pricing__pill">Pricing</p>
-
-            <h2 class="home-pricing__title">Simple plans for every inbox</h2>
-
-            <p class="home-pricing__subtitle">
-                Start free, then upgrade when you're ready. Cancel anytime.
+<section id="pricing" class="pricing" aria-label="Pricing">
+    <div class="pricing__container">
+        <!-- Header -->
+        <header class="pricing__header">
+            <span class="pricing__pill">Pricing</span>
+            <h2 class="pricing__title">Simple pricing, powerful inbox</h2>
+            <p class="pricing__subtitle">
+                Start free, upgrade anytime. Cancel whenever.
             </p>
         </header>
 
-        <fieldset class="home-pricing__fieldset">
+        <!-- Billing Toggle -->
+        <fieldset class="pricing__fieldset">
             <legend class="sr-only">Billing cadence</legend>
-
+            
             <input
                 id="billing-annual"
-                class="home-pricing__radio"
+                class="pricing__radio"
                 type="radio"
                 name="billing"
                 value="annual"
@@ -97,160 +110,159 @@ const plans: Plan[] = [
             />
             <input
                 id="billing-monthly"
-                class="home-pricing__radio"
+                class="pricing__radio"
                 type="radio"
                 name="billing"
                 value="monthly"
             />
 
-            <div
-                class="pricing-toggle"
-                role="radiogroup"
-                aria-label="Billing cadence"
-            >
-                <label class="pricing-toggle__label" for="billing-annual">
+            <div class="pricing__toggle">
+                <label class="pricing__toggle-label" for="billing-annual">
                     Annual
-                    <span class="pricing-toggle__badge" aria-hidden="true"
-                        >Save</span
-                    >
+                    <span class="pricing__savings-tag">Save 33%</span>
                 </label>
-                <label class="pricing-toggle__label" for="billing-monthly">
+                <label class="pricing__toggle-label" for="billing-monthly">
                     Monthly
                 </label>
-                <span class="pricing-toggle__indicator" aria-hidden="true"
-                ></span>
+                <span class="pricing__toggle-slider"></span>
             </div>
 
-            <div class="pricing-grid" role="list">
-                {
-                    plans.map((plan) => (
-                        <article
-                            class:list={[
-                                "pricing-card",
-                                plan.featured && "pricing-card--featured",
-                            ]}
-                            role="listitem"
-                            aria-label={`${plan.name} plan`}
-                        >
-                            <header class="pricing-card__header">
-                                <div class="pricing-card__top">
-                                    <p class="pricing-card__name">
-                                        {plan.name}
-                                    </p>
-                                    {plan.badge && (
-                                        <span class="pricing-card__badge">
-                                            {plan.badge}
-                                        </span>
+            <!-- Cards Container -->
+            <div class="pricing__cards">
+                {plans.map((plan, index) => (
+                    <article 
+                        class:list={[
+                            "pricing__card",
+                            plan.featured && "pricing__card--featured",
+                            `pricing__card--${index + 1}`
+                        ]}
+                    >
+                        {/* Glow effect for featured */}
+                        {plan.featured && (
+                            <div class="pricing__card-glow" aria-hidden="true"></div>
+                        )}
+
+                        <div class="pricing__card-content">
+                            {/* Badge */}
+                            {plan.badge && (
+                                <span class="pricing__badge">{plan.badge}</span>
+                            )}
+
+                            {/* Card header: Name, description, then price */}
+                            <header class="pricing__card-header">
+                                <h3 class="pricing__card-name">{plan.name}</h3>
+                                <p class="pricing__card-desc">{plan.description}</p>
+                                
+                                {/* Price line */}
+                                <div class="pricing__price-line">
+                                    {plan.priceLabel ? (
+                                        <span class="pricing__price-inline">{plan.priceLabel}</span>
+                                    ) : (
+                                        <>
+                                            {/* Strikethrough monthly price when viewing annual */}
+                                            {plan.featured && (
+                                                <span class="pricing__price-original" data-billing="annual">
+                                                    ${plan.priceByBilling?.monthly}
+                                                </span>
+                                            )}
+                                            <span class="pricing__price-amount">
+                                                <span class="price" data-billing="annual">${plan.priceByBilling?.annual}</span>
+                                                <span class="price" data-billing="monthly">${plan.priceByBilling?.monthly}</span>
+                                            </span>
+                                            <span class="pricing__price-cadence">/month{plan.perUser ? '/user' : ''}</span>
+                                            {(plan.featured || plan.perUser) && (
+                                                <span class="pricing__price-suffix" data-billing="annual">(billed yearly)</span>
+                                            )}
+                                        </>
                                     )}
                                 </div>
-
-                                <p class="pricing-card__desc">
-                                    {plan.description}
-                                </p>
-
-                                {plan.priceLabel ? (
-                                    <div class="pricing-card__price">
-                                        <span class="pricing-card__price-label">
-                                            {plan.priceLabel}
-                                        </span>
-                                    </div>
-                                ) : (
-                                    <div class="pricing-card__price">
-                                        <span class="pricing-card__currency">
-                                            $
-                                        </span>
-                                        <span class="pricing-card__amount">
-                                            <span
-                                                class="price"
-                                                data-billing="annual"
-                                            >
-                                                {plan.priceByBilling?.annual}
-                                            </span>
-                                            <span
-                                                class="price"
-                                                data-billing="monthly"
-                                            >
-                                                {plan.priceByBilling?.monthly}
-                                            </span>
-                                        </span>
-                                        <span class="pricing-card__unit">
-                                            /mo
-                                        </span>
-                                    </div>
-                                )}
                             </header>
 
-                            <div class="pricing-card__body">
-                                <p class="pricing-card__features-title">
-                                    {plan.featuresTitle}
-                                </p>
+                            {/* Features */}
+                            <ul class="pricing__features">
+                                {plan.features.map((feature) => (
+                                    <li class:list={[
+                                        "pricing__feature",
+                                        feature.highlight && "pricing__feature--highlight"
+                                    ]}>
+                                        <span class="pricing__feature-icon" aria-hidden="true">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                        <span class="pricing__feature-content">
+                                            <span class="pricing__feature-title">{feature.title}</span>
+                                            <span class="pricing__feature-desc">{feature.description}</span>
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
 
-                                <ul class="pricing-card__features" role="list">
-                                    {plan.features.map((feature) => (
-                                        <li class="pricing-card__feature">
-                                            <span
-                                                class="pricing-card__check"
-                                                aria-hidden="true"
-                                            >
-                                                <svg
-                                                    width="16"
-                                                    height="16"
-                                                    viewBox="0 0 20 20"
-                                                    fill="none"
-                                                >
-                                                    <path
-                                                        d="M4.2 10.6 8.2 14.6 16.2 6.6"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.6"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    />
-                                                </svg>
-                                            </span>
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <footer class="pricing-card__footer">
-                                <a
-                                    class="pricing-card__cta"
+                            {/* CTA */}
+                            <footer class="pricing__card-footer">
+                                <a 
+                                    class:list={[
+                                        "pricing__cta",
+                                        plan.featured && "pricing__cta--featured"
+                                    ]}
                                     href={plan.ctaHref}
                                 >
                                     {plan.ctaLabel}
                                 </a>
                                 {plan.ctaNote && (
-                                    <p class="pricing-card__cta-note">
-                                        {plan.ctaNote}
-                                    </p>
+                                    <p class="pricing__cta-note">{plan.ctaNote}</p>
+                                )}
+                                {plan.featured && (
+                                    <div class="pricing__trust-inline">
+                                        <span class="pricing__trust-item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                            </svg>
+                                            Secure checkout via Stripe
+                                        </span>
+                                        <span class="pricing__trust-dot">·</span>
+                                        <span class="pricing__trust-item">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+                                            </svg>
+                                            Cancel anytime
+                                        </span>
+                                    </div>
                                 )}
                             </footer>
-                        </article>
-                    ))
-                }
+                        </div>
+                    </article>
+                ))}
             </div>
         </fieldset>
     </div>
 </section>
 
 <style>
-    .home-pricing {
-        padding: 64px 0 120px;
-        scroll-margin-top: 80px;
+    /* ═══════════════════════════════════════════════════════════════
+       Pricing: Floating Cards with Depth
+       Layered shadows, subtle transforms, dimensional hierarchy
+    ═══════════════════════════════════════════════════════════════ */
+
+    .pricing {
+        position: relative;
+        padding: 100px 24px 140px;
+        overflow: hidden;
     }
 
-    .home-pricing__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .pricing__container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    /* Header */
+    .pricing__header {
         text-align: center;
-        gap: 16px;
-        margin-bottom: 40px;
+        margin-bottom: 48px;
     }
 
-    .home-pricing__pill {
-        margin: 0;
+    .pricing__pill {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -259,559 +271,483 @@ const plans: Plan[] = [
         border: 1px solid var(--badge-border);
         background: var(--badge-bg);
         color: var(--badge-text);
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+        font-family: var(--font-sans);
         font-size: 14px;
         font-weight: 500;
-        line-height: 20px;
         letter-spacing: -0.01em;
-        box-shadow:
-            0 10px 30px rgba(0, 0, 0, 0.35),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        margin-bottom: 20px;
     }
 
-    .home-pricing__title {
-        margin: 0;
+    .pricing__title {
+        margin: 0 0 16px;
         font-family: var(--font-serif);
-        font-size: 42px;
+        font-size: clamp(32px, 5vw, 48px);
         font-weight: 500;
-        line-height: 1.1;
         letter-spacing: -0.02em;
+        line-height: 1.1;
         color: var(--prose-heading);
-        text-wrap: balance;
-        max-width: 720px;
     }
 
-    @media (max-width: 767px) {
-        .home-pricing__title {
-            font-size: 32px;
-        }
-    }
-
-    .home-pricing__subtitle {
-        margin: 0;
+    .pricing__subtitle {
+        margin: 0 auto;
+        max-width: 420px;
         font-family: var(--font-sans);
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.7;
+        font-size: 17px;
+        line-height: 1.6;
         color: var(--prose-text);
-        max-width: 520px;
-        text-wrap: pretty;
     }
 
-    .home-pricing__fieldset {
+    /* Fieldset */
+    .pricing__fieldset {
         margin: 0;
         padding: 0;
         border: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 28px;
     }
 
-    .home-pricing__radio {
+    .pricing__radio {
         position: absolute;
         opacity: 0;
         pointer-events: none;
     }
 
-    .pricing-toggle {
+    /* Toggle */
+    .pricing__toggle {
         position: relative;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: inline-flex;
+        margin: 0 auto 48px;
         padding: 4px;
-        border-radius: 9999px;
+        border-radius: 100px;
         background: var(--badge-bg);
         border: 1px solid var(--badge-border);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .pricing-toggle__label {
+    .pricing__toggle-label {
         position: relative;
         z-index: 1;
-        display: inline-flex;
+        display: flex;
         align-items: center;
-        justify-content: center;
         gap: 8px;
-        padding: 10px 14px;
-        border-radius: 9999px;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+        padding: 10px 20px;
+        font-family: var(--font-sans);
         font-size: 14px;
         font-weight: 600;
-        letter-spacing: -0.01em;
         color: var(--duet-muted);
         cursor: pointer;
-        user-select: none;
         transition: color 0.2s ease;
+        border-radius: 100px;
     }
 
-    .pricing-toggle__label:focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 2px var(--duet-accent);
-    }
-
-    .pricing-toggle__badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+    .pricing__savings-tag {
         padding: 3px 8px;
-        border-radius: 9999px;
-        font-size: 12px;
+        border-radius: 100px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        font-size: 11px;
         font-weight: 700;
-        letter-spacing: -0.01em;
-        color: #fff;
-        background: var(--duet-accent);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
     }
 
-    .pricing-toggle__indicator {
+    .pricing__toggle-slider {
         position: absolute;
         top: 4px;
-        bottom: 4px;
         left: 4px;
         width: calc(50% - 4px);
-        border-radius: 9999px;
+        height: calc(100% - 8px);
+        border-radius: 100px;
         background: var(--badge-border);
-        border: 1px solid var(--badge-border);
-        transition: transform 220ms ease;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    :global(html[data-theme="light"]) .pricing-toggle__indicator {
+    :global(html[data-theme="light"]) .pricing__toggle-slider {
         background: #fff;
-        border-color: #e4e4e7;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
-    #billing-annual:checked ~ .pricing-toggle label[for="billing-annual"] {
+    #billing-annual:checked ~ .pricing__toggle label[for="billing-annual"],
+    #billing-monthly:checked ~ .pricing__toggle label[for="billing-monthly"] {
         color: var(--prose-heading);
     }
 
-    #billing-monthly:checked ~ .pricing-toggle label[for="billing-monthly"] {
-        color: var(--prose-heading);
-    }
-
-    #billing-monthly:checked ~ .pricing-toggle .pricing-toggle__indicator {
+    #billing-monthly:checked ~ .pricing__toggle .pricing__toggle-slider {
         transform: translateX(100%);
     }
 
-    .pricing-grid {
-        width: 100%;
+    /* Cards Grid */
+    .pricing__cards {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 18px;
-        align-items: stretch;
+        gap: 24px;
+        perspective: 1000px;
+        width: 100%;
     }
 
-    @media (min-width: 1024px) {
-        .pricing-grid {
+    @media (min-width: 768px) {
+        .pricing__cards {
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 20px;
+            align-items: center;
         }
     }
 
-    .pricing-card {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        padding: 24px;
-        border-radius: 16px;
-        border: 1px solid var(--mockup-border);
-        background:
-            radial-gradient(
-                55% 45% at 50% 0%,
-                rgba(255, 255, 255, 0.16) 0%,
-                rgba(0, 0, 0, 0.1) 35%,
-                rgba(0, 0, 0, 0.55) 100%
-            ),
-            rgba(0, 0, 0, 0.25);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-        overflow: hidden;
+    /* Card Base */
+    .pricing__card {
         position: relative;
+        border-radius: 20px;
+        background: rgba(20, 20, 24, 0.7);
+        backdrop-filter: blur(24px) saturate(1.2);
+        -webkit-backdrop-filter: blur(24px) saturate(1.2);
+        border: 1px solid var(--badge-border);
+        overflow: visible;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    :global(html[data-theme="light"]) .pricing-card {
-        background: #fff;
-        box-shadow:
-            0 4px 6px -1px rgba(0, 0, 0, 0.1),
-            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    :global(html[data-theme="light"]) .pricing__card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px) saturate(1.3);
+        -webkit-backdrop-filter: blur(20px) saturate(1.3);
+        border-color: rgba(229, 231, 235, 0.8);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
 
-    .pricing-card::before {
-        content: "";
+    /* Card transforms for depth */
+    @media (min-width: 768px) {
+        .pricing__card--1 {
+            transform: rotate(-0.5deg);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing__card--2 {
+            transform: scale(1.04);
+            z-index: 10;
+            box-shadow: 
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 40px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing__card--3 {
+            transform: rotate(0.5deg);
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.05),
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .pricing__card:hover {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .pricing__card--2:hover {
+            transform: translateY(-6px) scale(1.05);
+        }
+    }
+
+    /* Featured card glow */
+    .pricing__card--featured {
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .pricing__card--featured .pricing__card-content {
+        padding-top: 40px;
+    }
+
+    :global(html[data-theme="light"]) .pricing__card--featured {
+        border-color: #6366f1;
+    }
+
+    .pricing__card-glow {
         position: absolute;
-        inset: -1px;
-        border-radius: 16px;
-        padding: 1px;
-        background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.22),
-            rgba(255, 255, 255, 0.03)
-        );
-        -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 200px;
+        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
         pointer-events: none;
-        opacity: 0.65;
-        display: block;
     }
 
-    :global(html[data-theme="light"]) .pricing-card::before {
-        display: none;
+    :global(html[data-theme="light"]) .pricing__card-glow {
+        background: radial-gradient(ellipse, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
     }
 
-    .pricing-card--featured {
-        border-color: rgba(116, 194, 255, 0.26);
-        box-shadow:
-            0 30px 80px rgba(69, 48, 234, 0.22),
-            0 20px 60px rgba(0, 0, 0, 0.55);
-    }
-
-    :global(html[data-theme="light"]) .pricing-card--featured {
-        border-color: var(--duet-accent);
-        box-shadow:
-            0 20px 25px -5px rgba(0, 0, 0, 0.1),
-            0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-
-    .pricing-card--featured::after {
-        content: "";
-        position: absolute;
-        inset: -120px;
-        background: radial-gradient(
-            circle at 50% 0%,
-            rgba(69, 48, 234, 0.35),
-            transparent 55%
-        );
-        pointer-events: none;
-        opacity: 0.6;
-        display: block;
-    }
-
-    :global(html[data-theme="light"]) .pricing-card--featured::after {
-        display: none;
-    }
-
-    .pricing-card__header {
+    .pricing__card-content {
         position: relative;
-        z-index: 1;
+        padding: 32px 28px;
     }
 
-    .pricing-card__top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+    /* Badge - centered on top border like Step4Pricing */
+    .pricing__badge {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        font-family: var(--font-sans);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: white;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
     }
 
-    .pricing-card__name {
-        margin: 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
+    /* Card Header */
+    .pricing__card-header {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--badge-border);
+    }
+
+    :global(html[data-theme="light"]) .pricing__card-header {
+        border-bottom-color: #e5e7eb;
+    }
+
+    .pricing__card-name {
+        margin: 0 0 4px;
+        font-family: var(--font-serif);
+        font-size: 26px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
         color: var(--prose-heading);
     }
 
-    .pricing-card__badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 28px;
-        padding: 0 12px;
-        border-radius: 9999px;
-        background: var(--badge-bg);
-        border: 1px solid var(--badge-border);
-        color: var(--badge-text);
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        white-space: nowrap;
-    }
-
-    .pricing-card__desc {
-        margin: 12px 0 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+    .pricing__card-desc {
+        margin: 0 0 16px;
+        font-family: var(--font-sans);
         font-size: 14px;
-        line-height: 20px;
-        color: var(--prose-text);
-        text-wrap: pretty;
+        color: var(--duet-muted);
+        letter-spacing: 0.01em;
     }
 
-    .pricing-card__price {
+    /* Price Line */
+    .pricing__price-line {
         display: flex;
+        flex-wrap: wrap;
         align-items: baseline;
         gap: 6px;
-        margin-top: 16px;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+        font-family: var(--font-sans);
+        font-size: 15px;
     }
 
-    .pricing-card__currency {
+    .pricing__price-inline {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--prose-heading);
+    }
+
+    .pricing__price-original {
         font-size: 18px;
-        color: var(--prose-text);
-        opacity: 0.8;
-        transform: translateY(-2px);
+        font-weight: 500;
+        color: var(--duet-muted);
+        text-decoration: line-through;
+        text-decoration-thickness: 1.5px;
+        opacity: 0.7;
     }
 
-    .pricing-card__amount {
-        font-size: 44px;
+    /* Hide strikethrough on monthly view */
+    #billing-monthly:checked ~ .pricing__cards .pricing__price-original[data-billing="annual"] {
+        display: none;
+    }
+
+    /* Hide (billed yearly) on monthly view */
+    #billing-monthly:checked ~ .pricing__cards .pricing__price-suffix[data-billing="annual"] {
+        display: none;
+    }
+
+    .pricing__price-amount {
+        font-size: 28px;
         font-weight: 700;
-        letter-spacing: -0.04em;
+        letter-spacing: -0.02em;
         color: var(--prose-heading);
-        line-height: 1;
     }
 
-    .pricing-card__unit {
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
+    .pricing__price-cadence {
+        font-size: 15px;
         color: var(--duet-muted);
     }
 
-    .pricing-card__price-label {
-        font-size: 44px;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        color: var(--prose-heading);
-        line-height: 1;
-    }
-
-    .pricing-card__note {
-        margin: 10px 0 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 13px;
-        line-height: 18px;
+    .pricing__price-suffix {
+        font-size: 12px;
         color: var(--duet-muted);
     }
 
-    .pricing-card__body {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        flex: 1 1 auto;
-    }
-
-    .pricing-card__features-title {
-        margin: 0;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        color: var(--duet-muted);
-    }
-
-    .pricing-card__features {
-        margin: 0;
+    /* Features */
+    .pricing__features {
+        margin: 0 0 28px;
         padding: 0;
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 14px;
     }
 
-    .pricing-card__feature {
+    .pricing__feature {
         display: flex;
         align-items: flex-start;
         gap: 10px;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 14px;
-        line-height: 20px;
-        color: var(--prose-text);
     }
 
-    .pricing-card__check {
-        flex: none;
+    .pricing__feature-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .pricing__feature-title {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.3;
+        color: var(--prose-heading);
+    }
+
+    .pricing__feature-desc {
+        font-family: var(--font-sans);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--duet-muted);
+    }
+
+    .pricing__feature--highlight .pricing__feature-title {
+        color: var(--prose-heading);
+    }
+
+    .pricing__feature-icon {
+        flex-shrink: 0;
         width: 18px;
         height: 18px;
-        border-radius: 6px;
-        display: grid;
-        place-items: center;
-        color: var(--duet-accent);
-        background: rgba(116, 194, 255, 0.08); /* This could be revisited */
-        border: 1px solid rgba(116, 194, 255, 0.18);
         margin-top: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.1);
+        color: #6366f1;
     }
 
-    :global(html[data-theme="light"]) .pricing-card__check {
+    :global(html[data-theme="light"]) .pricing__feature-icon {
         background: #eef2ff;
-        border-color: #c7d2fe;
+        color: #4f46e5;
     }
 
-    .pricing-card__footer {
-        position: relative;
-        z-index: 1;
+    .pricing__feature--highlight .pricing__feature-icon {
+        background: rgba(99, 102, 241, 0.1);
+        color: #6366f1;
+    }
+
+    :global(html[data-theme="light"]) .pricing__feature--highlight .pricing__feature-icon {
+        background: #eef2ff;
+        color: #4f46e5;
+    }
+
+    /* CTA */
+    .pricing__card-footer {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 
-    .pricing-card__cta {
-        display: inline-flex;
+    .pricing__cta {
+        display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 46px;
-        border-radius: 9999px;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-family: var(--font-sans);
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
         background: var(--badge-bg);
         border: 1px solid var(--badge-border);
         color: var(--prose-heading);
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        text-decoration: none;
-        transition:
-            transform 0.2s ease,
-            background 0.2s ease,
-            border-color 0.2s ease;
+        transition: all 0.2s ease;
     }
 
-    .pricing-card__cta:hover {
+    :global(html[data-theme="light"]) .pricing__cta {
+        background: #f9fafb;
+        border-color: #e5e7eb;
+    }
+
+    .pricing__cta:hover {
         background: var(--badge-border);
         transform: translateY(-1px);
     }
 
-    .pricing-card__cta:active {
-        transform: translateY(0px);
+    :global(html[data-theme="light"]) .pricing__cta:hover {
+        background: #f3f4f6;
     }
 
-    .pricing-card--featured .pricing-card__cta {
-        background: linear-gradient(135deg, #74c2ff 0%, #4530ea 100%);
-        border-color: rgba(255, 255, 255, 0.14);
-        color: #fff;
-        box-shadow: 0 18px 40px rgba(69, 48, 234, 0.28);
+    .pricing__cta--featured {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        border: none;
+        color: white;
+        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     }
 
-    .pricing-card--featured .pricing-card__cta:hover {
-        background: linear-gradient(135deg, #86ccff 0%, #5640f0 100%);
-        transform: translateY(-2px);
+    :global(html[data-theme="light"]) .pricing__cta--featured {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        border: none;
+        color: white;
     }
 
-    .pricing-card__cta-note {
+    .pricing__cta--featured:hover {
+        background: linear-gradient(135deg, #7c7ff2 0%, #5b54f0 100%);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    :global(html[data-theme="light"]) .pricing__cta--featured:hover {
+        background: linear-gradient(135deg, #7c7ff2 0%, #5b54f0 100%);
+        color: white;
+    }
+
+    .pricing__cta-note {
         margin: 0;
         text-align: center;
-        font-family:
-            "Manrope Variable",
-            ui-sans-serif,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            Roboto,
-            Helvetica,
-            Arial,
-            sans-serif;
+        font-family: var(--font-sans);
         font-size: 13px;
-        line-height: 18px;
         color: var(--duet-muted);
     }
 
+    /* Trust inline (under Pro CTA) */
+    .pricing__trust-inline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-family: var(--font-sans);
+        font-size: 12px;
+        color: var(--duet-muted);
+    }
+
+    .pricing__trust-inline .pricing__trust-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .pricing__trust-inline svg {
+        opacity: 0.7;
+        flex-shrink: 0;
+    }
+
+    .pricing__trust-dot {
+        opacity: 0.5;
+    }
+
+    /* Price Toggle Logic */
     .price[data-billing="annual"] {
         display: inline;
     }
@@ -820,20 +756,18 @@ const plans: Plan[] = [
         display: none;
     }
 
-    #billing-monthly:checked ~ .pricing-grid .price[data-billing="monthly"] {
+    #billing-monthly:checked ~ .pricing__cards .price[data-billing="monthly"] {
         display: inline;
     }
 
-    #billing-monthly:checked ~ .pricing-grid .price[data-billing="annual"] {
+    #billing-monthly:checked ~ .pricing__cards .price[data-billing="annual"] {
         display: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
-        .pricing-toggle__indicator {
-            transition: none;
-        }
-
-        .pricing-card__cta {
+        .pricing__card,
+        .pricing__cta,
+        .pricing__toggle-slider {
             transition: none;
         }
     }
