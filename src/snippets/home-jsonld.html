@@ -3,7 +3,36 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Duet Mail",
-  "url": "https://duetmail.com/"
+  "alternateName": "Duet - Gmail AI Assistant",
+  "url": "https://duetmail.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://duetmail.com/?s={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Duet Mail",
+  "url": "https://duetmail.com/",
+  "logo": "https://duetmail.com/favicon.svg",
+  "sameAs": [
+    "https://www.linkedin.com/company/duetmail",
+    "https://x.com/DuetMailApp",
+    "https://www.instagram.com/duetmail/"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "email": "hello@duetmail.com"
+  }
 }
 </script>
 
@@ -12,19 +41,94 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Duet Mail",
-  "applicationCategory":"CommunicationApplication",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
+  "description": "AI Gmail assistant that automatically summarizes emails, drafts replies in your voice, and organizes your inbox to save hours every week.",
+  "applicationCategory": "CommunicationApplication",
+  "featureList": [
+    "Smart email organization and categorization",
+    "AI-powered email drafting in your voice",
+    "Intelligent email assistant with calendar integration",
+    "Automatic email summaries and action items",
+    "Smart reminders for follow-ups"
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Basic Plan",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free plan with instant summaries, AI drafts, and smart inbox"
+    },
+    {
+      "@type": "Offer",
+      "name": "Pro Plan",
+      "price": "19.99",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "19.99",
+        "priceCurrency": "USD",
+        "unitText": "MONTH"
+      },
+      "description": "Full access with smart inbox categorization, AI drafts, assistant, and calendar integration"
+    }
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
     "ratingCount": "853"
   },
   "operatingSystem": "Web",
-  "url": "https://duetmail.com/"
+  "browserRequirements": "Requires JavaScript. Works with Gmail and Google Workspace.",
+  "url": "https://duetmail.com/",
+  "screenshot": "https://duetmail.com/og.jpg"
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Duet Mail protect my email data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your security is our top priority. We use OAuth 2.0 for secure authentication, process emails in Gmail's secure environment, and never store your email content. All processing happens in real-time through Gmail's API, and we undergo Google's annual CASA security assessment to maintain the highest security standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the email summary feature work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Duet Mail uses advanced AI to analyze your email threads and generate a concise overview highlighting the key points, decisions, and action items. This helps you quickly understand the context without reading the entire thread."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What permissions does Duet Mail need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Duet Mail requires access to your emails to provide summaries, extract action items, generate content, and send your emails. We only request permissions we absolutely need. You can review and revoke these permissions at any time in your Google Account settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's included in the free trial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 14-day free trial includes full free tool access to all Pro features: unlimited email summaries, action item extraction, AI email writer (generating emails and drafts without any limits), and custom email templates. Just sign in with Google to start saving time on email management."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Duet Mail with other email providers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently, Duet Mail works exclusively with Gmail and Google Workspace accounts. We will be adding support for other email providers, including Outlook and Apple Mail in the future."
+      }
+    }
+  ]
+}
+</script>
