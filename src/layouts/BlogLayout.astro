@@ -1,0 +1,438 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+import Nav from "../components/nav/Nav.astro"
+import Footer from "../components/sections/Footer.astro"
+
+type Props = {
+    title: string
+    description: string
+    publishedAt: Date
+    updatedAt?: Date
+    author: string
+    coverImage?: string
+    coverImageAlt?: string
+    tags?: string[]
+    slug: string
+}
+
+const {
+    title,
+    description,
+    publishedAt,
+    updatedAt,
+    author,
+    coverImage,
+    coverImageAlt,
+    tags = [],
+    slug,
+} = Astro.props
+
+const formattedDate = publishedAt.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+})
+
+const formattedUpdatedDate = updatedAt?.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+})
+
+const canonicalPath = `/blog/${slug}`
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString()
+const ogImagePath = coverImage || "/og.jpg"
+const ogImageUrl = new URL(ogImagePath, Astro.site).toString()
+
+// Build article meta tags
+const metaLines: string[] = []
+metaLines.push('<meta property="article:published_time" content="' + publishedAt.toISOString() + '" />')
+if (updatedAt) {
+    metaLines.push('<meta property="article:modified_time" content="' + updatedAt.toISOString() + '" />')
+}
+metaLines.push('<meta property="article:author" content="' + author + '" />')
+for (const tag of tags) {
+    metaLines.push('<meta property="article:tag" content="' + tag + '" />')
+}
+
+// JSON-LD structured data for Article
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: description,
+    image: ogImageUrl,
+    datePublished: publishedAt.toISOString(),
+    dateModified: (updatedAt || publishedAt).toISOString(),
+    author: {
+        "@type": "Organization",
+        name: author,
+        url: "https://duetmail.com",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Duet Mail",
+        url: "https://duetmail.com",
+        logo: {
+            "@type": "ImageObject",
+            url: "https://duetmail.com/favicon.svg",
+        },
+    },
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": canonicalUrl,
+    },
+    keywords: tags.join(", "),
+}
+
+const jsonLdScript = '<script type="application/ld+json">' + JSON.stringify(jsonLd) + '<' + '/script>'
+const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
+---
+
+<BaseLayout
+    title={`${title} | Duet Mail Blog`}
+    description={description}
+    canonicalPath={canonicalPath}
+    ogImagePath={ogImagePath}
+    ogType="article"
+    extraHeadHtml={extraHeadHtml}
+>
+    <Nav />
+    <main class="blog-post">
+        <article class="blog-article">
+            <header class="blog-header">
+                <a href="/blog" class="blog-back-link">
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M10 12L6 8L10 4"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                    <span>Back to Blog</span>
+                </a>
+
+                {
+                    tags.length > 0 && (
+                        <div class="blog-tags">
+                            {tags.map((tag) => (
+                                <span class="blog-tag">{tag}</span>
+                            ))}
+                        </div>
+                    )
+                }
+
+                <h1 class="blog-title">{title}</h1>
+
+                <p class="blog-description">{description}</p>
+
+                <div class="blog-meta">
+                    <span class="blog-author">{author}</span>
+                    <span class="blog-meta-dot" aria-hidden="true"></span>
+                    <time datetime={publishedAt.toISOString()}>{formattedDate}</time>
+                    {
+                        formattedUpdatedDate && (
+                            <>
+                                <span class="blog-meta-dot" aria-hidden="true" />
+                                <span class="blog-updated">
+                                    Updated {formattedUpdatedDate}
+                                </span>
+                            </>
+                        )
+                    }
+                </div>
+            </header>
+
+            {
+                coverImage && (
+                    <figure class="blog-cover">
+                        <img
+                            src={coverImage}
+                            alt={coverImageAlt || title}
+                            class="blog-cover-image"
+                            loading="eager"
+                            decoding="async"
+                        />
+                    </figure>
+                )
+            }
+
+            <div class="blog-content duet-prose">
+                <slot />
+            </div>
+
+            <footer class="blog-footer">
+                <div class="blog-footer-cta">
+                    <p class="blog-footer-cta-text">
+                        Ready to transform your email workflow?
+                    </p>
+                    <a class="blog-footer-cta-button" href="https://app.duetmail.com">
+                        Try Duet Mail Free
+                    </a>
+                </div>
+
+                <a href="/blog" class="blog-back-link blog-back-link--footer">
+                    <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M10 12L6 8L10 4"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                    <span>Back to Blog</span>
+                </a>
+            </footer>
+        </article>
+    </main>
+    <Footer />
+</BaseLayout>
+
+<style>
+    .blog-post {
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 80px;
+    }
+
+    .blog-article {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    @media (min-width: 768px) {
+        .blog-article {
+            padding: 0 32px;
+        }
+    }
+
+    /* Back Link */
+    .blog-back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--duet-muted);
+        text-decoration: none;
+        transition: color 0.2s ease;
+        margin-bottom: 32px;
+    }
+
+    .blog-back-link:hover {
+        color: var(--prose-heading);
+    }
+
+    .blog-back-link--footer {
+        margin-bottom: 0;
+        margin-top: 24px;
+    }
+
+    /* Tags */
+    .blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .blog-tag {
+        display: inline-flex;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--duet-accent-2);
+        background: color-mix(in srgb, var(--duet-accent-2) 12%, transparent);
+        border-radius: 6px;
+    }
+
+    /* Header */
+    .blog-header {
+        margin-bottom: 48px;
+    }
+
+    .blog-title {
+        font-family: var(--font-serif);
+        font-size: 42px;
+        font-weight: 500;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: var(--prose-heading);
+        margin: 0 0 20px;
+        text-wrap: balance;
+    }
+
+    @media (max-width: 639px) {
+        .blog-title {
+            font-size: 32px;
+        }
+    }
+
+    .blog-description {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--prose-text);
+        margin: 0 0 24px;
+        text-wrap: pretty;
+    }
+
+    @media (max-width: 639px) {
+        .blog-description {
+            font-size: 16px;
+        }
+    }
+
+    /* Meta */
+    .blog-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--duet-muted);
+    }
+
+    .blog-author {
+        font-weight: 600;
+        color: var(--prose-text);
+    }
+
+    .blog-meta-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--duet-muted);
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+
+    .blog-updated {
+        font-style: italic;
+    }
+
+    /* Cover Image */
+    .blog-cover {
+        margin: 0 -24px 48px;
+        padding: 0;
+    }
+
+    @media (min-width: 768px) {
+        .blog-cover {
+            margin: 0 -48px 56px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+    }
+
+    .blog-cover-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    @media (min-width: 768px) {
+        .blog-cover-image {
+            border-radius: 16px;
+        }
+    }
+
+    /* Content */
+    .blog-content {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .blog-content :global(h1:first-child),
+    .blog-content :global(h2:first-child),
+    .blog-content :global(h3:first-child) {
+        margin-top: 0;
+    }
+
+    .blog-content :global(img) {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 2em 0;
+        border-radius: 12px;
+        border: 1px solid var(--duet-border);
+    }
+
+    .blog-content :global(figure) {
+        margin: 2em 0;
+    }
+
+    .blog-content :global(figcaption) {
+        margin-top: 12px;
+        font-size: 14px;
+        color: var(--duet-muted);
+        text-align: center;
+    }
+
+    /* Footer */
+    .blog-footer {
+        margin-top: 64px;
+        padding-top: 48px;
+        border-top: 1px solid var(--duet-border-editorial);
+    }
+
+    .blog-footer-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 40px 32px;
+        background: color-mix(in srgb, var(--duet-accent) 8%, transparent);
+        border: 1px solid color-mix(in srgb, var(--duet-accent) 20%, transparent);
+        border-radius: 16px;
+        text-align: center;
+    }
+
+    .blog-footer-cta-text {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--prose-heading);
+        margin: 0;
+    }
+
+    .blog-footer-cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #ffffff;
+        background: linear-gradient(180deg, #252320 0%, #171615 100%);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        text-decoration: none;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .blog-footer-cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.25),
+            0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+</style>

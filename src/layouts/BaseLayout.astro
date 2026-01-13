@@ -9,9 +9,10 @@ type Props = {
     canonicalPath: string;
     ogImagePath: string;
     extraHeadHtml?: string;
+    ogType?: "website" | "article";
 };
 
-const { title, description, canonicalPath, ogImagePath, extraHeadHtml } =
+const { title, description, canonicalPath, ogImagePath, extraHeadHtml, ogType = "website" } =
     Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
@@ -63,7 +64,7 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
         <link rel="icon" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={ogType} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImageUrl} />
