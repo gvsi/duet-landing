@@ -3,19 +3,23 @@
 ---
 
 <section class="agent-showcase" aria-label="AI Agent Chat" data-agent-section>
-    <!-- Editorial Divider -->
-    <div class="editorial-divider">
-        <span class="feature-label">FEATURE 03 — INTELLIGENCE</span>
-    </div>
-
     <div class="agent-container">
         <header class="agent-header">
-            <h2 class="agent-title">The Intelligence Desk</h2>
+            <!-- Feature Badge -->
+            <div class="feature-badge">
+                <div class="badge-ornament">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        <circle cx="9" cy="10" r="0.5" fill="currentColor" stroke="none"></circle>
+                        <circle cx="12" cy="10" r="0.5" fill="currentColor" stroke="none"></circle>
+                        <circle cx="15" cy="10" r="0.5" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                </div>
+                <span class="badge-text">Intelligence</span>
+            </div>
+            <h2 class="agent-title">Ask anything about your email</h2>
             <p class="agent-subtitle">
-                A proactive agent that works across your inbox, calendar, and
-                contacts.
-                <br class="hidden md:block" />
-                Ask challenging questions. Get instant answers.
+                Ask Duet to find emails, check your calendar, or draft a reply. It understands your inbox and answers instantly.
             </p>
         </header>
 
@@ -153,26 +157,55 @@
 <style>
     .agent-showcase {
         position: relative;
-        padding: 0 24px 120px;
-        overflow: hidden;
+        padding: 80px 24px;
+        overflow: visible;
     }
 
-    .editorial-divider {
-        max-width: 1200px;
-        margin: 0 auto 80px;
-        border-top: 1px solid var(--duet-border-editorial);
-        padding-top: 24px;
+    .feature-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 20px 10px 16px;
+        background: linear-gradient(135deg, rgba(45, 212, 191, 0.08) 0%, rgba(34, 197, 94, 0.08) 100%);
+        border: 1px solid rgba(45, 212, 191, 0.25);
+        border-radius: 12px;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    }
+
+    .in-view .feature-badge {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .badge-ornament {
         display: flex;
-        justify-content: flex-start;
+        align-items: center;
+        justify-content: center;
+        color: rgba(45, 212, 191, 0.7);
     }
 
-    .feature-label {
+    .badge-text {
         font-family: var(--font-sans);
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--duet-muted);
+        letter-spacing: 0.05em;
+        color: rgba(45, 212, 191, 0.95);
+    }
+
+    :global(html[data-theme="light"]) .feature-badge {
+        background: linear-gradient(135deg, rgba(20, 184, 166, 0.06) 0%, rgba(22, 163, 74, 0.06) 100%);
+        border-color: rgba(20, 184, 166, 0.3);
+    }
+
+    :global(html[data-theme="light"]) .badge-ornament {
+        color: rgba(20, 184, 166, 0.8);
+    }
+
+    :global(html[data-theme="light"]) .badge-text {
+        color: rgba(20, 184, 166, 1);
     }
 
     .agent-container {

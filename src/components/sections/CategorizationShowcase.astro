@@ -7,18 +7,23 @@
     aria-label="Email categorization"
     data-categorization-section
 >
-    <!-- Editorial Divider -->
-    <div class="editorial-divider">
-        <span class="feature-label">FEATURE 01 — ORGANIZATION</span>
-    </div>
-
     <div class="categorization-container">
         <header class="categorization-header">
-            <h2 class="categorization-title">The Sorting Room</h2>
+            <!-- Feature Badge -->
+            <div class="feature-badge">
+                <div class="badge-ornament">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                    </svg>
+                </div>
+                <span class="badge-text">Organization</span>
+            </div>
+            <h2 class="categorization-title">Duet organizes your inbox</h2>
             <p class="categorization-subtitle">
-                Categorize every email instantly. Filter noise.
-                <br class="hidden md:block" />
-                Focus only on what demands attention.
+                Automatic categorization filters noise and surfaces what matters. Instantly see what needs action, what's just FYI, and what can wait.
             </p>
         </header>
 
@@ -254,17 +259,74 @@
 <style>
     .categorization-showcase {
         position: relative;
-        padding: 0 24px 120px;
+        padding: 80px 24px;
         overflow: hidden;
+    }
+
+    .categorization-showcase:first-child {
+        padding-top: 0;
+    }
+
+    .feature-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 20px 10px 16px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 12px;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    }
+
+    .in-view .feature-badge {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .badge-ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(59, 130, 246, 0.6);
+    }
+
+    .badge-text {
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: rgba(59, 130, 246, 0.9);
+    }
+
+    :global(html[data-theme="light"]) .feature-badge {
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, rgba(124, 58, 237, 0.06) 100%);
+        border-color: rgba(37, 99, 235, 0.25);
+    }
+
+    :global(html[data-theme="light"]) .badge-ornament {
+        color: rgba(37, 99, 235, 0.7);
+    }
+
+    :global(html[data-theme="light"]) .badge-text {
+        color: rgba(37, 99, 235, 1);
     }
 
     .editorial-divider {
         max-width: 1200px;
-        margin: 0 auto 80px;
+        margin: 0 auto 60px;
         border-top: 1px solid var(--duet-border-editorial);
         padding-top: 24px;
         display: flex;
         justify-content: flex-start;
+    }
+
+    /* When first in container, remove top border for cleaner look */
+    .categorization-showcase:first-child .editorial-divider {
+        border-top: none;
+        padding-top: 0;
     }
 
     .feature-label {
@@ -304,7 +366,6 @@
         font-weight: 500;
         line-height: 1.1;
         letter-spacing: -0.02em;
-        letter-spacing: -0.02em;
         text-wrap: balance;
         color: var(--prose-heading);
     }
@@ -334,7 +395,7 @@
     .window-wrapper {
         position: relative;
         width: 100%;
-        max-width: 720px;
+        max-width: 600px;
         z-index: 1;
     }
 

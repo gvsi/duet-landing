@@ -7,19 +7,22 @@
     aria-label="AI draft replies"
     data-draft-section
 >
-    <!-- Editorial Divider -->
-    <div class="editorial-divider">
-        <span class="feature-label">FEATURE 02 — DRAFTING</span>
-    </div>
-
     <div class="draft-container">
         <!-- Editorial Header -->
         <header class="draft-header">
-            <h2 class="draft-title">The Ghostwriter</h2>
+            <!-- Feature Badge -->
+            <div class="feature-badge">
+                <div class="badge-ornament">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                </div>
+                <span class="badge-text">Drafting</span>
+            </div>
+            <h2 class="draft-title">Duet drafts in your voice</h2>
             <p class="draft-subtitle">
-                Duet drafts replies in your voice, ready to send.
-                <br class="hidden md:block" />
-                Review, edit, and hit send.
+                Duet learns how you write and drafts replies that match your tone. Review, adjust if needed, and send in seconds.
             </p>
         </header>
 
@@ -226,26 +229,55 @@
 <style>
     .draft-showcase {
         position: relative;
-        padding: 0 24px 120px; /* Removed top padding, handled by divider margin */
+        padding: 80px 24px;
         overflow: hidden;
     }
 
-    .editorial-divider {
-        max-width: 1200px;
-        margin: 0 auto 80px;
-        border-top: 1px solid var(--duet-border-editorial);
-        padding-top: 24px;
-        display: flex;
-        justify-content: flex-start;
+    .feature-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 20px 10px 16px;
+        background: linear-gradient(135deg, rgba(212, 174, 94, 0.08) 0%, rgba(245, 158, 11, 0.08) 100%);
+        border: 1px solid rgba(212, 174, 94, 0.25);
+        border-radius: 12px;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
     }
 
-    .feature-label {
+    .in-view .feature-badge {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .badge-ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(212, 174, 94, 0.7);
+    }
+
+    .badge-text {
         font-family: var(--font-sans);
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--duet-muted);
+        letter-spacing: 0.05em;
+        color: rgba(212, 174, 94, 0.95);
+    }
+
+    :global(html[data-theme="light"]) .feature-badge {
+        background: linear-gradient(135deg, rgba(180, 130, 20, 0.06) 0%, rgba(217, 119, 6, 0.06) 100%);
+        border-color: rgba(180, 130, 20, 0.3);
+    }
+
+    :global(html[data-theme="light"]) .badge-ornament {
+        color: rgba(180, 130, 20, 0.8);
+    }
+
+    :global(html[data-theme="light"]) .badge-text {
+        color: rgba(180, 130, 20, 1);
     }
 
     .draft-container {

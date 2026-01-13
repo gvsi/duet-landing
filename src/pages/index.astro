@@ -8,6 +8,7 @@ import Logos from "../components/sections/Logos.astro";
 import CategorizationShowcase from "../components/sections/CategorizationShowcase.astro";
 import DraftShowcase from "../components/sections/DraftShowcase.astro";
 import AgentChatShowcase from "../components/sections/AgentChatShowcase.astro";
+import ShowcaseContainer from "../components/sections/ShowcaseContainer.astro";
 // import Features from "../components/sections/Features.astro";
 import Testimonials from "../components/sections/Testimonials.astro";
 import Pricing from "../components/sections/Pricing.astro";
@@ -37,9 +38,11 @@ const description =
             </div>
         </Hero>
         <Logos />
-        <CategorizationShowcase />
-        <DraftShowcase />
-        <AgentChatShowcase />
+        <ShowcaseContainer>
+            <CategorizationShowcase />
+            <DraftShowcase />
+            <AgentChatShowcase />
+        </ShowcaseContainer>
         <!-- <Features /> -->
         <Testimonials />
         <Pricing />
