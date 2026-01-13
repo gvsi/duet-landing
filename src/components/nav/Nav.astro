@@ -40,6 +40,7 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
             <a class="nav-link" href="/#testimonials">Testimonials</a>
             <a class="nav-link" href="/#pricing">Pricing</a>
             <a class="nav-link" href="/#faq">FAQ</a>
+            <a class="nav-link" href="/blog">Blog</a>
         </nav>
 
         <div class="flex items-center gap-3">
@@ -91,6 +92,7 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
                     >
                     <a class="mobile-menu-link" href="/#pricing">Pricing</a>
                     <a class="mobile-menu-link" href="/#faq">FAQ</a>
+                    <a class="mobile-menu-link" href="/blog">Blog</a>
                 </nav>
             </details>
         </div>
@@ -182,7 +184,7 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
 
     @media (max-width: 767px) {
         .site-nav:has(details[data-mobile-menu][open]) {
-            height: 426px;
+            height: 482px;
             background: var(--nav-mobile-bg);
         }
     }
