@@ -84,8 +84,8 @@
     --duet-accent: #3730a3;
     --duet-accent-2: #4f46e5;
 
-    /* Light Hero Background */
-    --hero-bg-image: url("/hero-texture-5-3.jpg");
+    /* Light Hero Background - Mobile first (smallest image) */
+    --hero-bg-image: url("/hero-bg-light-sm.webp");
     --hero-bg-repeat: repeat-y;
     --hero-bg-size: 100%;
 
@@ -133,6 +133,20 @@
     --code-text: #1a1a1f;
     --code-border: rgba(0, 0, 0, 0.08);
     --pre-bg: #f0f0f2;
+  }
+
+  /* Responsive hero background for light mode - tablet */
+  @media (min-width: 768px) {
+    html[data-theme="light"] {
+      --hero-bg-image: url("/hero-bg-light-md.webp");
+    }
+  }
+
+  /* Responsive hero background for light mode - desktop */
+  @media (min-width: 1280px) {
+    html[data-theme="light"] {
+      --hero-bg-image: url("/hero-bg-light-lg.webp");
+    }
   }
 
   html {
