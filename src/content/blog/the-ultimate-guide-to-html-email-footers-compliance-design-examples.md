@@ -1,6 +1,6 @@
 ---
 title: "The Ultimate Guide to HTML Email Footers: Compliance, Design & Examples"
-description: "Unlock the power of the often-overlooked HTML email footer. Learn essential elements, design tips, legal rules (CAN-SPAM, GDPR, CASL) & examples for compliance & branding."
+description: "Master HTML email footers: essential elements, design tips, legal compliance (CAN-SPAM, GDPR, CASL) and branding examples."
 publishedAt: 2026-01-05
 author: "Duet Mail Team"
 tags: ["AI", "Email"]
