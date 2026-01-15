@@ -15,7 +15,9 @@ type Props = {
 const { title, description, canonicalPath, ogImagePath, extraHeadHtml, ogType = "website" } =
     Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
+// Ensure canonical path has trailing slash to match Astro's trailingSlash: "always" config
+const normalizedPath = canonicalPath.endsWith("/") ? canonicalPath : `${canonicalPath}/`;
+const canonicalUrl = new URL(normalizedPath, Astro.site).toString();
 const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
 ---
 

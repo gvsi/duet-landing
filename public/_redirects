@@ -1,2 +1,2 @@
 # Cloudflare Pages handles trailing slashes automatically
-# No custom redirects needed with Astro's trailingSlash: "never" config
+# Astro's trailingSlash: "always" matches Cloudflare's default behavior
