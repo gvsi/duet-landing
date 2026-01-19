@@ -1,2 +1,10 @@
-# Cloudflare Pages handles trailing slashes automatically
-# Astro's trailingSlash: "always" matches Cloudflare's default behavior
+# Canonical URLs: no trailing slash (except /)
+# These redirects ensure Google only sees one URL per page.
+
+/cookies/ /cookies 301
+/disclaimer/ /disclaimer 301
+/privacy/ /privacy 301
+/terms/ /terms 301
+
+/blog/ /blog 301
+/blog/:slug/ /blog/:slug 301

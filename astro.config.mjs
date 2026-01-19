@@ -5,7 +5,7 @@ import { defineConfig } from "astro/config"
 export default defineConfig({
     output: "static",
     site: "https://duetmail.com",
-    trailingSlash: "always",
+    trailingSlash: "never",
     integrations: [sitemap()],
     vite: {
         plugins: [tailwindcss()],
