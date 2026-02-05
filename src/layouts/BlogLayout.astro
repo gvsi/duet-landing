@@ -131,14 +131,12 @@ const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
 >
     <Nav />
 
-    <!-- Reading Progress Indicator -->
     <div class="reading-progress" id="reading-progress">
         <div class="reading-progress-bar" id="reading-progress-bar"></div>
     </div>
 
     <main class="blog-post">
         <article class="blog-article">
-            <!-- Article Header -->
             <header class="article-header">
                 <nav class="article-nav">
                     <a href="/blog" class="article-back">
@@ -178,7 +176,6 @@ const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
                 )}
             </header>
 
-            <!-- Cover Image -->
             {coverImage && (
                 <figure class="article-cover">
                     <img
@@ -191,14 +188,11 @@ const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
                 </figure>
             )}
 
-            <!-- Article Content -->
             <div class="article-content duet-prose duet-prose--dropcap">
                 <slot />
             </div>
 
-            <!-- Article Footer -->
             <footer class="article-footer">
-                <!-- Tags (if any) -->
                 {tags.length > 0 && (
                     <div class="article-tags">
                         <span class="article-tags-label">Topics</span>
@@ -210,12 +204,10 @@ const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
                     </div>
                 )}
 
-                <!-- Divider -->
                 <div class="article-divider">
                     <span class="article-divider-ornament"></span>
                 </div>
 
-                <!-- CTA Section -->
                 <div class="article-cta">
                     <h2 class="article-cta-title">Transform your inbox</h2>
                     <p class="article-cta-text">
@@ -226,7 +218,6 @@ const extraHeadHtml = metaLines.join("\n") + "\n" + jsonLdScript
                     </a>
                 </div>
 
-                <!-- Back Link -->
                 <div class="article-footer-nav">
                     <a href="/blog" class="article-back article-back--footer">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

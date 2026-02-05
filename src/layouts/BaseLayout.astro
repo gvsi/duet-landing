@@ -69,7 +69,6 @@ const ogImageUrl = new URL(ogImagePath, Astro.site).toString();
         <link rel="icon" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        <!-- Preload hero background for light mode (default) to improve LCP -->
         <link rel="preload" as="image" type="image/webp"
               imagesrcset="/hero-bg-light-sm.webp 768w,
                            /hero-bg-light-md.webp 1280w,
