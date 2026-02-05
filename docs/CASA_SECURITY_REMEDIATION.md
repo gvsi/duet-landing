@@ -9,29 +9,27 @@
 
 ## Current Status
 
-- **Step 4 — Remediation:** Code changes complete, Cloudflare dashboard changes complete (with caveats)
-- **Step 5 — Rescanning:** Pending (deploy code changes + submit SAQ)
-- **Step 6 — Letter of Validation:** Pending
+- **Step 4 — Remediation:** Complete. All code changes deployed and verified live.
+- **Step 5 — Rescanning:** Ready to submit SAQ and trigger rescan.
+- **Step 6 — Letter of Validation:** Pending rescan.
 
-> **All 12 vulnerabilities need to be patched to pass CASA Tier 2 & Tier 3 assessments.**
+> **11 of 12 findings resolved. Finding #4 (Server header) is a Cloudflare platform limitation — document in SAQ.**
 
 ---
 
 ## Findings Summary
 
-| Severity | Count | Resolved | Pending |
-|----------|-------|----------|---------|
-| Critical | 0     | —        | —       |
-| High     | 0     | —        | —       |
-| Medium   | 0     | —        | —       |
-| Low      | 5     | 4        | 1       |
-| Info     | 7     | 4        | 3       |
-| **Total**| **12**| **8**    | **4**   |
+| Severity | Count | Resolved | Not resolvable | No action needed |
+|----------|-------|----------|----------------|------------------|
+| Critical | 0     | —        | —              | —                |
+| High     | 0     | —        | —              | —                |
+| Medium   | 0     | —        | —              | —                |
+| Low      | 5     | 4        | 1 (#4 partial) | —                |
+| Info     | 7     | 5        | —              | 2                |
+| **Total**| **12**| **9**    | **1**          | **2**            |
 
-**Resolved (code):** #1, #2, #3, #5, #6, #7, #8 — via `_headers` file + comment removal
-**Resolved (Cloudflare):** #4 partially — WAF rule blocking TRACE/TRACK deployed
-**Pending (deploy + verify):** #10, #11 (cache headers in `_headers`, need live verification)
-**Not fully resolvable:** #4 Server header — Cloudflare blocks removal (see limitations below)
+**Resolved and verified live:** #1, #2, #3, #5, #6, #7, #8, #10, #11
+**Not fully resolvable:** #4 — `Server: cloudflare` header cannot be removed (Cloudflare platform limitation, see details below)
 **No action required:** #9, #12 (informational)
 
 ---
@@ -41,7 +39,7 @@
 ### 1. CORS Misconfiguration
 - **CWE:** 942
 - **Status:** ✅ Resolved (code)
-- **Fix applied:** `! Access-Control-Allow-Origin` detach directive in `public/_headers` removes the wildcard header. If detach doesn't work post-deploy, fallback: Cloudflare Transform Rule to strip the header (see Part B3).
+- **Fix applied:** `! Access-Control-Allow-Origin` detach directive in `public/_headers`. Verified absent in live response headers.
 - **Problem:** `Access-Control-Allow-Origin: *` allows any domain to make AJAX requests to the site.
 - **Evidence URLs:**
   - `https://duetmail.com`
@@ -83,20 +81,19 @@
 
 ### 4. Proxy Disclosure
 - **CWE:** 204
-- **Status:** ⏳ Partially resolved — TRACE/TRACK blocked, Server header cannot be removed
-- **Fix applied (code):** `! Server` detach directive in `public/_headers`.
-- **Fix applied (Cloudflare):**
-  - **B1: ✅ Deployed** — WAF Custom Rule "Block TRACE and TRACK methods" (Security > Security Rules > Custom Rules)
-    - Expression: `(http.request.method eq "TRACE") or (http.request.method eq "TRACK")`
-    - Action: Block (403)
-    - Status: Active
-  - **B2: ❌ Not possible** — Cloudflare does not allow removing the `Server` header:
-    - "Remove Server header" is NOT available as a Managed Transform (Rules > Transform Rules > Managed Transforms only offers "Remove X-Powered-By" and "Add security headers")
-    - Creating a custom Response Header Transform Rule to remove `server` fails with error: `'remove' is not a valid value for operation because it cannot be used on header 'server'`
-    - The `! Server` detach directive in `_headers` is our only mechanism — effectiveness depends on whether Cloudflare Pages honors it for edge-injected headers
-  - **Bonus hardening: ✅** Enabled "Remove X-Powered-By headers" Managed Transform
+- **Status:** ⚠️ Partially resolved — `Server: cloudflare` header **not removable** (platform limitation)
+- **Mitigations applied:**
+  - TRACE → 405 (blocked natively by Cloudflare)
+  - TRACK → 501 (blocked natively by Cloudflare)
+  - **✅ Managed Transform** — "Remove X-Powered-By headers" enabled
+- **Server header — all four approaches tested and failed:**
+  1. `! Server` detach directive in `_headers` — no effect on edge-injected headers (confirmed via curl post-deploy)
+  2. Response Header Transform Rule — Cloudflare rejects `remove` operation on `server`: `'remove' is not a valid value for operation because it cannot be used on header 'server'`
+  3. "Remove Server header" Managed Transform — does not exist (only "Remove X-Powered-By" is available)
+  4. Pages Functions middleware (`headers.delete('server')`) — Cloudflare re-injects `Server: cloudflare` after the Function returns (confirmed via curl post-deploy)
+- **WAF rule not needed:** TRACE (405) and TRACK (501) are rejected natively by Cloudflare without a custom WAF rule. WAF rule was disabled after confirming native blocking.
 - **Problem:** Proxy server (Cloudflare) detected/fingerprinted via TRACE, OPTIONS, and TRACK methods.
-- **Note:** Cloudflare will always be identifiable via `cf-ray` header and IP ranges. The `Server: cloudflare` header is edge-injected and Cloudflare actively prevents its removal. Goal is to reduce method + header leakage, not hide Cloudflare entirely. This finding may persist on rescan — if so, document the limitation in the SAQ response.
+- **SAQ response:** The `Server: cloudflare` header is edge-injected by Cloudflare's reverse proxy and cannot be removed on any plan below Enterprise. Cloudflare remains identifiable regardless via `cf-ray` header, IP ranges, and behavioral patterns. All feasible mitigations have been applied (X-Powered-By removal). TRACE and TRACK methods are rejected natively by Cloudflare (405/501). This is a platform-level constraint, not an application-level vulnerability.
 
 ---
 
@@ -160,9 +157,9 @@
 
 ### 10. Re-examine Cache-Control Directives
 - **CWE:** 525
-- **Status:** ✅ Resolved (code) — needs live verification after deploy
+- **Status:** ✅ Resolved and verified live
 - **Fix applied:** Cache-Control rules in `public/_headers`:
-  - `/_astro/*` → `public, max-age=31536000, immutable` (hashed assets)
+  - `/_astro/*` → `public, max-age=31536000, immutable` (hashed assets) — verified live
   - `/*.webp`, `/*.jpg`, `/*.jpeg`, `/*.png`, `/*.svg` → `public, max-age=2592000` (30-day cache for images)
 - **Problem:** Cache-control not set properly for static assets.
 
@@ -170,7 +167,7 @@
 
 ### 11. Storable but Non-Cacheable Content
 - **CWE:** 524
-- **Status:** ✅ Resolved (code) — needs live verification after deploy
+- **Status:** ✅ Resolved and verified live
 - **Fix applied:** Same cache rules as #10 in `public/_headers`.
 - **Problem:** Response contents storable but not retrievable from cache without upstream validation.
 
@@ -198,34 +195,35 @@ Each security header is owned by exactly ONE mechanism to avoid duplicate header
 | `Permissions-Policy` | `_headers` | #6 |
 | `Strict-Transport-Security` | `_headers` | #7 |
 | `! Access-Control-Allow-Origin` (detach) | `_headers` | #1, #2 |
-| `! Server` (detach) | `_headers` | #4 |
+| `! Server` (detach) | `_headers` | #4 (no effect on edge-injected header) |
 | `Cache-Control` (per-path) | `_headers` | #10, #11 |
-| TRACE/TRACK blocking | Cloudflare WAF Custom Rule (deployed) | #4 |
-| Server header removal | ❌ Not possible — Cloudflare blocks removal | #4 |
+| TRACE/TRACK blocking | Cloudflare native (405/501) | #4 (no WAF rule needed) |
+| Server header removal | ❌ Not possible — Cloudflare platform limitation | #4 |
 | Remove `X-Powered-By` | Cloudflare Managed Transform (enabled) | hardening |
 
-### Post-Deploy Verification Checklist
+### Post-Deploy Verification (Feb 5, 2026 — all passing)
 
 ```bash
-# Security headers present
-curl -sI https://duetmail.com | grep -i "x-frame-options"           # DENY
-curl -sI https://duetmail.com | grep -i "x-content-type-options"    # nosniff
-curl -sI https://duetmail.com | grep -i "permissions-policy"        # camera=(), ...
-curl -sI https://duetmail.com | grep -i "strict-transport-security" # max-age=31536000; ...
-curl -sI https://duetmail.com | grep -i "content-security-policy"   # frame-ancestors 'none'
+# Security headers — all present ✅
+curl -sI https://duetmail.com | grep -i "x-frame-options"           # DENY ✅
+curl -sI https://duetmail.com | grep -i "x-content-type-options"    # nosniff ✅
+curl -sI https://duetmail.com | grep -i "permissions-policy"        # camera=(), ... ✅
+curl -sI https://duetmail.com | grep -i "strict-transport-security" # max-age=31536000; ... ✅
+curl -sI https://duetmail.com | grep -i "content-security-policy"   # frame-ancestors 'none' ✅
+curl -sI https://duetmail.com | grep -i "referrer-policy"           # strict-origin-when-cross-origin ✅
 
-# CORS header absent
-curl -sI https://duetmail.com | grep -i "access-control-allow-origin"  # NO output
+# CORS header absent ✅
+curl -sI https://duetmail.com | grep -i "access-control-allow-origin"  # NO output ✅
 
-# Server header — likely still present (Cloudflare prevents removal)
-curl -sI https://duetmail.com | grep -i "^server:"  # Will likely show "cloudflare" — cannot be removed
+# Server header — still present (Cloudflare platform limitation, see #4)
+curl -sI https://duetmail.com | grep -i "^server:"  # "cloudflare" — cannot be removed
 
-# TRACE/TRACK blocked (after Cloudflare WAF rule)
-curl -sI -X TRACE https://duetmail.com  # 403 Forbidden
-curl -sI -X TRACK https://duetmail.com  # 403 Forbidden
+# TRACE/TRACK blocked natively by Cloudflare ✅
+curl -sI -X TRACE https://duetmail.com  # 405 Method Not Allowed ✅
+curl -sI -X TRACK https://duetmail.com  # 501 Not Implemented ✅
 
-# Cache-Control for hashed assets
-curl -sI "https://duetmail.com/_astro/<any-file>" | grep -i "cache-control"  # immutable
+# Cache-Control for hashed assets ✅
+curl -sI "https://duetmail.com/_astro/" | grep -i "cache-control"  # public, max-age=31536000, immutable ✅
 
 # Cache-Control for images
 curl -sI https://duetmail.com/hero-bg-light-lg.webp | grep -i "cache-control"  # max-age=2592000
@@ -233,26 +231,23 @@ curl -sI https://duetmail.com/hero-bg-light-lg.webp | grep -i "cache-control"  #
 
 ### Cloudflare Dashboard Changes (Feb 5, 2026)
 
-**Completed:**
-1. **WAF Custom Rule** — "Block TRACE and TRACK methods" deployed and active
-   - Location: Security > Security Rules > Custom Rules
-   - Expression: `(http.request.method eq "TRACE") or (http.request.method eq "TRACK")`
-   - Action: Block (403, default Cloudflare WAF block page)
-2. **Managed Transform** — "Remove X-Powered-By headers" enabled
+**Active:**
+1. **Managed Transform** — "Remove X-Powered-By headers" enabled
    - Location: Rules > Transform Rules > Managed Transforms
 
-**Not possible (Cloudflare limitations):**
-1. **Server header removal** — Cloudflare actively prevents removing the `Server` header:
-   - No "Remove Server header" option exists in Managed Transforms (only "Remove X-Powered-By" and "Add security headers" are available)
-   - Custom Response Header Transform Rules reject `server` as a header name: error `'remove' is not a valid value for operation because it cannot be used on header 'server'`
-   - The `! Server` detach directive in `_headers` may work for origin-set Server headers but NOT for Cloudflare's edge-injected `Server: cloudflare` header
-   - This is a known Cloudflare platform limitation — the `Server` header is considered a protected/reserved header
-2. **Cloudflare fingerprinting** — Even with all mitigations, Cloudflare remains identifiable via:
-   - `cf-ray` response header (cannot be removed)
-   - Cloudflare IP ranges (publicly documented)
-   - Behavioral patterns in error pages and challenge pages
+**Disabled (not needed):**
+1. **WAF Custom Rule** — "Block TRACE and TRACK methods" — disabled after confirming Cloudflare natively rejects TRACE (405) and TRACK (501) without any custom rules.
 
-**Impact on CASA rescan:** Finding #4 (Proxy Disclosure) will likely persist at "Low" severity due to the Server header limitation. Document this in the SAQ as a platform-level constraint that cannot be mitigated further.
+**Not possible (Cloudflare platform limitations):**
+1. **Server header removal** — four approaches tested, all failed:
+   - `! Server` detach in `_headers` — no effect on edge-injected headers
+   - Response Header Transform Rule — `server` is a restricted header, `remove` operation rejected
+   - "Remove Server header" Managed Transform — does not exist
+   - Pages Functions middleware `headers.delete('server')` — Cloudflare re-injects header after Function execution
+   - This is a known Cloudflare platform limitation requiring Enterprise plan to resolve
+2. **Cloudflare fingerprinting** — Cloudflare remains identifiable regardless via `cf-ray` header, IP ranges, and behavioral patterns
+
+**Impact on CASA rescan:** Finding #4 (Proxy Disclosure) will likely persist at "Low" severity due to the Server header limitation. Document in SAQ as a platform-level constraint.
 
 ---
 
