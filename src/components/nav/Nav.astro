@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from "../ui/ThemeToggle.astro";
+import { APP_URL } from "../../utils/constants";
 ---
 
 <header class="site-nav fixed inset-x-0 top-0 z-50 backdrop-blur-[8px]">
@@ -33,7 +34,7 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
             />
         </a>
 
-        <nav class="hidden items-center gap-6 md:flex">
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Main navigation">
             <a class="nav-link" href="/#organization">Organization</a>
             <a class="nav-link" href="/#drafting">Drafting</a>
             <a class="nav-link" href="/#intelligence">Intelligence</a>
@@ -45,7 +46,7 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
 
         <div class="flex items-center gap-3">
             <ThemeToggle />
-            <a class="nav-cta" href="https://app.duetmail.com/">Get started</a>
+            <a class="nav-cta" href={APP_URL}>Get started</a>
 
             <details class="mobile-menu md:hidden" data-mobile-menu>
                 <summary
@@ -212,6 +213,11 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
         color: var(--nav-text-hover);
     }
 
+    .nav-link:focus-visible {
+        outline: 2px solid var(--duet-accent);
+        outline-offset: 2px;
+    }
+
     .nav-cta {
         display: inline-flex;
         align-items: center;
@@ -346,5 +352,10 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
     .mobile-menu-link:hover {
         background: rgba(255, 255, 255, 0.06);
         color: rgba(255, 255, 255, 0.92);
+    }
+
+    .mobile-menu-link:focus-visible {
+        outline: 2px solid var(--duet-accent);
+        outline-offset: 2px;
     }
 </style>

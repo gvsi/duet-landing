@@ -1,5 +1,6 @@
 ---
 import { HOME_LOGOS, type HomeLogo } from "./logosData";
+import TestimonialCard from "../ui/TestimonialCard.astro";
 
 type Testimonial = {
     name: string;
@@ -8,15 +9,6 @@ type Testimonial = {
     logoName: HomeLogo["name"];
     avatarKey?: string;
 };
-
-const avatarPath = (key: string, size: 64 | 96 | 128) =>
-    `/avatars/testimonials/${key}-${size}.jpg`;
-
-const avatarSrcSet = (key: string) =>
-    `${avatarPath(key, 64)} 64w, ${avatarPath(key, 96)} 96w, ${avatarPath(
-        key,
-        128,
-    )} 128w`;
 
 const TESTIMONIALS: Testimonial[] = [
     {
@@ -83,90 +75,13 @@ const logoByName = new Map(
                     repeatedTestimonials.map((testimonial, index) => {
                         const logo = logoByName.get(testimonial.logoName);
                         const isDuplicate = index >= TESTIMONIALS.length;
-                        const initial = testimonial.name
-                            .trim()
-                            .slice(0, 1)
-                            .toUpperCase();
 
                         return (
-                            <li
-                                class="testimonial-card"
-                                aria-hidden={isDuplicate ? "true" : undefined}
-                            >
-                                <article class="testimonial-card__inner">
-                                    <p class="testimonial-card__quote">
-                                        “{testimonial.quote}”
-                                    </p>
-
-                                    <footer class="testimonial-card__footer">
-                                        <div class="testimonial-card__author">
-                                            <div
-                                                class="testimonial-card__avatar"
-                                                aria-hidden="true"
-                                            >
-                                                {testimonial.avatarKey ? (
-                                                    <img
-                                                        src={avatarPath(
-                                                            testimonial.avatarKey,
-                                                            96,
-                                                        )}
-                                                        srcset={avatarSrcSet(
-                                                            testimonial.avatarKey,
-                                                        )}
-                                                        sizes="36px"
-                                                        width="36"
-                                                        height="36"
-                                                        alt={`Portrait of ${testimonial.name}`}
-                                                        loading="lazy"
-                                                        decoding="async"
-                                                    />
-                                                ) : (
-                                                    initial
-                                                )}
-                                            </div>
-
-                                            <div class="min-w-0">
-                                                <p class="testimonial-card__name">
-                                                    {testimonial.name}
-                                                </p>
-                                                <p class="testimonial-card__title">
-                                                    {testimonial.title}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        {logo && (
-                                            <div
-                                                class="testimonial-card__logo"
-                                                aria-hidden="true"
-                                            >
-                                                <svg
-                                                    viewBox={logo.viewBox}
-                                                    aria-hidden="true"
-                                                    focusable="false"
-                                                >
-                                                    {logo.paths.map((path) => (
-                                                        <path
-                                                            d={path.d}
-                                                            fill="currentColor"
-                                                            fill-rule={
-                                                                path.evenodd
-                                                                    ? "evenodd"
-                                                                    : undefined
-                                                            }
-                                                            clip-rule={
-                                                                path.evenodd
-                                                                    ? "evenodd"
-                                                                    : undefined
-                                                            }
-                                                        />
-                                                    ))}
-                                                </svg>
-                                            </div>
-                                        )}
-                                    </footer>
-                                </article>
-                            </li>
+                            <TestimonialCard
+                                {testimonial}
+                                {logo}
+                                ariaHidden={isDuplicate}
+                            />
                         );
                     })
                 }
@@ -181,87 +96,9 @@ const logoByName = new Map(
             {
                 TESTIMONIALS.map((testimonial) => {
                     const logo = logoByName.get(testimonial.logoName);
-                    const initial = testimonial.name
-                        .trim()
-                        .slice(0, 1)
-                        .toUpperCase();
 
                     return (
-                        <li class="testimonial-card">
-                            <article class="testimonial-card__inner">
-                                <p class="testimonial-card__quote">
-                                    “{testimonial.quote}”
-                                </p>
-
-                                <footer class="testimonial-card__footer">
-                                    <div class="testimonial-card__author">
-                                        <div
-                                            class="testimonial-card__avatar"
-                                            aria-hidden="true"
-                                        >
-                                            {testimonial.avatarKey ? (
-                                                <img
-                                                    src={avatarPath(
-                                                        testimonial.avatarKey,
-                                                        96,
-                                                    )}
-                                                    srcset={avatarSrcSet(
-                                                        testimonial.avatarKey,
-                                                    )}
-                                                    sizes="36px"
-                                                    width="36"
-                                                    height="36"
-                                                    alt={`Portrait of ${testimonial.name}`}
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                />
-                                            ) : (
-                                                initial
-                                            )}
-                                        </div>
-
-                                        <div class="min-w-0">
-                                            <p class="testimonial-card__name">
-                                                {testimonial.name}
-                                            </p>
-                                            <p class="testimonial-card__title">
-                                                {testimonial.title}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {logo && (
-                                        <div
-                                            class="testimonial-card__logo"
-                                            aria-hidden="true"
-                                        >
-                                            <svg
-                                                viewBox={logo.viewBox}
-                                                aria-hidden="true"
-                                                focusable="false"
-                                            >
-                                                {logo.paths.map((path) => (
-                                                    <path
-                                                        d={path.d}
-                                                        fill="currentColor"
-                                                        fill-rule={
-                                                            path.evenodd
-                                                                ? "evenodd"
-                                                                : undefined
-                                                        }
-                                                        clip-rule={
-                                                            path.evenodd
-                                                                ? "evenodd"
-                                                                : undefined
-                                                        }
-                                                    />
-                                                ))}
-                                            </svg>
-                                        </div>
-                                    )}
-                                </footer>
-                            </article>
-                        </li>
+                        <TestimonialCard {testimonial} {logo} />
                     );
                 })
             }
