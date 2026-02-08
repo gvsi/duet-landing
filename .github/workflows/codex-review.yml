@@ -1,0 +1,33 @@
+name: Codex Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  codex-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Codex Code Review
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          responses-api-endpoint: https://me-m9ubezmx-eastus2.openai.azure.com/openai/v1/responses
+          model: gpt-5.2
+          effort: xhigh
+          prompt: |
+            Review this pull request. Focus on:
+            - Code quality and best practices
+            - Potential bugs or issues
+            - Performance considerations
+            - Security concerns
