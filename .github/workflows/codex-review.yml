@@ -39,7 +39,15 @@ jobs:
 
             To see the changes, run: git diff origin/${{ github.event.pull_request.base.ref }}...HEAD
 
-            ## Review Framework
+            ## Review Guidelines
+
+            Only report issues you are highly confident about. Do not speculate or flag
+            hypothetical problems. If a finding is uncertain, omit it. Prioritize a short,
+            actionable review over an exhaustive one — fewer high-quality findings are better
+            than many low-confidence ones.
+
+            Do NOT run tests — a separate CI job handles that. Focus on static analysis of
+            the diff only.
 
             Analyze the diff across these dimensions:
 
@@ -68,7 +76,7 @@ jobs:
             - Verify naming conventions are clear and consistent
             - Look for overly complex logic that could be simplified
 
-            ### 5. Testing Considerations
+            ### 5. Testing Considerations (do not execute tests)
             - Identify untested code paths in the changes
             - Suggest specific test cases that should be added
 
