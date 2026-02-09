@@ -1,4 +1,6 @@
 ---
+import { APP_URL, OUTLOOK_WAITLIST_URL } from "../../utils/constants";
+
 const features = [
     "sorting email",
     "drafting replies",
@@ -66,7 +68,7 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
             <div
                 class="cta-row mt-0 flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
-                <a class="cta cta-primary" href="https://app.duetmail.com">
+                <a class="cta cta-primary" href={APP_URL}>
                     <span class="cta-icon" aria-hidden="true">
                         <svg
                             width="18"
@@ -93,7 +95,7 @@ const featureCycleSeconds = features.length * featureIntervalSeconds;
 
                 <a
                     class="cta cta-secondary"
-                    href="https://app.duetmail.com/outlook-waitlist"
+                    href={OUTLOOK_WAITLIST_URL}
                 >
                     <span class="cta-icon" aria-hidden="true">
                         <svg

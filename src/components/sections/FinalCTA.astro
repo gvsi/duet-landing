@@ -1,5 +1,5 @@
 ---
-
+import { APP_URL } from "../../utils/constants";
 ---
 
 <section id="getstarted" class="final-cta" aria-label="Get started" data-cta-section>
@@ -24,7 +24,7 @@
                 <div class="cta-actions">
                     <a
                         class="cta-button"
-                        href="https://app.duetmail.com/"
+                        href={APP_URL}
                         target="_blank"
                         rel="noopener"
                     >
@@ -69,7 +69,7 @@
 
                 <div class="trust-row">
                     <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                             <path
                                 d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
                                 stroke="currentColor"
@@ -88,7 +88,7 @@
                         <span>CASA Tier 2 Compliant</span>
                     </div>
                     <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                             <rect
                                 x="3"
                                 y="11"
@@ -108,7 +108,7 @@
                         <span>End-to-end encrypted</span>
                     </div>
                     <div class="trust-item">
-                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18">
+                        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                             <path
                                 d="M12 2 2 7l10 5 10-5-10-5z"
                                 stroke="currentColor"

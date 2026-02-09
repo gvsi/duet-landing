@@ -1,4 +1,6 @@
 ---
+import { SUPPORT_MAILTO } from "../../utils/constants";
+
 /**
  * FAQ Section
  * 
@@ -48,7 +50,7 @@ const faqs = [
                     <div class="faq__sidebar-content">
                         <span class="faq__sidebar-label">CONTACT</span>
                         <p class="faq__sidebar-heading">Still have <br/>questions?</p>
-                        <a href="mailto:hello@duetmail.com" class="faq__sidebar-link">Get in touch →</a>
+                        <a href={SUPPORT_MAILTO} class="faq__sidebar-link">Get in touch →</a>
                     </div>
                 </div>
             </div>
@@ -348,6 +350,11 @@ const faqs = [
 
     :global(html:not([data-theme="light"])) .faq__summary:hover {
         background: rgba(255, 255, 255, 0.02);
+    }
+
+    .faq__summary:focus-visible {
+        outline: 2px solid var(--duet-accent);
+        outline-offset: 2px;
     }
 
     @media (max-width: 768px) {
