@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "email:gifs": "node scripts/email-gifs/capture-email-gifs.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
