@@ -34,6 +34,9 @@ jobs:
           prompt: |
             Review ONLY the changes introduced by this pull request — do NOT review the entire codebase.
 
+            PR Title: ${{ github.event.pull_request.title }}
+            PR Description: ${{ github.event.pull_request.body }}
+
             Base branch: origin/${{ github.event.pull_request.base.ref }}
             Head SHA: ${{ github.event.pull_request.head.sha }}
 
