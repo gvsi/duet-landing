@@ -84,8 +84,8 @@
     --duet-accent: #3730a3;
     --duet-accent-2: #4f46e5;
 
-    /* Light Hero Background - Mobile first (smallest image) */
-    --hero-bg-image: url("/hero-bg-light-sm.webp");
+    /* Light Hero Background - Mobile first (padded tile to reduce visible repeats) */
+    --hero-bg-image: url("/hero-bg-light-sm-padded.webp");
     --hero-bg-repeat: repeat-y;
     --hero-bg-size: 100%;
 
