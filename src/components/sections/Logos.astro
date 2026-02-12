@@ -176,6 +176,22 @@ const logoWidths: Record<string, number> = {
         max-height: 70px;
     }
 
+    @media (max-width: 639px) {
+        .home-logos__ticker {
+            height: 56px;
+        }
+
+        .home-logos__item {
+            height: 36px;
+            width: calc(var(--logo-width, 98px) * 0.55);
+        }
+
+        .home-logos__svg {
+            width: calc(var(--logo-width, 98px) * 0.55);
+            max-height: 36px;
+        }
+    }
+
     @media (min-width: 640px) {
         .home-logos__track {
             gap: 36px;
